@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Алексей Медянцев](https://up.htmlacademy.ru/react/4/user/1123999).
-* Наставник: [Семён Якушев](https://htmlacademy.ru/profile/id1118791).
+* Наставник: `Неизвестно`.
 
 ---
 
