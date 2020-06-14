@@ -35,7 +35,7 @@ const Main = (props) => {
             <div className="movie-card__poster">
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
- 
+
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{headerMovieTitle}</h2>
               <p className="movie-card__meta">
