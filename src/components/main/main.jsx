@@ -111,9 +111,7 @@ const Main = (props) => {
                   </h3>
                 </article>
               );
-            })
-
-            }
+            })}
           </div>
 
           <div className="catalog__more">
