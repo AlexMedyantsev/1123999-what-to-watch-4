@@ -22,9 +22,9 @@ describe(`Click button`, () => {
 
     const main = shallow(
         <Main
-          headerMovieTitle={HeaderMovieData.title}
-          headerMovieGenre={HeaderMovieData.genre}
-          headerMovieYear={HeaderMovieData.year}
+          headerMovieTitle={HeaderMovieData.TITLE}
+          headerMovieGenre={HeaderMovieData.GENRE}
+          headerMovieYear={HeaderMovieData.YEAR}
           movies={MOVIES}
           onTitleMovieLinkClick={onTitleMovieLinkClick}
         />

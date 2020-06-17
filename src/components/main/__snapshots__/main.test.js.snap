@@ -80,16 +80,22 @@ exports[`Render component Should Main render correctly 1`] = `
         >
           <h2
             className="movie-card__title"
-          />
+          >
+            Movie Title
+          </h2>
           <p
             className="movie-card__meta"
           >
             <span
               className="movie-card__genre"
-            />
+            >
+              Drama
+            </span>
             <span
               className="movie-card__year"
-            />
+            >
+              2009
+            </span>
           </p>
           <div
             className="movie-card__buttons"

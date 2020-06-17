@@ -14,9 +14,9 @@ describe(`Render component`, () => {
   it(`Should Main render correctly`, () => {
     const tree = rerender
       .create(<Main
-        title={HeaderMovieData.title}
-        genre={HeaderMovieData.genre}
-        year={HeaderMovieData.year}
+        headerMovieTitle={HeaderMovieData.TITLE}
+        headerMovieGenre={HeaderMovieData.GENRE}
+        headerMovieYear={HeaderMovieData.YEAR}
         movies={MOVIES}
         onTitleMovieLinkClick={() => {}}
       />)
