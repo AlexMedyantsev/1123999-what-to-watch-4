@@ -18,6 +18,7 @@ describe(`Render component`, () => {
         genre={HeaderMovieData.genre}
         year={HeaderMovieData.year}
         movies={MOVIES}
+        onTitleMovieLinkClick={() => {}}
       />)
       .toJSON();
 

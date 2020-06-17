@@ -270,6 +270,7 @@ exports[`Render component Should App render correctly 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Fantastic Beasts
             </a>
@@ -294,6 +295,7 @@ exports[`Render component Should App render correctly 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -318,6 +320,7 @@ exports[`Render component Should App render correctly 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Macbeth
             </a>
@@ -342,6 +345,7 @@ exports[`Render component Should App render correctly 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Avatar
             </a>
@@ -366,6 +370,7 @@ exports[`Render component Should App render correctly 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Aviator
             </a>
@@ -390,6 +395,7 @@ exports[`Render component Should App render correctly 1`] = `
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Pulp fiction
             </a>
