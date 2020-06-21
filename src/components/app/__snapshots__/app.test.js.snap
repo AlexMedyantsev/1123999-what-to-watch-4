@@ -80,16 +80,22 @@ exports[`Render component Should App render correctly 1`] = `
         >
           <h2
             className="movie-card__title"
-          />
+          >
+            The Grand Budapest Hotel
+          </h2>
           <p
             className="movie-card__meta"
           >
             <span
               className="movie-card__genre"
-            />
+            >
+              Drama
+            </span>
             <span
               className="movie-card__year"
-            />
+            >
+              2014
+            </span>
           </p>
           <div
             className="movie-card__buttons"
@@ -253,31 +259,7 @@ exports[`Render component Should App render correctly 1`] = `
       >
         <article
           className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Fantastic Beasts"
-              height="175"
-              src="img/midnight-special.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Fantastic Beasts
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -285,17 +267,17 @@ exports[`Render component Should App render correctly 1`] = `
             <img
               alt="Bohemian Rhapsody"
               height="175"
-              src="img/midnight-special.jpg"
+              src="img/bohemian-rhapsody.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -303,56 +285,7 @@ exports[`Render component Should App render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Macbeth"
-              height="175"
-              src="img/midnight-special.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Macbeth
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Avatar"
-              height="175"
-              src="img/midnight-special.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-              onClick={[Function]}
-            >
-              Avatar
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -360,17 +293,17 @@ exports[`Render component Should App render correctly 1`] = `
             <img
               alt="Aviator"
               height="175"
-              src="img/midnight-special.jpg"
+              src="img/aviator.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
               Aviator
             </a>
@@ -378,26 +311,157 @@ exports[`Render component Should App render correctly 1`] = `
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Pulp fiction"
+              alt="Snatch"
               height="175"
-              src="img/midnight-special.jpg"
+              src="img/snatch.jpg"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
+            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-              onClick={[Function]}
             >
-              Pulp fiction
+              Snatch
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Macbeth"
+              height="175"
+              src="img/macbeth.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Macbeth
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="We need to talk about Kevin"
+              height="175"
+              src="img/we-need-to-talk-about-kevin.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              We need to talk about Kevin
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Fantastic Beasts: The Crimes of Grindelwald"
+              height="175"
+              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Fantastic Beasts: The Crimes of Grindelwald
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Johnny English"
+              height="175"
+              src="img/johnny-english.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Johnny English
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="What We Do in the Shadows"
+              height="175"
+              src="img/what-we-do-in-the-shadows.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+            onClick={[Function]}
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              What We Do in the Shadows
             </a>
           </h3>
         </article>

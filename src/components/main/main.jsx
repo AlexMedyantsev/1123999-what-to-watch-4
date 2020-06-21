@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import MoviesList from "../movies-list/movies-list.jsx";
 
 
 const Main = (props) => {
-  const {headerMovieTitle, headerMovieGenre, headerMovieYear, movies, onTitleMovieLinkClick} = props;
+  const {headerMovieTitle, headerMovieGenre, headerMovieYear, movies, OnTitleClick} = props;
 
   return (
     <div>
@@ -99,26 +100,10 @@ const Main = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {movies.map((movie, index) => {
-              return (
-                <article key={index + movie} className="small-movie-card catalog__movies-card">
-                  <div className="small-movie-card__image">
-                    <img src="img/midnight-special.jpg" alt={movie} width="280" height="175" />
-                  </div>
-                  <h3 className="small-movie-card__title">
-                    <a
-                      className="small-movie-card__link"
-                      href="movie-page.html"
-                      onClick={onTitleMovieLinkClick}
-                    >
-                      {movie}
-                    </a>
-                  </h3>
-                </article>
-              );
-            })}
-          </div>
+          <MoviesList
+            movies={movies}
+            onTitleClick={OnTitleClick}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -147,8 +132,13 @@ Main.propTypes = {
   headerMovieTitle: PropTypes.string.isRequired,
   headerMovieGenre: PropTypes.string.isRequired,
   headerMovieYear: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onTitleMovieLinkClick: PropTypes.func.isRequired
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired,
+      }).isRequired
+  ).isRequired,
+  OnTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;

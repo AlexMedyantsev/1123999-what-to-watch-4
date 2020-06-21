@@ -18,25 +18,25 @@ const MOVIES = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Avatar`, `A
 
 describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {
-    const onTitleMovieLinkClick = jest.fn();
+    const OnTitleClick = jest.fn();
 
-    const main = shallow(
+    const mainComponent = shallow(
         <Main
           headerMovieTitle={HeaderMovieData.TITLE}
           headerMovieGenre={HeaderMovieData.GENRE}
           headerMovieYear={HeaderMovieData.YEAR}
           movies={MOVIES}
-          onTitleMovieLinkClick={onTitleMovieLinkClick}
+          OnTitleClick={OnTitleClick}
         />
 
     );
 
-    const movieTitleLinks = main.find(`.a-small-movie-card__link`);
+    const movieTitleLinks = mainComponent.find(`.a-small-movie-card__link`);
 
     movieTitleLinks.forEach((titleLink) => {
       titleLink.props().onClick();
     });
 
-    expect(onTitleMovieLinkClick.mock.calls.length).toBe(movieTitleLinks.length);
+    expect(OnTitleClick.mock.calls.length).toBe(movieTitleLinks.length);
   });
 });
