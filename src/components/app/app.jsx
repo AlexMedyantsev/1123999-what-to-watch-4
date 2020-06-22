@@ -1,28 +1,25 @@
 import React from "react";
 import Main from "../main/main.jsx";
-import PropTypes from "prop-types";
 
-const titleMovieLinkHandler = () => {};
+import films from "../../mocks/films.js";
 
-const App = (props) => {
-  const {headerMovieTitle, headerMovieGenre, headerMovieYear, movies} = props;
+const promoInfo = {
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  year: 2014,
+};
+
+const App = () => {
 
   return (
     <Main
-      headerMovieTitle={headerMovieTitle}
-      headerMovieGenre={headerMovieGenre}
-      headerMovieYear={headerMovieYear}
-      movies={movies}
-      onTitleMovieLinkClick={titleMovieLinkHandler}
+      headerMovieTitle={promoInfo.title}
+      headerMovieGenre={promoInfo.genre}
+      headerMovieYear={promoInfo.year}
+      movies={films}
+      OnTitleClick={() => {}}
     />
   );
-};
-
-App.propTypes = {
-  headerMovieTitle: PropTypes.string.isRequired,
-  headerMovieGenre: PropTypes.string.isRequired,
-  headerMovieYear: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default App;
