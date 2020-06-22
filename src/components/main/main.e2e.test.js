@@ -4,6 +4,8 @@ import Adapter from "enzyme-adapter-react-16";
 
 import Main from "./main.jsx";
 
+import films from "../../mocks/films.js";
+
 Enzyme.configure({
   adapter: new Adapter()
 });
@@ -14,8 +16,6 @@ const HeaderMovieData = {
   YEAR: 2009,
 };
 
-const MOVIES = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Avatar`, `Aviator`, `Pulp fiction`];
-
 describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {
     const OnTitleClick = jest.fn();
@@ -25,7 +25,7 @@ describe(`Click button`, () => {
           headerMovieTitle={HeaderMovieData.TITLE}
           headerMovieGenre={HeaderMovieData.GENRE}
           headerMovieYear={HeaderMovieData.YEAR}
-          movies={MOVIES}
+          movies={films}
           OnTitleClick={OnTitleClick}
         />
 
