@@ -10,33 +10,30 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-const HeaderMovieData = {
-  TITLE: `Movie Title`,
-  GENRE: `Drama`,
-  YEAR: 2009,
-};
-
 describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {
-    const OnTitleClick = jest.fn();
+    const onTitleClick = jest.fn();
+    const onPosterClick = jest.fn();
 
     const mainComponent = shallow(
         <Main
-          headerMovieTitle={HeaderMovieData.TITLE}
-          headerMovieGenre={HeaderMovieData.GENRE}
-          headerMovieYear={HeaderMovieData.YEAR}
+          promoTitle={`The Grand Budapest Hotel`}
+          promoGenre={`Drama`}
+          promoReleaseYear={2009}
           movies={films}
-          OnTitleClick={OnTitleClick}
+          onTitleClick={onTitleClick}
+          onPosterClick={onPosterClick}
         />
 
     );
 
-    const movieTitleLinks = mainComponent.find(`.a-small-movie-card__link`);
+    const movieTitle = mainComponent.find(`MoviesList`).dive().find(`SmallMovieCard`).first().dive().find(`.small-movie-card__title`);
+    const moviePoster = mainComponent.find(`MoviesList`).dive().find(`SmallMovieCard`).first().dive().find(`.small-movie-card`);
 
-    movieTitleLinks.forEach((titleLink) => {
-      titleLink.props().onClick();
-    });
+    movieTitle.simulate(`click`);
+    moviePoster.simulate(`click`);
 
-    expect(OnTitleClick.mock.calls.length).toBe(movieTitleLinks.length);
+    expect(onTitleClick.mock.calls.length).toBe(1);
+    expect(onPosterClick.mock.calls.length).toBe(1);
   });
 });

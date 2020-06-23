@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render component Should Main render correctly 1`] = `
-<div>
+Array [
   <section
     className="movie-card"
   >
@@ -138,7 +138,7 @@ exports[`Render component Should Main render correctly 1`] = `
         </div>
       </div>
     </div>
-  </section>
+  </section>,
   <div
     className="page-content"
   >
@@ -267,6 +267,7 @@ exports[`Render component Should Main render correctly 1`] = `
             <img
               alt="Bohemian Rhapsody"
               height="175"
+              onClick={[Function]}
               src="img/bohemian-rhapsody.jpg"
               width="280"
             />
@@ -293,6 +294,7 @@ exports[`Render component Should Main render correctly 1`] = `
             <img
               alt="Aviator"
               height="175"
+              onClick={[Function]}
               src="img/aviator.jpg"
               width="280"
             />
@@ -319,6 +321,7 @@ exports[`Render component Should Main render correctly 1`] = `
             <img
               alt="Snatch"
               height="175"
+              onClick={[Function]}
               src="img/snatch.jpg"
               width="280"
             />
@@ -345,6 +348,7 @@ exports[`Render component Should Main render correctly 1`] = `
             <img
               alt="Macbeth"
               height="175"
+              onClick={[Function]}
               src="img/macbeth.jpg"
               width="280"
             />
@@ -371,6 +375,7 @@ exports[`Render component Should Main render correctly 1`] = `
             <img
               alt="We need to talk about Kevin"
               height="175"
+              onClick={[Function]}
               src="img/we-need-to-talk-about-kevin.jpg"
               width="280"
             />
@@ -397,6 +402,7 @@ exports[`Render component Should Main render correctly 1`] = `
             <img
               alt="Fantastic Beasts: The Crimes of Grindelwald"
               height="175"
+              onClick={[Function]}
               src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
               width="280"
             />
@@ -423,6 +429,7 @@ exports[`Render component Should Main render correctly 1`] = `
             <img
               alt="Johnny English"
               height="175"
+              onClick={[Function]}
               src="img/johnny-english.jpg"
               width="280"
             />
@@ -449,6 +456,7 @@ exports[`Render component Should Main render correctly 1`] = `
             <img
               alt="What We Do in the Shadows"
               height="175"
+              onClick={[Function]}
               src="img/what-we-do-in-the-shadows.jpg"
               width="280"
             />
@@ -511,6 +519,6 @@ exports[`Render component Should Main render correctly 1`] = `
         </p>
       </div>
     </footer>
-  </div>
-</div>
+  </div>,
+]
 `;

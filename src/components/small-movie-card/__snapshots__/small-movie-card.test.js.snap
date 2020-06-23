@@ -11,6 +11,7 @@ exports[`it should SmallMovieCard render correctly Small card component 1`] = `
     <img
       alt="Aviator"
       height="175"
+      onClick={[Function]}
       src="img/aviator.jpg"
       width="280"
     />

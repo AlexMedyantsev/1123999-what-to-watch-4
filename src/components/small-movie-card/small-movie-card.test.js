@@ -10,6 +10,7 @@ describe(`it should SmallMovieCard render correctly`, () => {
       .create(<SmallMovieCard
         movie={movieInfo}
         onTitleClick={() => {}}
+        onPosterClick={() => {}}
         onMouseEnter={() => {}}
       />)
       .toJSON();

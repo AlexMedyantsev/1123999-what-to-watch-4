@@ -1,19 +1,6 @@
 import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 
-MovieDetails.propTypes = {
-  movieBackground: PropTypes.string.isRequired,
-  movieTitle: PropTypes.string.isRequired,
-  movieReleaseYear: PropTypes.numbeer.isRequired,
-  movieGenre: PropTypes.string.isRequired,
-  moviePoster: PropTypes.string.isRequired,
-  movieRatingScore: PropTypes.number.isRequired,
-  movieRatingLevel: PropTypes.string.isRequired,
-  movieRatingCount: PropTypes.number.isRequired,
-  movieDirector: PropTypes.string.isRequired,
-  movieActors: PropTypes.string.isRequired,
-  movieDescription: PropTypes.string.isRequired
-};
 
 const MovieDetails = (props) => {
   const {movieBackground, movieTitle, movieReleaseYear, moviePoster, movieGenre, movieRatingScore, movieRatingLevel, movieRatingCount, movieDirector, movieActors, movieDescription} = props;
@@ -171,6 +158,20 @@ const MovieDetails = (props) => {
       </div>
     </Fragment>
   );
+};
+
+MovieDetails.propTypes = {
+  movieBackground: PropTypes.string.isRequired,
+  movieTitle: PropTypes.string.isRequired,
+  movieReleaseYear: PropTypes.number.isRequired,
+  movieGenre: PropTypes.string.isRequired,
+  moviePoster: PropTypes.string.isRequired,
+  movieRatingScore: PropTypes.number.isRequired,
+  movieRatingLevel: PropTypes.string.isRequired,
+  movieRatingCount: PropTypes.number.isRequired,
+  movieDirector: PropTypes.string.isRequired,
+  movieActors: PropTypes.string.isRequired,
+  movieDescription: PropTypes.string.isRequired
 };
 
 export default MovieDetails;

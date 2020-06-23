@@ -15,11 +15,13 @@ describe(`Render component`, () => {
   it(`Should Main render correctly`, () => {
     const tree = rerender
       .create(<Main
-        headerMovieTitle={HeaderMovieData.TITLE}
-        headerMovieGenre={HeaderMovieData.GENRE}
-        headerMovieYear={HeaderMovieData.YEAR}
+        promoTitle={HeaderMovieData.TITLE}
+        promoGenre={HeaderMovieData.GENRE}
+        promoReleaseYear={HeaderMovieData.YEAR}
         movies={films}
-        OnTitleClick={() => {}}
+        onTitleClick={() => {}}
+        onPosterClick={() => {}}
+        onMouseEnterk={() => {}}
       />)
       .toJSON();
 

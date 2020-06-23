@@ -1,9 +1,10 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import Main from "../main/main.jsx";
 
 import films from "../../mocks/films.js";
+import movieOverview from "../../mocks/movie.js";
 
 const promoInfo = {
   title: `The Grand Budapest Hotel`,
@@ -11,26 +12,70 @@ const promoInfo = {
   year: 2014,
 };
 
-const App = () => {
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Main
-            headerMovieTitle={promoInfo.title}
-            headerMovieGenre={promoInfo.genre}
-            headerMovieYear={promoInfo.year}
-            movies={films}
-            OnTitleClick={() => {}}
-          />
-        </Route>
-        <Route exact path="/dev-film">
-          <MovieDetails/>
-        </Route>
-      </Switch>
-    </BrowserRouter>
-  );
-};
+    this.state = {
+      activeMovie: null,
+    };
+
+    this._handleMovieTitleClick = this._handleMovieTitleClick.bind(this);
+  }
+
+  _handleMovieTitleClick(movie) {
+    this.setState({
+      activeMovie: movie,
+    });
+  }
+
+  _renderMain() {
+    return (
+      <Main
+        promoTitle={promoInfo.title}
+        promoGenre={promoInfo.genre}
+        promoReleaseYear={promoInfo.year}
+        movies={films}
+        onTitleClick={this._handleMovieTitleClick}
+        onPosterClick={this._handleMovieTitleClick}
+      />
+    );
+  }
+
+  _renderMoviePage() {
+    const {movieBackground, movieTitle, movieReleaseYear, moviePoster, movieGenre, movieRatingScore, movieRatingLevel, movieRatingCount, movieDirector, movieActors, movieDescription} = movieOverview;
+
+    return (
+      <MovieDetails
+        movieBackground={movieBackground}
+        movieTitle={movieTitle}
+        movieReleaseYear={movieReleaseYear}
+        moviePoster={moviePoster}
+        movieGenre={movieGenre}
+        movieRatingScore={movieRatingScore}
+        movieRatingLevel={movieRatingLevel}
+        movieRatingCount={movieRatingCount}
+        movieDirector={movieDirector}
+        movieActors={movieActors}
+        movieDescription={movieDescription}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderMain()}
+          </Route>
+          <Route exact path="/dev-film">
+            {this._renderMoviePage()}
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 export default App;
