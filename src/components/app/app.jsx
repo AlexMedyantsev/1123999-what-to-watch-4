@@ -23,16 +23,16 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {name, genre, year, films} = this.props;
+    const {name, genre, year, movies} = this.props;
     const {filmIndex} = this.state;
 
-    if (!filmIndex) {
+    if (filmIndex < 0 || filmIndex === null) {
       return (
         <Main
           name={name}
           genre={genre}
           year={year}
-          films={films}
+          movies={movies}
           onClick={this._handleClick}
         />
       );
@@ -40,14 +40,14 @@ class App extends PureComponent {
 
     return (
       <MovieDetails
-        film={films[filmIndex]}
+        film={movies[filmIndex]}
       />
     );
   }
 
   render() {
-    const {films} = this.props;
-    const film = films[0];
+    const {movies} = this.props;
+    const film = movies[0];
 
     return (
       <BrowserRouter>
@@ -79,7 +79,7 @@ App.propTypes = {
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
-  films: PropTypes.array.isRequired,
+  movies: PropTypes.array.isRequired,
 };
 
 export default App;
