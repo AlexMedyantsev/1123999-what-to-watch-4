@@ -4,7 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 
 import Main from "./main.jsx";
 
-import films from "../../mocks/films.js";
+import movies from "../../mocks/movies.js";
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -19,7 +19,7 @@ describe(`Click button`, () => {
           name={`The Grand Budapest Hotel`}
           genre={`Drama`}
           year={2009}
-          films={films}
+          movies={movies}
           onClick={onClick}
         />
     );

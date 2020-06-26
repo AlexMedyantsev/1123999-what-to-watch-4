@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
-import films from "./mocks/films.js";
+import movies from "./mocks/movies.js";
 
 const HeaderMovie = {
   TITLE: `Movie Title`,
@@ -14,7 +14,7 @@ ReactDOM.render(
       name={HeaderMovie.TITLE}
       genre={HeaderMovie.GENRE}
       year={HeaderMovie.YEAR}
-      films={films}
+      movies={movies}
     />,
     document.querySelector(`#root`)
 );

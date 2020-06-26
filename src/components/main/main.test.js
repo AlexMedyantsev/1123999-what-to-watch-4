@@ -8,7 +8,7 @@ const HeaderMovieData = {
   YEAR: 2009,
 };
 
-const films = [
+const movies = [
   {
     title: `Bekket`,
     image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -31,7 +31,7 @@ describe(`Render component`, () => {
         name={HeaderMovieData.TITLE}
         genre={HeaderMovieData.GENRE}
         year={HeaderMovieData.YEAR}
-        films={films}
+        movies={movies}
         onClick={() => {}}
         onMouseEnter={() => {}}
       />)

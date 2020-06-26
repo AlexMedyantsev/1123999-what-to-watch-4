@@ -17,7 +17,7 @@ describe(`Render component`, () => {
         name={HeaderMovieData.TITLE}
         genre={HeaderMovieData.GENRE}
         year={HeaderMovieData.YEAR}
-        films={MOVIES}
+        movies={MOVIES}
       />)
       .toJSON();
 

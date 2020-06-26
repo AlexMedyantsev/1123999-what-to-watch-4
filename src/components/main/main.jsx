@@ -4,7 +4,7 @@ import MoviesList from "../movies-list/movies-list.jsx";
 
 
 const Main = (props) => {
-  const {name, genre, year, films, onClick} = props;
+  const {name, genre, year, movies, onClick} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -101,7 +101,7 @@ const Main = (props) => {
 
         <div className="catalog__movies-list">
           <MoviesList
-            films={films}
+            movies={movies}
             onClick={onClick}
           />
         </div>
@@ -132,7 +132,7 @@ Main.propTypes = {
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
-  films: PropTypes.array.isRequired,
+  movies: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
