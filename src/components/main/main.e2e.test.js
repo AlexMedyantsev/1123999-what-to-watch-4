@@ -12,28 +12,22 @@ Enzyme.configure({
 
 describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {
-    const onTitleClick = jest.fn();
-    const onPosterClick = jest.fn();
+    const onClick = jest.fn();
 
     const mainComponent = shallow(
         <Main
-          promoTitle={`The Grand Budapest Hotel`}
-          promoGenre={`Drama`}
-          promoReleaseYear={2009}
-          movies={films}
-          onTitleClick={onTitleClick}
-          onPosterClick={onPosterClick}
+          name={`The Grand Budapest Hotel`}
+          genre={`Drama`}
+          year={2009}
+          films={films}
+          onClick={onClick}
         />
-
     );
 
-    const movieTitle = mainComponent.find(`MoviesList`).dive().find(`SmallMovieCard`).first().dive().find(`.small-movie-card__title`);
-    const moviePoster = mainComponent.find(`MoviesList`).dive().find(`SmallMovieCard`).first().dive().find(`.small-movie-card`);
+    const movieTitle = mainComponent.find(`MoviesList`).dive().find(`SmallMovieCard`).first().dive().find(`.small-movie-card`);
 
     movieTitle.simulate(`click`);
-    moviePoster.simulate(`click`);
 
-    expect(onTitleClick.mock.calls.length).toBe(1);
-    expect(onPosterClick.mock.calls.length).toBe(1);
+    expect(onClick.mock.calls.length).toBe(1);
   });
 });

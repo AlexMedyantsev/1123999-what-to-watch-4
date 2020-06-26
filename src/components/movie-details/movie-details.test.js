@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import MovieDetails from "./movie-details.jsx";
 
 const movie = {
-  background: `img/movie.jpg`,
+  backgroundImage: `img/movie.jpg`,
   title: `The Movie`,
   releaseYear: 2014,
   genre: `Drama`,
@@ -11,26 +11,16 @@ const movie = {
   ratingScore: 8.9,
   ratingLevel: `Very Good`,
   ratingCount: 245,
-  director: `Wes Andreson`,
+  director: [`Wes Andreson`],
   actors: `Actors`,
-  description: `description`,
+  description: [`description`],
 };
 
 describe(`Movie Details Snapshot`, () => {
   it(`Should MovieDetails render correctly`, () => {
     const tree = renderer
       .create(<MovieDetails
-        movieBackground={movie.background}
-        movieTitle={movie.title}
-        movieReleaseYear={movie.releaseYear}
-        movieGenre={movie.genre}
-        moviePoster={movie.poster}
-        movieRatingScore={movie.ratingScore}
-        movieRatingLevel={movie.ratingLevel}
-        movieRatingCount={movie.ratingCount}
-        movieDirector={movie.director}
-        movieActors={movie.actors}
-        movieDescription={movie.description}
+        film={movie}
       />)
       .toJSON();
 

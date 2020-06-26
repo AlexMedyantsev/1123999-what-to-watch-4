@@ -14,10 +14,10 @@ describe(`Render component`, () => {
   it(`Should App render correctly`, () => {
     const tree = rerender
       .create(<App
-        title={HeaderMovieData.TITLE}
+        name={HeaderMovieData.TITLE}
         genre={HeaderMovieData.GENRE}
         year={HeaderMovieData.YEAR}
-        movies={MOVIES}
+        films={MOVIES}
       />)
       .toJSON();
 

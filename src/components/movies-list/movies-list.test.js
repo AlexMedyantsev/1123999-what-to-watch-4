@@ -7,9 +7,8 @@ describe(`MovieList snapshot`, () => {
   it(`Should movies list render correctly`, () => {
     const tree = renderer
       .create(<MoviesList
-        movies={films}
-        onTitleClick={() => {}}
-        onPosterClick={() => {}}
+        films={films}
+        onClick={() => {}}
       />)
       .toJSON();
 

@@ -1,146 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MovieList snapshot Should movies list render correctly 1`] = `
-<div
-  className="catalog__movies-list"
->
+Array [
   <article
     className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Bohemian Rhapsody"
-        height="175"
-        onClick={[Function]}
-        src="img/bohemian-rhapsody.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Bohemian Rhapsody
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Aviator"
-        height="175"
-        onClick={[Function]}
-        src="img/aviator.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Aviator
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Snatch"
-        height="175"
-        onClick={[Function]}
-        src="img/snatch.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Snatch
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="Macbeth"
-        height="175"
-        onClick={[Function]}
-        src="img/macbeth.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        Macbeth
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <img
-        alt="We need to talk about Kevin"
-        height="175"
-        onClick={[Function]}
-        src="img/we-need-to-talk-about-kevin.jpg"
-        width="280"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-      onClick={[Function]}
-    >
-      <a
-        className="small-movie-card__link"
-        href="movie-page.html"
-      >
-        We need to talk about Kevin
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseEnter={[Function]}
   >
     <div
@@ -149,7 +13,6 @@ exports[`MovieList snapshot Should movies list render correctly 1`] = `
       <img
         alt="Fantastic Beasts: The Crimes of Grindelwald"
         height="175"
-        onClick={[Function]}
         src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
@@ -165,19 +28,19 @@ exports[`MovieList snapshot Should movies list render correctly 1`] = `
         Fantastic Beasts: The Crimes of Grindelwald
       </a>
     </h3>
-  </article>
+  </article>,
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="Johnny English"
+        alt="Bohemian Rhapsody"
         height="175"
-        onClick={[Function]}
-        src="img/johnny-english.jpg"
+        src="img/bohemian-rhapsody.jpg"
         width="280"
       />
     </div>
@@ -189,21 +52,102 @@ exports[`MovieList snapshot Should movies list render correctly 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        Johnny English
+        Bohemian Rhapsody
       </a>
     </h3>
-  </article>
+  </article>,
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
     onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
       <img
-        alt="What We Do in the Shadows"
+        alt="Macbeth"
         height="175"
-        onClick={[Function]}
+        src="img/macbeth.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Macbeth
+      </a>
+    </h3>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Aviator"
+        height="175"
+        src="img/aviator.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Aviator
+      </a>
+    </h3>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="We Need To Talk About Kevin"
+        height="175"
+        src="img/we-need-to-talk-about-kevin.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        We Need To Talk About Kevin
+      </a>
+    </h3>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="What We Do In The Shadows"
+        height="175"
         src="img/what-we-do-in-the-shadows.jpg"
         width="280"
       />
@@ -216,9 +160,63 @@ exports[`MovieList snapshot Should movies list render correctly 1`] = `
         className="small-movie-card__link"
         href="movie-page.html"
       >
-        What We Do in the Shadows
+        What We Do In The Shadows
       </a>
     </h3>
-  </article>
-</div>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Revenant"
+        height="175"
+        src="img/revenant.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Revenant
+      </a>
+    </h3>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Jonny English"
+        height="175"
+        src="img/johnny-english.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Jonny English
+      </a>
+    </h3>
+  </article>,
+]
 `;
