@@ -4,7 +4,7 @@ import MoviesList from "../movies-list/movies-list.jsx";
 
 
 const Main = (props) => {
-  const {promoTitle, promoGenre, promoReleaseYear, movies, onTitleClick, onPosterClick} = props;
+  const {name, genre, year, films, onClick} = props;
 
   return <React.Fragment>
     <section className="movie-card">
@@ -37,10 +37,10 @@ const Main = (props) => {
           </div>
 
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">{promoTitle}</h2>
+            <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">{promoGenre}</span>
-              <span className="movie-card__year">{promoReleaseYear}</span>
+              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__year">{year}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -99,11 +99,12 @@ const Main = (props) => {
           </li>
         </ul>
 
-        <MoviesList
-          movies={movies}
-          onTitleClick={onTitleClick}
-          onPosterClick={onPosterClick}
-        />
+        <div className="catalog__movies-list">
+          <MoviesList
+            films={films}
+            onClick={onClick}
+          />
+        </div>
 
         <div className="catalog__more">
           <button className="catalog__button" type="button">Show more</button>
@@ -128,17 +129,11 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoReleaseYear: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        poster: PropTypes.string.isRequired,
-      }).isRequired
-  ).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
-  onPosterClick: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
+  films: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Main;
