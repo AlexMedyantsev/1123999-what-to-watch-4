@@ -6,45 +6,36 @@ class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeMovie: null
-    };
+    this.state = {activeCard: null};
 
-    this.handleMovieCardMouseEnter = this.handleMovieCardMouseEnter.bind(this);
+    this._handleMovieCardMouseEnter = this._handleMovieCardMouseEnter.bind(this);
   }
 
-  handleMovieCardMouseEnter(movie) {
-    this.setState({
-      activeMovie: movie,
-    });
+  _handleMovieCardMouseEnter(movie) {
+    this.setState({activeCard: movie});
   }
 
   render() {
-    const {movies, onTitleClick} = this.props;
+    const {movies, onMovieCardClick} = this.props;
 
     return (
-      <div className="catalog__movies-list">
-        {movies.map((movie, index) => (
-          <SmallMovieCard
-            key={movie + index}
-            movie={movie}
-            onTitleClick={onTitleClick}
-            onMouseEnter={this.handleMovieCardMouseEnter}
-          />
-        ))}
-      </div>
+      movies.map((film, index) => (
+        <SmallMovieCard
+          image={film.image}
+          name={film.title}
+          index={index}
+          onMovieCardClick={onMovieCardClick}
+          onMovieCardHover={this._handleMovieCardMouseEnter}
+          key={index}
+        />
+      ))
     );
   }
 }
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        poster: PropTypes.string.isRequired,
-      }).isRequired
-  ).isRequired,
-  onTitleClick: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
 };
 
 export default MoviesList;

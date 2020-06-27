@@ -4,39 +4,30 @@ import Adapter from "enzyme-adapter-react-16";
 
 import Main from "./main.jsx";
 
-import films from "../../mocks/films.js";
+import movies from "../../mocks/movies.js";
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-const HeaderMovieData = {
-  TITLE: `Movie Title`,
-  GENRE: `Drama`,
-  YEAR: 2009,
-};
-
 describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {
-    const OnTitleClick = jest.fn();
+    const onMovieCardClick = jest.fn();
 
     const mainComponent = shallow(
         <Main
-          headerMovieTitle={HeaderMovieData.TITLE}
-          headerMovieGenre={HeaderMovieData.GENRE}
-          headerMovieYear={HeaderMovieData.YEAR}
-          movies={films}
-          OnTitleClick={OnTitleClick}
+          name={`The Grand Budapest Hotel`}
+          genre={`Drama`}
+          year={2009}
+          movies={movies}
+          onMovieCardClick={onMovieCardClick}
         />
-
     );
 
-    const movieTitleLinks = mainComponent.find(`.a-small-movie-card__link`);
+    const movieTitle = mainComponent.find(`MoviesList`).dive().find(`SmallMovieCard`).first().dive().find(`.small-movie-card`);
 
-    movieTitleLinks.forEach((titleLink) => {
-      titleLink.props().onClick();
-    });
+    movieTitle.simulate(`click`);
 
-    expect(OnTitleClick.mock.calls.length).toBe(movieTitleLinks.length);
+    expect(onMovieCardClick.mock.calls.length).toBe(1);
   });
 });
