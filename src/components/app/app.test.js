@@ -8,7 +8,20 @@ const HeaderMovieData = {
   YEAR: 2009,
 };
 
-const MOVIES = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Avatar`, `Aviator`, `Pulp fiction`];
+const MOVIES = [
+  {
+    title: `Fantastic Beasts`,
+    image: `./macbeth.jpg`
+  },
+  {
+    title: `Bohemian Rhapsody`,
+    image: `./macbeth.jpg`
+  },
+  {
+    title: `Macbeth`,
+    image: `./macbeth.jpg`
+  },
+];
 
 describe(`Render component`, () => {
   it(`Should App render correctly`, () => {

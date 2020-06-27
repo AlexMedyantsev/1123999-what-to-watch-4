@@ -15,8 +15,8 @@ describe(`it should SmallMovieCard render correctly`, () => {
         image={film.image}
         name={film.name}
         index={Math.random() * 100}
-        onClick={() => {}}
-        onHover={() => {}}
+        onMovieCardClick={() => {}}
+        onMovieCardHover={() => {}}
       />)
       .toJSON();
 

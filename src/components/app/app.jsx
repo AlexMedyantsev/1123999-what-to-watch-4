@@ -13,10 +13,10 @@ class App extends PureComponent {
       filmIndex: null,
     };
 
-    this._handleClick = this._handleClick.bind(this);
+    this._handleMovieCardClick = this._handleMovieCardClick.bind(this);
   }
 
-  _handleClick(index) {
+  _handleMovieCardClick(index) {
     this.setState({
       filmIndex: index,
     });
@@ -33,7 +33,7 @@ class App extends PureComponent {
           genre={genre}
           year={year}
           movies={movies}
-          onClick={this._handleClick}
+          onMovieCardClick={this._handleMovieCardClick}
         />
       );
     }

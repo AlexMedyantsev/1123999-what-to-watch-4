@@ -15,7 +15,7 @@ Enzyme.configure({
 
 describe(`Small Movie Card hover test`, () => {
   it(`Film's index'll pass to handler if user hovers to film's card`, () => {
-    const onHover = jest.fn((index) => index);
+    const onMovieCardHover = jest.fn((index) => index);
     const cardIndex = Math.round(Math.random(7));
 
     const filmCard = shallow(
@@ -23,8 +23,8 @@ describe(`Small Movie Card hover test`, () => {
           image={film.image}
           title={film.title}
           index={cardIndex}
-          onClick={() => {}}
-          onHover={onHover}
+          onMovieCardClick={() => {}}
+          onMovieCardHover={onMovieCardHover}
         />
     );
 
@@ -32,14 +32,14 @@ describe(`Small Movie Card hover test`, () => {
 
     cardImage.simulate(`mouseover`, () => {});
 
-    expect(onHover).toHaveBeenCalledTimes(1);
-    expect(onHover.mock.results[0].value).toBe(cardIndex);
+    expect(onMovieCardHover).toHaveBeenCalledTimes(1);
+    expect(onMovieCardHover.mock.results[0].value).toBe(cardIndex);
   });
 });
 
 describe(`Movie Details correct open on small movie card click check`, () => {
   it(`Film's detailed card opens if user clicks to film's image`, () => {
-    const onClick = jest.fn((index) => index);
+    const onMovieCardClick = jest.fn((index) => index);
     const cardIndex = Math.round(Math.random(7));
 
     const filmCard = shallow(
@@ -47,8 +47,8 @@ describe(`Movie Details correct open on small movie card click check`, () => {
           image={film.image}
           title={film.title}
           index={cardIndex}
-          onClick={onClick}
-          onHover={() => {}}
+          onMovieCardClick={onMovieCardClick}
+          onMovieCardHover={() => {}}
         />
     );
 
@@ -56,12 +56,12 @@ describe(`Movie Details correct open on small movie card click check`, () => {
 
     cardImage.simulate(`click`);
 
-    expect(onClick).toHaveBeenCalledTimes(1);
-    expect(onClick.mock.results[0].value).toBe(cardIndex);
+    expect(onMovieCardClick).toHaveBeenCalledTimes(1);
+    expect(onMovieCardClick.mock.results[0].value).toBe(cardIndex);
   });
 
   it(`Film's detailed card opens if user clicks to film's title`, () => {
-    const onClick = jest.fn((index) => index);
+    const onMovieCardClick = jest.fn((index) => index);
     const cardIndex = Math.round(Math.random(7));
 
     const filmCard = shallow(
@@ -69,8 +69,8 @@ describe(`Movie Details correct open on small movie card click check`, () => {
           image={film.image}
           title={film.title}
           index={cardIndex}
-          onClick={onClick}
-          onHover={() => {}}
+          onMovieCardClick={onMovieCardClick}
+          onMovieCardHover={() => {}}
         />
     );
 
@@ -78,7 +78,7 @@ describe(`Movie Details correct open on small movie card click check`, () => {
 
     cardTitle.simulate(`click`);
 
-    expect(onClick).toHaveBeenCalledTimes(1);
-    expect(onClick.mock.results[0].value).toBe(cardIndex);
+    expect(onMovieCardClick).toHaveBeenCalledTimes(1);
+    expect(onMovieCardClick.mock.results[0].value).toBe(cardIndex);
   });
 });

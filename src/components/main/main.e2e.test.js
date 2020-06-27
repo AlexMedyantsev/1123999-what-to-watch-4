@@ -12,7 +12,7 @@ Enzyme.configure({
 
 describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {
-    const onClick = jest.fn();
+    const onMovieCardClick = jest.fn();
 
     const mainComponent = shallow(
         <Main
@@ -20,7 +20,7 @@ describe(`Click button`, () => {
           genre={`Drama`}
           year={2009}
           movies={movies}
-          onClick={onClick}
+          onMovieCardClick={onMovieCardClick}
         />
     );
 
@@ -28,6 +28,6 @@ describe(`Click button`, () => {
 
     movieTitle.simulate(`click`);
 
-    expect(onClick.mock.calls.length).toBe(1);
+    expect(onMovieCardClick.mock.calls.length).toBe(1);
   });
 });

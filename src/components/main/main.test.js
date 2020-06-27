@@ -32,7 +32,7 @@ describe(`Render component`, () => {
         genre={HeaderMovieData.GENRE}
         year={HeaderMovieData.YEAR}
         movies={movies}
-        onClick={() => {}}
+        onMovieCardClick={() => {}}
         onMouseEnter={() => {}}
       />)
       .toJSON();

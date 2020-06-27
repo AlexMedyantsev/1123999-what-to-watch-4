@@ -8,7 +8,7 @@ describe(`MovieList snapshot`, () => {
     const tree = renderer
       .create(<MoviesList
         movies={movies}
-        onClick={() => {}}
+        onMovieCardClick={() => {}}
       />)
       .toJSON();
 
