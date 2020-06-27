@@ -16,7 +16,8 @@ class App extends PureComponent {
     this._handleMovieCardClick = this._handleMovieCardClick.bind(this);
   }
 
-  _handleMovieCardClick(index) {
+  _handleMovieCardClick(index, event) {
+    event.preventDefault();
     this.setState({
       filmIndex: index,
     });
