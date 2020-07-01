@@ -13,6 +13,7 @@ export default [
     starring: [`Eddie Redmayne`, `Katherine Waterson`, `Dan Folger`],
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     year: 2015,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     backgroundImage: `img/bohemian-rhapsody.jpg`,
@@ -28,6 +29,7 @@ export default [
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
     title: `Bohemian Rhapsody`,
     year: 2018,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     backgroundImage: `img/macbeth.jpg`,
@@ -43,6 +45,7 @@ export default [
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
     title: `Macbeth`,
     year: 2010,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     backgroundImage: `img/aviator.jpg`,
@@ -58,6 +61,7 @@ export default [
     starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Matt Ross`],
     title: `Aviator`,
     year: 2011,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     backgroundImage: `img/we-need-to-talk-about-kevin.jpg`,
@@ -74,6 +78,7 @@ export default [
     starring: [`Tilda Swinton`, `Jonh Reilly`, `Erza Miller`],
     title: `We Need To Talk About Kevin`,
     year: 2010,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     backgroundImage: `img/what-we-do-in-the-shadows.jpg`,
@@ -90,6 +95,7 @@ export default [
     starring: [`Jemaine Clement`, `Taika Waititi`, `Jonny Brugh`],
     title: `What We Do In The Shadows`,
     year: 2014,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
     backgroundImage: `img/revenant.jpg`,
@@ -106,6 +112,7 @@ export default [
     starring: [`Leonardo DiCaprio`, `Tom Hardy`, `Domhnall Gleeson`],
     title: `Revenant`,
     year: 2015,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
     backgroundImage: `img/johnny-english.jpg`,
@@ -122,5 +129,6 @@ export default [
     starring: [`Ralph Fiennes`, `Kristin Scott Thomas`, `Juliette Binoche`],
     title: `Jonny English`,
     year: 1996,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
 ];
