@@ -259,18 +259,16 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseOut={[Function]}
           >
-            <img
-              alt="Bekket"
-              height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
-            />
+            <video>
+              Sorry, this preview is not available in your browser
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -286,18 +284,16 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseOut={[Function]}
           >
-            <img
-              alt="The Doom Generation"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
+            <video>
+              Sorry, this preview is not available in your browser
+            </video>
           </div>
           <h3
             className="small-movie-card__title"
@@ -313,18 +309,16 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            onMouseOut={[Function]}
           >
-            <img
-              alt="Patrool"
-              height="175"
-              src="img/macbeth.jpg"
-              width="280"
-            />
+            <video>
+              Sorry, this preview is not available in your browser
+            </video>
           </div>
           <h3
             className="small-movie-card__title"

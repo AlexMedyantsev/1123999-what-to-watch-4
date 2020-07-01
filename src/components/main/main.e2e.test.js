@@ -24,10 +24,12 @@ describe(`Click button`, () => {
         />
     );
 
-    const movieTitle = mainComponent.find(`MoviesList`).dive().find(`SmallMovieCard`).first().dive().find(`.small-movie-card`);
+    const movieTitle = mainComponent.find(`a.small-movie-card__link`);
 
-    movieTitle.simulate(`click`);
+    movieTitle.forEach((link) => {
+      link.simulate(`click`);
+    });
 
-    expect(onMovieCardClick.mock.calls.length).toBe(1);
+    expect(onMovieCardClick.mock.calls.length).toBe(movieTitle.length);
   });
 });

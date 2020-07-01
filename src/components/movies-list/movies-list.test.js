@@ -9,8 +9,11 @@ describe(`MovieList snapshot`, () => {
       .create(<MoviesList
         movies={movies}
         onMovieCardClick={() => {}}
-      />)
-      .toJSON();
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

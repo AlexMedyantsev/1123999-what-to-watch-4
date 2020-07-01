@@ -31,7 +31,11 @@ describe(`Render component`, () => {
         genre={HeaderMovieData.GENRE}
         year={HeaderMovieData.YEAR}
         movies={MOVIES}
-      />)
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -34,8 +34,11 @@ describe(`Render component`, () => {
         movies={movies}
         onMovieCardClick={() => {}}
         onMouseEnter={() => {}}
-      />)
-      .toJSON();
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
