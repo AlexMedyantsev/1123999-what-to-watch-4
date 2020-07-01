@@ -28,7 +28,7 @@ describe(`Render component`, () => {
   it(`Should Main render correctly`, () => {
     const tree = rerender
       .create(<Main
-        name={HeaderMovieData.TITLE}
+        title={HeaderMovieData.TITLE}
         genre={HeaderMovieData.GENRE}
         year={HeaderMovieData.YEAR}
         movies={movies}

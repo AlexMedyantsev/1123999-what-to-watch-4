@@ -2,8 +2,8 @@ import React, {Fragment} from "react";
 import PropTypes from "prop-types";
 
 
-const MovieDetails = ({film}) => {
-  const {backgroundImage, description, director, genres, image, ratingCount, ratingLevel, ratingScore, starring, title, year} = film;
+const MovieDetails = ({movie}) => {
+  const {backgroundImage, description, director, genres, image, ratingCount, ratingLevel, ratingScore, starring, title, year} = movie;
 
   return (
     <Fragment>
@@ -185,7 +185,7 @@ const MovieDetails = ({film}) => {
 };
 
 MovieDetails.propTypes = {
-  film: PropTypes.shape({
+  movie: PropTypes.shape({
     backgroundImage: PropTypes.string,
     description: PropTypes.arrayOf(PropTypes.string),
     director: PropTypes.arrayOf(PropTypes.string),

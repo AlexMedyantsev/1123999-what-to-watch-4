@@ -4,7 +4,7 @@ import SmallMovieCard from "./small-movie-card.jsx";
 
 const film = {
   image: `img/snatch.jpg`,
-  name: `Snatch`,
+  title: `Snatch`,
 };
 
 describe(`it should SmallMovieCard render correctly`, () => {
@@ -13,7 +13,7 @@ describe(`it should SmallMovieCard render correctly`, () => {
       .create(<SmallMovieCard
         backgroundImage={film.image}
         image={film.image}
-        name={film.name}
+        title={film.title}
         index={Math.random() * 100}
         onMovieCardClick={() => {}}
         onMovieCardHover={() => {}}

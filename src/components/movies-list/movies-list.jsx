@@ -19,16 +19,14 @@ class MoviesList extends PureComponent {
     const {movies, onMovieCardClick} = this.props;
 
     return (
-      movies.map((film, index) => (
+      movies.map((movie, index) =>
         <SmallMovieCard
-          image={film.image}
-          name={film.title}
+          movie={movie}
           index={index}
           onMovieCardClick={onMovieCardClick}
           onMovieCardHover={this._handleMovieCardMouseEnter}
           key={index}
-        />
-      ))
+        />)
     );
   }
 }

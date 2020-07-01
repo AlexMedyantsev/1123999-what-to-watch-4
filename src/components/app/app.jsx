@@ -10,7 +10,7 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      filmIndex: null,
+      movieIndex: null,
     };
 
     this._handleMovieCardClick = this._handleMovieCardClick.bind(this);
@@ -19,18 +19,18 @@ class App extends PureComponent {
   _handleMovieCardClick(index, event) {
     event.preventDefault();
     this.setState({
-      filmIndex: index,
+      movieIndex: index,
     });
   }
 
   _renderApp() {
-    const {name, genre, year, movies} = this.props;
-    const {filmIndex} = this.state;
+    const {title, genre, year, movies} = this.props;
+    const {movieIndex} = this.state;
 
-    if (filmIndex < 0 || filmIndex === null) {
+    if (movieIndex < 0 || movieIndex === null) {
       return (
         <Main
-          name={name}
+          title={title}
           genre={genre}
           year={year}
           movies={movies}
@@ -41,14 +41,13 @@ class App extends PureComponent {
 
     return (
       <MovieDetails
-        film={movies[filmIndex]}
+        movie={movies[movieIndex]}
       />
     );
   }
 
   render() {
     const {movies} = this.props;
-    const film = movies[0];
 
     return (
       <BrowserRouter>
@@ -58,16 +57,7 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/dev-film-details">
             <MovieDetails
-              backgroundImage={film.backgroundImage}
-              description={film.description}
-              director={film.director}
-              genres={film.genres}
-              ratingCount={film.ratingCount}
-              ratingLevel={film.ratingLevel}
-              ratingScore={film.ratingScore}
-              starring={film.starring}
-              name={film.title}
-              year={film.year}
+              movie={movies[0]}
             />
           </Route>
         </Switch>
@@ -77,7 +67,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
   movies: PropTypes.array.isRequired,

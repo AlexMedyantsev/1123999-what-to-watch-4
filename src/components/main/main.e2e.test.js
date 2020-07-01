@@ -16,7 +16,7 @@ describe(`Click button`, () => {
 
     const mainComponent = shallow(
         <Main
-          name={`The Grand Budapest Hotel`}
+          title={`The Grand Budapest Hotel`}
           genre={`Drama`}
           year={2009}
           movies={movies}
