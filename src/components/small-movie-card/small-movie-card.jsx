@@ -8,7 +8,7 @@ class SmallMovieCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {isPlaying: false};
+    this.state = {isPlaying: props.isPlaying};
   }
 
   render() {
@@ -56,6 +56,7 @@ SmallMovieCard.propTypes = {
     preview: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }).isRequired,
+  isPlaying: PropTypes.bool.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   onMovieCardHover: PropTypes.func.isRequired,
 };

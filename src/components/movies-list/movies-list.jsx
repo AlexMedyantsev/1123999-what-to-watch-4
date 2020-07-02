@@ -6,7 +6,10 @@ class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {activeCard: null};
+    this.state = {
+      activeCard: null,
+      isPlaying: false,
+    };
 
     this._handleMovieCardMouseEnter = this._handleMovieCardMouseEnter.bind(this);
   }
@@ -25,6 +28,7 @@ class MoviesList extends PureComponent {
           index={index}
           onMovieCardClick={onMovieCardClick}
           onMovieCardHover={this._handleMovieCardMouseEnter}
+          isPlaying={this.state.isPlaying}
           key={index}
         />)
     );
