@@ -4,3 +4,5 @@ export const VideoPreview = {
   IS_MUTED: true,
   INTERVAL_IN_SEC: 1000,
 };
+
+export const PREVIEW_PLAY_DELAY = 2000;

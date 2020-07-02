@@ -5,9 +5,10 @@ class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {isPlaying: props.isPlaying};
-
     this._videoRef = createRef();
+    this.state = {
+      isPlaying: false,
+    };
   }
 
   componentDidMount() {
@@ -25,15 +26,18 @@ class VideoPlayer extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const {isPlaying} = this.props;
+    const {isPlaying, source} = this.props;
     const video = this._videoRef.current;
 
     if (this.props.isPlaying !== prevProps.isPlaying) {
       if (isPlaying) {
+        video.src = source;
+        this.setState({
+          isPlaying: true,
+        });
         video.play();
       } else {
-        video.pause();
-        video.load();
+        video.src = ``;
       }
     }
   }
@@ -61,7 +65,6 @@ VideoPlayer.propTypes = {
   source: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   isMuted: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
 };

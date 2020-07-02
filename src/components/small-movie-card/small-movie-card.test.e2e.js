@@ -16,6 +16,7 @@ Enzyme.configure({
 describe(`Small Movie Card hover test`, () => {
   it(`movie's index'll pass to handler if user hovers to movie's card`, () => {
     const onMovieCardHover = jest.fn((index) => index);
+    const onMovieCardHoverLeave = jest.fn((index) => index);
     const cardIndex = Math.round(Math.random(7));
 
     const movieCard = shallow(
@@ -25,6 +26,7 @@ describe(`Small Movie Card hover test`, () => {
           index={cardIndex}
           onMovieCardClick={() => {}}
           onMovieCardHover={onMovieCardHover}
+          onMovieCardHoverLeave={onMovieCardHoverLeave}
         />
     );
 

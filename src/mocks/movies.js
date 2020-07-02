@@ -13,6 +13,7 @@ export default [
     starring: [`Eddie Redmayne`, `Katherine Waterson`, `Dan Folger`],
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     year: 2015,
+    id: 1,
     preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
@@ -29,6 +30,7 @@ export default [
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
     title: `Bohemian Rhapsody`,
     year: 2018,
+    id: 2,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
@@ -45,6 +47,7 @@ export default [
     starring: [`Rami Malek`, `Lucy Boynton`, `Gwilym Lee`],
     title: `Macbeth`,
     year: 2010,
+    id: 3,
     preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
@@ -61,6 +64,7 @@ export default [
     starring: [`Leonardo DiCaprio`, `Cate Blanchett`, `Matt Ross`],
     title: `Aviator`,
     year: 2011,
+    id: 4,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
@@ -78,6 +82,7 @@ export default [
     starring: [`Tilda Swinton`, `Jonh Reilly`, `Erza Miller`],
     title: `We Need To Talk About Kevin`,
     year: 2010,
+    id: 5,
     preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
@@ -95,6 +100,7 @@ export default [
     starring: [`Jemaine Clement`, `Taika Waititi`, `Jonny Brugh`],
     title: `What We Do In The Shadows`,
     year: 2014,
+    id: 6,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
   {
@@ -112,6 +118,7 @@ export default [
     starring: [`Leonardo DiCaprio`, `Tom Hardy`, `Domhnall Gleeson`],
     title: `Revenant`,
     year: 2015,
+    id: 7,
     preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   },
   {
@@ -129,6 +136,7 @@ export default [
     starring: [`Ralph Fiennes`, `Kristin Scott Thomas`, `Juliette Binoche`],
     title: `Jonny English`,
     year: 1996,
+    id: 8,
     preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   },
 ];

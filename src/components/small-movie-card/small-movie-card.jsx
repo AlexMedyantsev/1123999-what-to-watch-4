@@ -8,31 +8,25 @@ class SmallMovieCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {isPlaying: props.isPlaying};
   }
 
   render() {
-    const {index, movie, onMovieCardClick, onMovieCardHover} = this.props;
-    const {image, preview, title} = movie;
+    const {index, movie, onMovieCardClick, isPlaying, onMovieCardHover, onMovieCardHoverLeave} = this.props;
+    const {image, preview, title, id} = movie;
 
     return (
       <article className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image"
           onClick={(event) => onMovieCardClick(index, event)}
           onMouseEnter={() => {
-            this.setState({isPlaying: true});
-
-            onMovieCardHover(index);
+            onMovieCardHover(id);
           }}
-          onMouseOut={() => {
-            this.setState({isPlaying: false});
-          }}
+          onMouseOut={onMovieCardHoverLeave}
         >
           <VideoPlayer
             source={preview}
             poster={image}
-            isPlaying={this.state.isPlaying}
-            interval={VideoPreview.INTERVAL_IN_SEC}
+            isPlaying={isPlaying}
             isMuted={VideoPreview.IS_MUTED}
             width={VideoPreview.width}
             height={VideoPreview.height}
@@ -55,10 +49,12 @@ SmallMovieCard.propTypes = {
     image: PropTypes.string.isRequired,
     preview: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   onMovieCardHover: PropTypes.func.isRequired,
+  onMovieCardHoverLeave: PropTypes.func.isRequired,
 };
 
 export default SmallMovieCard;
