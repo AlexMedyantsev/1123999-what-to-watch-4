@@ -36,7 +36,6 @@ it(`Video player can be playing or paused`, () => {
 
   const activePlayerInstance = videoPlayer.instance();
   activePlayerInstance.componentDidUpdate({isPlaying: false});
-  videoPlayer.simulate(`click`);
   expect(videoPlayer.state(`isPlaying`)).toBe(true);
 
   expect(videoPlayer.props().isPlaying).toBe(isVideoPlaying);
