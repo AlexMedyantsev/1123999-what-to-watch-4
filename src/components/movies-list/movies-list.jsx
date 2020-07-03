@@ -39,7 +39,7 @@ class MoviesList extends PureComponent {
             clearTimeout(this.timerId);
           }}
           isPlaying={this.state.activeCard === movie.id}
-          key={movie.id}
+          key={movie.id + movie.title}
         />)
     );
   }

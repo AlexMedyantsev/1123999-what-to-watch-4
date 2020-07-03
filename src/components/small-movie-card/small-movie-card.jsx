@@ -12,20 +12,19 @@ class SmallMovieCard extends PureComponent {
 
   render() {
     const {index, movie, onMovieCardClick, isPlaying, onMovieCardHover, onMovieCardHoverLeave} = this.props;
-    const {image, preview, title, id} = movie;
 
     return (
       <article className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image"
           onClick={(event) => onMovieCardClick(index, event)}
           onMouseEnter={() => {
-            onMovieCardHover(id);
+            onMovieCardHover(movie.id);
           }}
           onMouseOut={onMovieCardHoverLeave}
         >
           <VideoPlayer
-            source={preview}
-            poster={image}
+            source={movie.preview}
+            poster={movie.image}
             isPlaying={isPlaying}
             isMuted={VideoPreview.IS_MUTED}
             width={VideoPreview.width}
@@ -36,7 +35,7 @@ class SmallMovieCard extends PureComponent {
           className="small-movie-card__title"
           onClick={(event) => onMovieCardClick(index, event)}
         >
-          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+          <a className="small-movie-card__link" href="movie-page.html">{movie.title}</a>
         </h3>
       </article>
     );

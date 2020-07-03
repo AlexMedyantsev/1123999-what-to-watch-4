@@ -7,6 +7,7 @@ const movie = {
   image: `img/snatch.jpg`,
   preview: `img/snatch.jpg`,
   title: `Snatch`,
+  id: 3,
 };
 
 describe(`it should SmallMovieCard render correctly`, () => {
@@ -14,9 +15,13 @@ describe(`it should SmallMovieCard render correctly`, () => {
     const tree = renderer
       .create(<SmallMovieCard
         movie={movie}
+        source={movie.preview}
+        id={movie.id}
         index={Math.random() * 100}
+        isPlaying={true}
         onMovieCardClick={() => {}}
         onMovieCardHover={() => {}}
+        onMovieCardHoverLeave={() => {}}
       />, {
         createNodeMock: () => {
           return {};
