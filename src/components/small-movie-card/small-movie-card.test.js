@@ -15,8 +15,6 @@ describe(`it should SmallMovieCard render correctly`, () => {
     const tree = renderer
       .create(<SmallMovieCard
         movie={movie}
-        source={movie.preview}
-        id={movie.id}
         index={Math.random() * 100}
         isPlaying={true}
         onMovieCardClick={() => {}}

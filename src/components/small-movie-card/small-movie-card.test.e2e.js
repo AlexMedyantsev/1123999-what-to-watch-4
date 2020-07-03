@@ -7,6 +7,8 @@ import SmallMovieCard from "./small-movie-card.jsx";
 const movie = {
   title: `Bekket`,
   image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  id: 1,
 };
 
 Enzyme.configure({
