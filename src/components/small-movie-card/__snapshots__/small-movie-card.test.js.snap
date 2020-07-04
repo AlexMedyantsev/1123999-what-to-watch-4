@@ -3,18 +3,16 @@
 exports[`it should SmallMovieCard render correctly Small card component 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
 >
   <div
     className="small-movie-card__image"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseOut={[Function]}
   >
-    <img
-      alt="Snatch"
-      height="175"
-      src="img/snatch.jpg"
-      width="280"
-    />
+    <video>
+      Sorry, this preview is not available in your browser
+    </video>
   </div>
   <h3
     className="small-movie-card__title"

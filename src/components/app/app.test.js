@@ -27,11 +27,15 @@ describe(`Render component`, () => {
   it(`Should App render correctly`, () => {
     const tree = rerender
       .create(<App
-        name={HeaderMovieData.TITLE}
+        title={HeaderMovieData.TITLE}
         genre={HeaderMovieData.GENRE}
         year={HeaderMovieData.YEAR}
         movies={MOVIES}
-      />)
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

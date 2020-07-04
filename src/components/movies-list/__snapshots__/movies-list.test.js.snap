@@ -4,18 +4,16 @@ exports[`MovieList snapshot Should movies list render correctly 1`] = `
 Array [
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
-        height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-        width="280"
-      />
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
     </div>
     <h3
       className="small-movie-card__title"
@@ -31,18 +29,16 @@ Array [
   </article>,
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      <img
-        alt="Bohemian Rhapsody"
-        height="175"
-        src="img/bohemian-rhapsody.jpg"
-        width="280"
-      />
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
     </div>
     <h3
       className="small-movie-card__title"
@@ -58,18 +54,16 @@ Array [
   </article>,
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      <img
-        alt="Macbeth"
-        height="175"
-        src="img/macbeth.jpg"
-        width="280"
-      />
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
     </div>
     <h3
       className="small-movie-card__title"
@@ -85,18 +79,16 @@ Array [
   </article>,
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      <img
-        alt="Aviator"
-        height="175"
-        src="img/aviator.jpg"
-        width="280"
-      />
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
     </div>
     <h3
       className="small-movie-card__title"
@@ -112,18 +104,16 @@ Array [
   </article>,
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      <img
-        alt="We Need To Talk About Kevin"
-        height="175"
-        src="img/we-need-to-talk-about-kevin.jpg"
-        width="280"
-      />
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
     </div>
     <h3
       className="small-movie-card__title"
@@ -139,18 +129,16 @@ Array [
   </article>,
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      <img
-        alt="What We Do In The Shadows"
-        height="175"
-        src="img/what-we-do-in-the-shadows.jpg"
-        width="280"
-      />
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
     </div>
     <h3
       className="small-movie-card__title"
@@ -166,18 +154,16 @@ Array [
   </article>,
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      <img
-        alt="Revenant"
-        height="175"
-        src="img/revenant.jpg"
-        width="280"
-      />
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
     </div>
     <h3
       className="small-movie-card__title"
@@ -193,18 +179,16 @@ Array [
   </article>,
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      <img
-        alt="Jonny English"
-        height="175"
-        src="img/johnny-english.jpg"
-        width="280"
-      />
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
     </div>
     <h3
       className="small-movie-card__title"

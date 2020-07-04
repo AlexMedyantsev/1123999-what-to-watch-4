@@ -2,22 +2,29 @@ import React from "react";
 import renderer from "react-test-renderer";
 import SmallMovieCard from "./small-movie-card.jsx";
 
-const film = {
+const movie = {
+  backgroundImage: `img/snatch.jpg`,
   image: `img/snatch.jpg`,
-  name: `Snatch`,
+  preview: `img/snatch.jpg`,
+  title: `Snatch`,
+  id: 3,
 };
 
 describe(`it should SmallMovieCard render correctly`, () => {
   it(`Small card component`, () => {
     const tree = renderer
       .create(<SmallMovieCard
-        backgroundImage={film.image}
-        image={film.image}
-        name={film.name}
+        movie={movie}
         index={Math.random() * 100}
+        isPlaying={true}
         onMovieCardClick={() => {}}
         onMovieCardHover={() => {}}
-      />)
+        onMovieCardHoverLeave={() => {}}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

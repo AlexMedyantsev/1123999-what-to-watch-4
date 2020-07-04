@@ -11,7 +11,7 @@ const HeaderMovie = {
 
 ReactDOM.render(
     <App
-      name={HeaderMovie.TITLE}
+      title={HeaderMovie.TITLE}
       genre={HeaderMovie.GENRE}
       year={HeaderMovie.YEAR}
       movies={movies}

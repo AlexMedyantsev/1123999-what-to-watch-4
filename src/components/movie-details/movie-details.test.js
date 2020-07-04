@@ -20,8 +20,12 @@ describe(`Movie Details Snapshot`, () => {
   it(`Should MovieDetails render correctly`, () => {
     const tree = renderer
       .create(<MovieDetails
-        film={movie}
-      />)
+        movie={movie}
+      />, {
+        createNodeMock: () => {
+          return {};
+        }
+      })
       .toJSON();
 
     expect(tree).toMatchSnapshot();
