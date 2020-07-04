@@ -46,6 +46,8 @@ SmallMovieCard.propTypes = {
   index: PropTypes.number.isRequired,
   movie: PropTypes.shape({
     image: PropTypes.string.isRequired,
+    preview: PropTypes.string,
+    id: PropTypes.number,
     title: PropTypes.string.isRequired,
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,

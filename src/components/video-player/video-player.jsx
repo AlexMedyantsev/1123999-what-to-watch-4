@@ -6,9 +6,6 @@ class VideoPlayer extends PureComponent {
     super(props);
 
     this._videoRef = createRef();
-    this.state = {
-      isPlaying: false,
-    };
   }
 
   componentDidMount() {
@@ -30,9 +27,6 @@ class VideoPlayer extends PureComponent {
     const video = this._videoRef.current;
 
     if (this.props.isPlaying !== prevProps.isPlaying) {
-      this.setState({
-        isPlaying: this.props.isPlaying,
-      });
       if (isPlaying) {
         video.src = source;
         video.play();
