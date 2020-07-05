@@ -42,6 +42,7 @@ class App extends PureComponent {
     return (
       <MovieDetails
         movie={movies[movieIndex]}
+        onMovieCardClick={this._handleMovieCardClick}
       />
     );
   }
@@ -58,6 +59,7 @@ class App extends PureComponent {
           <Route exact path="/dev-film-details">
             <MovieDetails
               movie={movies[0]}
+              onMovieCardClick={this._handleMovieCardClick}
             />
           </Route>
         </Switch>
