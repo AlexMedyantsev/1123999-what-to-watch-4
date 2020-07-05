@@ -6,3 +6,9 @@ export const VideoPreview = {
 };
 
 export const PREVIEW_PLAY_DELAY = 2000;
+
+export const MovieDetailsTabs = {
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`,
+};

@@ -6,13 +6,13 @@ const movie = {
   backgroundImage: `img/movie.jpg`,
   title: `The Movie`,
   releaseYear: 2014,
-  genre: `Drama`,
+  genres: [`Drama`],
   poster: `img/movie-poster.jpg`,
   ratingScore: 8.9,
   ratingLevel: `Very Good`,
   ratingCount: 245,
   director: [`Wes Andreson`],
-  actors: `Actors`,
+  starring: [`Actors`],
   description: [`description`],
 };
 
@@ -21,6 +21,7 @@ describe(`Movie Details Snapshot`, () => {
     const tree = renderer
       .create(<MovieDetails
         movie={movie}
+        onMovieCardClick={() =>{}}
       />, {
         createNodeMock: () => {
           return {};
