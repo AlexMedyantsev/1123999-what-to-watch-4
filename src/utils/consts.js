@@ -12,3 +12,5 @@ export const MovieDetailsTabs = {
   DETAILS: `Details`,
   REVIEWS: `Reviews`,
 };
+
+export const SHOWING_MOVIES_COUNT = 4;

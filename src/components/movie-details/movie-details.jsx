@@ -5,35 +5,8 @@ import Tabs from "../tabs/tabs.jsx";
 import TabsOverview from "../tabs/tabs-overview.jsx";
 import TabsDetails from "../tabs/tabs-details.jsx";
 import TabsReviews from "../tabs/tabs-reviews.jsx";
-import movies from "../../mocks/movies.js";
 import MoviesList from "../movies-list/movies-list.jsx";
 
-const SIMILAR_FILMS_COUNT = 4;
-
-// Получаем уникальные элементы из массива
-const getUniqueArrayElements = (array) => {
-  let result = [];
-
-  array.forEach((item) => {
-    if (!result.includes(item)) {
-      result.push(item);
-    }
-  });
-
-  return result;
-};
-
-// Получаем фильмы согласно фильтру
-const getFilmsByFilter = (array, filterType) => array.filter((item) => item.genres.find((it) => it === filterType));
-
-const getSimilarFilmsByGenre = (moviesArray, movie) => {
-  const filmsByGenre = [];
-  const similarFilms = movie.genres.map((genre) => [].concat(getFilmsByFilter(moviesArray, genre)));
-  similarFilms.forEach((movieElement) => movieElement.forEach((it) => filmsByGenre.push(it)));
-  const similarFilmsByGenre = filmsByGenre.filter((it) => it !== movie);
-
-  return getUniqueArrayElements(similarFilmsByGenre);
-};
 
 class MovieDetails extends PureComponent {
   constructor(props) {
@@ -93,9 +66,8 @@ class MovieDetails extends PureComponent {
   }
 
   render() {
-    const {movie, onMovieCardClick} = this.props;
+    const {movie, onMovieCardClick, similarMovies} = this.props;
     const {backgroundImage, genres, image, title, year} = movie;
-    const similarFilmsByGenre = getSimilarFilmsByGenre(movies, movie);
 
     return (
       <React.Fragment>
@@ -192,7 +164,7 @@ class MovieDetails extends PureComponent {
 
             <div className="catalog__movies-list">
               <MoviesList
-                movies={similarFilmsByGenre.slice(0, SIMILAR_FILMS_COUNT)}
+                movies={similarMovies}
                 onMovieCardClick={onMovieCardClick}
               />
             </div>
@@ -233,6 +205,7 @@ MovieDetails.propTypes = {
     year: PropTypes.number,
     runTime: PropTypes.string
   }),
+  similarMovies: PropTypes.array,
   onMovieCardClick: PropTypes.func.isRequired,
 };
 

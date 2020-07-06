@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieDetails from "./movie-details.jsx";
+import movies from "../../mocks/movies.js";
 
 const movie = {
   backgroundImage: `img/movie.jpg`,
@@ -22,6 +23,7 @@ describe(`Movie Details Snapshot`, () => {
       .create(<MovieDetails
         movie={movie}
         onMovieCardClick={() =>{}}
+        similarMovies={movies}
       />, {
         createNodeMock: () => {
           return {};
