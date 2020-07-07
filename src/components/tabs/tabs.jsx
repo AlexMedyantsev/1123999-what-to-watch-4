@@ -12,7 +12,12 @@ const Tabs = (props) => {
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
             {Object.values(MovieDetailsTabs).map((tabName, index) => (
-              <li className={`movie-nav__item ${activeTab === tabName && `movie-nav__item--active`}`} onClick={() => onTabClick(tabName, event)} key={tabName + index}>
+              <li className={`movie-nav__item ${activeTab === tabName && `movie-nav__item--active`}`} onClick={(evt) => {
+                evt.preventDefault();
+                onTabClick(tabName);
+              }
+              }
+              key={tabName + index}>
                 <a href="#" className="movie-nav__link">{tabName}</a>
               </li>
             ))}
