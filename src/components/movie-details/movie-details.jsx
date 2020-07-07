@@ -17,7 +17,8 @@ class MovieDetails extends PureComponent {
     this._handleTabClick = this._handleTabClick.bind(this);
   }
 
-  _handleTabClick(tabName) {
+  _handleTabClick(tabName, event) {
+    event.preventDefault();
     this.setState({
       activeTab: tabName,
     });
