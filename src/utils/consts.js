@@ -13,4 +13,22 @@ export const MovieDetailsTabs = {
   REVIEWS: `Reviews`,
 };
 
+export const GENRES = {
+  ALL: `All genres`,
+  ADVENTURE: `Adventure`,
+  COMEDIES: `Comedy`,
+  CRIME: `Crime`,
+  DOCUMENTARY: `Documentary`,
+  DRAMAS: `Drama`,
+  FANTASY: `Fantasy`,
+  HORROR: `Horror`,
+  KIDS_AND_FAMILY: `Kid's and Family`,
+  ROMANCE: `Romance`,
+  SCI_FI: `Sci - Fi`,
+  STORY: `Story`,
+  THRILLERS: `Thriller`,
+};
+
+export const MAX_NUMBER_GENRES = 9;
+
 export const SHOWING_MOVIES_COUNT = 4;
