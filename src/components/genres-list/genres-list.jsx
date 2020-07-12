@@ -1,8 +1,10 @@
 import React, {PureComponent} from "react";
+import {ActionCreator} from "../../reducer.js";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {GENRES, MAX_NUMBER_GENRES} from "../../utils/consts.js";
+import {MAX_NUMBER_GENRES} from "../../utils/consts.js";
 
-export default class GenresList extends PureComponent {
+class GenresList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -12,7 +14,7 @@ export default class GenresList extends PureComponent {
   _getGenresList() {
     const genres = new Set();
 
-    genres.add(`All Movies`);
+    genres.add(`All genres`);
 
     this.props.movies.forEach((movie) => {
       movie.genres.forEach((genre) => genres.has(genre) ? `` : genres.add(genre));
@@ -46,3 +48,28 @@ export default class GenresList extends PureComponent {
     );
   }
 }
+
+GenresList.propTypes = {
+  genre: PropTypes.string.isRequired,
+  onGenreClick: PropTypes.func,
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        image: PropTypes.string.isRequired,
+      }).isRequired
+  ).isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  genre: state.genre,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreClick(genre) {
+    dispatch(ActionCreator.genreAction(genre));
+  },
+});
+
+export {GenresList};
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

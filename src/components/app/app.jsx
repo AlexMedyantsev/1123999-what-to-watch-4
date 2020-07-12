@@ -3,7 +3,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
-import {SHOWING_MOVIES_COUNT} from "../../utils/consts.js";
+import {SHOWING_MOVIES_COUNT_ON_START} from "../../utils/consts.js";
 
 const getUniqueArrayElements = (array) => {
   let result = [];
@@ -62,7 +62,7 @@ class App extends PureComponent {
       );
     }
 
-    const similarMovies = getSimilarFilmsByGenre(movies, movies[movieIndex]).slice(0, SHOWING_MOVIES_COUNT);
+    const similarMovies = getSimilarFilmsByGenre(movies, movies[movieIndex]).slice(0, SHOWING_MOVIES_COUNT_ON_START);
 
     return (
       <MovieDetails

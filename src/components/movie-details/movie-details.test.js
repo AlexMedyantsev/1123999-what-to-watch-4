@@ -3,6 +3,12 @@ import renderer from "react-test-renderer";
 import MovieDetails from "./movie-details.jsx";
 import movies from "../../mocks/movies.js";
 
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import {GENRES} from "../../utils/consts.js";
+
+const mockStore = configureStore([]);
+
 const movie = {
   backgroundImage: `img/movie.jpg`,
   title: `The Movie`,
@@ -19,19 +25,26 @@ const movie = {
 
 describe(`Movie Details Snapshot`, () => {
   it(`Should MovieDetails render correctly`, () => {
+    const store = mockStore({
+      genre: GENRES.ALL,
+    });
     const tree = renderer
-      .create(<MovieDetails
-        movie={movie}
-        onMovieCardClick={() =>{}}
-        similarMovies={movies}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
+      .create(
+          <Provider store={store}>
+            <MovieDetails
+              movie={movie}
+              onMovieCardClick={() => {}}
+              similarMovies={movies}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
       .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 });
+
 

@@ -31,4 +31,4 @@ export const GENRES = {
 
 export const MAX_NUMBER_GENRES = 9;
 
-export const SHOWING_MOVIES_COUNT = 4;
+export const SHOWING_MOVIES_COUNT_ON_START = 8;

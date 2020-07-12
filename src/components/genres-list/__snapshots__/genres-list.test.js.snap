@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main Snapshot Should GenresList render correctly 1`] = `
+<ul
+  className="catalog__genres-list"
+>
+  <li
+    className="catalog__genres-item catalog__genres-item--active"
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      All genres
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Fantasy
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Kid's and Family
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Adventure
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Story
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Drama
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Biography
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Music
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Thriller
+    </a>
+  </li>
+</ul>
+`;
