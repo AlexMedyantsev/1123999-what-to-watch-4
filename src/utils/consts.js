@@ -31,4 +31,8 @@ export const GENRES = {
 
 export const MAX_NUMBER_GENRES = 9;
 
+export const FILTER_ALL_GENRES = `All Genres`;
+
 export const SHOWING_MOVIES_COUNT_ON_START = 8;
+
+export const MOVIES_ADDED_ON_BUTTON_CLICK = 8;
