@@ -67,7 +67,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreClick(genre) {
-    dispatch(ActionCreator.genreAction(genre));
+    dispatch(ActionCreator.setActiveGenre(genre));
   },
 });
 

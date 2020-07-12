@@ -9,7 +9,7 @@ export const ActionType = {
 };
 
 export const ActionCreator = {
-  genreAction: (genre) => ({
+  setActiveGenre: (genre) => ({
     type: ActionType.CHANGE_GENRE,
     payload: genre,
   }),

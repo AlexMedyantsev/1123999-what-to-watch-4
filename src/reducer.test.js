@@ -23,6 +23,6 @@ it(`Should initial state change correctly`, () => {
 });
 
 it(`Should initial state change correctly`, () => {
-  const Action = ActionCreator.genreAction(GENRES.STORY);
+  const Action = ActionCreator.setActiveGenre(GENRES.STORY);
   expect(reducer(initialState, Action)).toEqual({genre: GENRES.STORY, showedMoviesCount: 8});
 });
