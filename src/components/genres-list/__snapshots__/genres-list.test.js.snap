@@ -1,21 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main Snapshot Should GenresList render correctly 1`] = `
+exports[`Render Correctly Should GenresList render correctly 1`] = `
 <ul
   className="catalog__genres-list"
 >
   <li
-    className="catalog__genres-item catalog__genres-item--active"
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      All genres
-    </a>
-  </li>
-  <li
     className="catalog__genres-item "
     onClick={[Function]}
   >
@@ -23,40 +12,7 @@ exports[`Main Snapshot Should GenresList render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Fantasy
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Kid's and Family
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Adventure
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-    onClick={[Function]}
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-    >
-      Story
+      Comedy
     </a>
   </li>
   <li
@@ -78,7 +34,7 @@ exports[`Main Snapshot Should GenresList render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Biography
+      Sience
     </a>
   </li>
   <li
@@ -89,7 +45,18 @@ exports[`Main Snapshot Should GenresList render correctly 1`] = `
       className="catalog__genres-link"
       href="#"
     >
-      Music
+      Action
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Fantasy
     </a>
   </li>
   <li
@@ -101,6 +68,28 @@ exports[`Main Snapshot Should GenresList render correctly 1`] = `
       href="#"
     >
       Thriller
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Romance
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+    onClick={[Function]}
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+    >
+      Sci-Fi
     </a>
   </li>
 </ul>
