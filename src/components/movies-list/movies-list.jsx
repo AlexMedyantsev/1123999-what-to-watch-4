@@ -1,7 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import {PREVIEW_PLAY_DELAY} from "../../utils/consts.js";
+import {GENRES} from "../../utils/consts.js";
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -14,11 +16,22 @@ class MoviesList extends PureComponent {
     this.timerId = null;
   }
 
+  _getFilteredMovies(genre, allMovies) {
+    if (genre === GENRES.ALL) {
+      return allMovies;
+    }
+
+    const filteredMovies = allMovies.filter((movie) => movie.genres.includes(genre));
+
+    return filteredMovies;
+  }
+
   render() {
-    const {movies, onMovieCardClick} = this.props;
+    const {movies, genre, onMovieCardClick} = this.props;
+    const filteredMovies = this._getFilteredMovies(genre, movies);
 
     return (
-      movies.map((movie, index) =>
+      filteredMovies.map((movie, index) =>
         <SmallMovieCard
           movie={movie}
           index={index}
@@ -47,7 +60,13 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: PropTypes.array.isRequired,
+  genre: PropTypes.string.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
 };
 
-export default MoviesList;
+const mapStateToProps = (state) => ({
+  genre: state.genre,
+});
+
+
+export default connect(mapStateToProps)(MoviesList);

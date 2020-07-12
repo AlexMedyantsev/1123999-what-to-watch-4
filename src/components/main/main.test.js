@@ -1,6 +1,10 @@
 import React from "react";
 import rerender from "react-test-renderer";
 import Main from "./main.jsx";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+import {GENRES} from "../../utils/consts.js";
+
 
 const HeaderMovieData = {
   TITLE: `Movie Title`,
@@ -8,37 +12,47 @@ const HeaderMovieData = {
   YEAR: 2009,
 };
 
-const movies = [
+const mockStore = configureStore([]);
+
+const MOVIES = [
   {
-    title: `Bekket`,
-    image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    title: `Fantastic Beasts`,
+    image: `./macbeth.jpg`,
+    genres: [`Drama`, `Action`],
   },
   {
-    title: `The Doom Generation`,
-    image: `img/bohemian-rhapsody.jpg`,
+    title: `Bohemian Rhapsody`,
+    image: `./macbeth.jpg`,
+    genres: [`Thriller`, `Action`],
   },
   {
-    title: `Patrool`,
-    image: `img/macbeth.jpg`,
+    title: `Macbeth`,
+    image: `./macbeth.jpg`,
+    genres: [`Drama`, `Action`],
   },
 ];
 
-
 describe(`Render component`, () => {
   it(`Should Main render correctly`, () => {
+    const store = mockStore({
+      genre: GENRES.ALL,
+    });
     const tree = rerender
-      .create(<Main
-        title={HeaderMovieData.TITLE}
-        genre={HeaderMovieData.GENRE}
-        year={HeaderMovieData.YEAR}
-        movies={movies}
-        onMovieCardClick={() => {}}
-        onMouseEnter={() => {}}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      }).toJSON();
+      .create(
+          <Provider store={store}>
+            <Main
+              title={HeaderMovieData.TITLE}
+              genre={HeaderMovieData.GENRE}
+              year={HeaderMovieData.YEAR}
+              movies={MOVIES}
+              onMovieCardClick={() => {}}
+              onMouseEnter={() => {}}
+            />,
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

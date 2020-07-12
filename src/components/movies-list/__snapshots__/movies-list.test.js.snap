@@ -202,5 +202,105 @@ Array [
       </a>
     </h3>
   </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+    >
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Fantastic Beasts: The Crimes of Grindelwald
+      </a>
+    </h3>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+    >
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Bohemian Rhapsody
+      </a>
+    </h3>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+    >
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Macbeth
+      </a>
+    </h3>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <div
+      className="small-movie-card__image"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+    >
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
+    </div>
+    <h3
+      className="small-movie-card__title"
+      onClick={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Aviator
+      </a>
+    </h3>
+  </article>,
 ]
 `;
