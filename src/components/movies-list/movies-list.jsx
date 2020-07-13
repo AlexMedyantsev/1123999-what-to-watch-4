@@ -27,11 +27,10 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const {movies, genre, onMovieCardClick} = this.props;
-    const filteredMovies = this._getFilteredMovies(genre, movies);
+    const {movies, onMovieCardClick} = this.props;
 
     return (
-      filteredMovies.map((movie, index) =>
+      movies.map((movie, index) =>
         <SmallMovieCard
           movie={movie}
           index={index}
@@ -60,7 +59,6 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: PropTypes.array.isRequired,
-  genre: PropTypes.string.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
 };
 
@@ -70,3 +68,4 @@ const mapStateToProps = (state) => ({
 
 
 export default connect(mapStateToProps)(MoviesList);
+export {MoviesList};

@@ -4,7 +4,8 @@ import App from "./app.jsx";
 
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {GENRES} from "../../utils/consts.js";
+import {GENRES, MOVIES_ADDED_ON_BUTTON_CLICK} from "../../utils/consts.js";
+import movies from "../../mocks/movies.js";
 
 
 const HeaderMovieData = {
@@ -13,30 +14,14 @@ const HeaderMovieData = {
   YEAR: 2009,
 };
 
-const MOVIES = [
-  {
-    title: `Fantastic Beasts`,
-    image: `./macbeth.jpg`,
-    genres: [`Drama`, `Action`],
-  },
-  {
-    title: `Bohemian Rhapsody`,
-    image: `./macbeth.jpg`,
-    genres: [`Thriller`, `Action`],
-  },
-  {
-    title: `Macbeth`,
-    image: `./macbeth.jpg`,
-    genres: [`Drama`, `Action`],
-  },
-];
-
 const mockStore = configureStore([]);
 
 describe(`Render component`, () => {
   it(`Should App render correctly`, () => {
     const store = mockStore({
       genre: GENRES.ALL,
+      movies,
+      countMoviesRender: MOVIES_ADDED_ON_BUTTON_CLICK
     });
     const tree = rerender
       .create(
@@ -45,7 +30,7 @@ describe(`Render component`, () => {
               title={HeaderMovieData.TITLE}
               genre={HeaderMovieData.GENRE}
               year={HeaderMovieData.YEAR}
-              movies={MOVIES}
+              movies={movies}
             />
           </Provider>, {
             createNodeMock: () => {
