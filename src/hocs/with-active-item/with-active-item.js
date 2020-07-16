@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
 const withActiveItem = (Component) => {
   class WithActiveItem extends PureComponent {
@@ -6,18 +7,21 @@ const withActiveItem = (Component) => {
       super(props);
 
       this.state = {
-        activeItem: undefined,
+        activeItem: null,
       };
 
-      this._handleActiveClick = this._handleActiveClick.bind(this);
+      this.setActiveItem = this.setActiveItem.bind(this);
     }
 
-    _handleActiveClick(activeItemName) {
+    setActiveItem(activeItemName) {
       this.setState(
           {
             activeItem: activeItemName,
           }
       );
+      if (this.props.changeActiveItem) {
+        this.props.changeActiveItem(activeItemName);
+      }
     }
 
     render() {
@@ -25,11 +29,15 @@ const withActiveItem = (Component) => {
         <Component
           {...this.props}
           activeItem={this.state.activeItem}
-          onActiveClick={this._handleActiveClick}
+          setActiveItem={this.setActiveItem}
         />
       );
     }
   }
+
+  WithActiveItem.propTypes = {
+    changeActiveItem: PropTypes.func,
+  };
 
   return WithActiveItem;
 };

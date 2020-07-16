@@ -11,16 +11,14 @@ class SmallMovieCard extends PureComponent {
   }
 
   render() {
-    const {index, movie, onMovieCardClick, isPlaying, onMovieCardHover, onMovieCardHoverLeave} = this.props;
+    const {index, movie, onMovieCardClick, isPlaying, handlerMouseEnter, handlerMouseLeave} = this.props;
 
     return (
       <article className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image"
-          onClick={(event) => onMovieCardClick(index, event)}
-          onMouseEnter={() => {
-            onMovieCardHover(movie.id);
-          }}
-          onMouseOut={onMovieCardHoverLeave}
+          onClick={(event) => onMovieCardClick(movie, event)}
+          onMouseEnter={handlerMouseEnter}
+          onMouseOut={handlerMouseLeave}
         >
           <VideoPlayer
             source={movie.preview}
@@ -52,8 +50,8 @@ SmallMovieCard.propTypes = {
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
-  onMovieCardHover: PropTypes.func.isRequired,
-  onMovieCardHoverLeave: PropTypes.func.isRequired,
+  handlerMouseEnter: PropTypes.func.isRequired,
+  handlerMouseLeave: PropTypes.func.isRequired,
 };
 
 export default SmallMovieCard;
