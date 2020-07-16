@@ -5,8 +5,10 @@ import {GENRES, MAX_NUMBER_GENRES} from "../../utils/consts.js";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 
+const MoviesListWrapped = withActiveItem(MoviesList);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -97,9 +99,10 @@ class Main extends PureComponent {
           />
 
           <div className="catalog__movies-list">
-            <MoviesList
+            <MoviesListWrapped
               movies={slicedMoviesByGenre}
-              onMovieCardClick={onMovieCardClick}
+              // onMovieCardClick={this.handlerMovieClick}
+              changeActiveItem={onMovieCardClick}
             />
           </div>
 

@@ -13,10 +13,15 @@ class SmallMovieCard extends PureComponent {
   render() {
     const {index, movie, onMovieCardClick, isPlaying, handlerMouseEnter, handlerMouseLeave} = this.props;
 
+    const onHandlerMovieClick = (event) => {
+      event.preventDefault();
+      onMovieCardClick(movie);
+    };
+
     return (
       <article className="small-movie-card catalog__movies-card">
         <div className="small-movie-card__image"
-          onClick={(event) => onMovieCardClick(movie, event)}
+          onClick={onHandlerMovieClick}
           onMouseEnter={handlerMouseEnter}
           onMouseOut={handlerMouseLeave}
         >

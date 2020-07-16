@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import withVideoPlayer from "../../hocs/with-video-play/with-video-play.js";
-import {PREVIEW_PLAY_DELAY} from "../../utils/consts.js";
-import {GENRES} from "../../utils/consts.js";
 
 const SmallMovieCardWrapped = withVideoPlayer(SmallMovieCard);
 
@@ -14,14 +12,14 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const {movies, onMovieCardClick, setActiveItem} = this.props;
+    const {movies, setActiveItem} = this.props;
 
     return (
       movies.map((movie, index) =>
         <SmallMovieCardWrapped
           movie={movie}
           index={index}
-          onMovieCardClick={onMovieCardClick}
+          onMovieCardClick={setActiveItem}
           key={movie.id + movie.title}
         />)
     );

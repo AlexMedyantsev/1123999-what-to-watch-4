@@ -6,7 +6,9 @@ import TabsOverview from "../tabs/tabs-overview.jsx";
 import TabsDetails from "../tabs/tabs-details.jsx";
 import TabsReviews from "../tabs/tabs-reviews.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 
+const MoviesListWrapped = withActiveItem(MoviesList);
 
 class MovieDetails extends PureComponent {
   constructor(props) {
@@ -163,9 +165,9 @@ class MovieDetails extends PureComponent {
             <h2 className="catalog__title">More like this</h2>
 
             <div className="catalog__movies-list">
-              <MoviesList
+              <MoviesListWrapped
                 movies={similarMovies}
-                onMovieCardClick={onMovieCardClick}
+                changeActiveItem={onMovieCardClick}
               />
             </div>
           </section>

@@ -1,26 +1,27 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-const withActiveItem = (Component) => {
+const withActiveItem = (Component, defaultValue = null) => {
   class WithActiveItem extends PureComponent {
     constructor(props) {
       super(props);
 
       this.state = {
-        activeItem: null,
+        activeItem: defaultValue,
       };
 
       this.setActiveItem = this.setActiveItem.bind(this);
     }
 
-    setActiveItem(activeItemName) {
+    setActiveItem(item) {
       this.setState(
           {
-            activeItem: activeItemName,
+            activeItem: item,
           }
       );
+
       if (this.props.changeActiveItem) {
-        this.props.changeActiveItem(activeItemName);
+        this.props.changeActiveItem(item);
       }
     }
 

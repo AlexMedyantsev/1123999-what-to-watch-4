@@ -12,25 +12,24 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      movieIndex: null,
+      activeMovie: null,
     };
 
     this._handleMovieCardClick = this._handleMovieCardClick.bind(this);
   }
 
-  _handleMovieCardClick(movie, event) {
-    event.preventDefault();
+  _handleMovieCardClick(movie) {
     this.setState({
-      movieIndex: movie,
+      activeMovie: movie,
     });
   }
 
   _renderApp() {
     const {title, genre, year, movies} = this.props;
-    const {movieIndex} = this.state;
+    const {activeMovie} = this.state;
 
 
-    if (movieIndex < 0 || movieIndex === null) {
+    if (activeMovie < 0 || activeMovie === null) {
       return (
         <Main
           title={title}
@@ -42,11 +41,11 @@ class App extends PureComponent {
       );
     }
 
-    const similarMovies = getSimilarMoviesByGenres(movies, this.state.movieIndex).slice(0, SIMILAR_MOVIES_COUNT);
+    const similarMovies = getSimilarMoviesByGenres(movies, this.state.activeMovie).slice(0, SIMILAR_MOVIES_COUNT);
 
     return (
       <MovieDetails
-        movie={this.state.movieIndex}
+        movie={this.state.activeMovie}
         similarMovies={similarMovies}
         onMovieCardClick={this._handleMovieCardClick}
       />
