@@ -18,8 +18,8 @@ describe(`it should SmallMovieCard render correctly`, () => {
         index={Math.random() * 100}
         isPlaying={true}
         onMovieCardClick={() => {}}
-        onMovieCardHover={() => {}}
-        onMovieCardHoverLeave={() => {}}
+        handlerMouseEnter={() => {}}
+        handlerMouseLeave={() => {}}
       />, {
         createNodeMock: () => {
           return {};
