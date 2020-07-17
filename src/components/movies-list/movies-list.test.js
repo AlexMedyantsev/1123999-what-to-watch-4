@@ -20,6 +20,7 @@ describe(`MovieList snapshot`, () => {
             <MoviesList
               movies={movies}
               onMovieCardClick={() => {}}
+              setActiveItem={() => {}}
             />
           </Provider>, {
             createNodeMock: () => {

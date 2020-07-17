@@ -1,23 +1,28 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
-const withActiveItem = (Component) => {
+const withActiveItem = (Component, defaultValue = null) => {
   class WithActiveItem extends PureComponent {
     constructor(props) {
       super(props);
 
       this.state = {
-        activeItem: undefined,
+        activeItem: defaultValue,
       };
 
-      this._handleActiveClick = this._handleActiveClick.bind(this);
+      this.setActiveItem = this.setActiveItem.bind(this);
     }
 
-    _handleActiveClick(activeItemName) {
+    setActiveItem(item) {
       this.setState(
           {
-            activeItem: activeItemName,
+            activeItem: item,
           }
       );
+
+      if (this.props.changeActiveItem) {
+        this.props.changeActiveItem(item);
+      }
     }
 
     render() {
@@ -25,11 +30,15 @@ const withActiveItem = (Component) => {
         <Component
           {...this.props}
           activeItem={this.state.activeItem}
-          onActiveClick={this._handleActiveClick}
+          setActiveItem={this.setActiveItem}
         />
       );
     }
   }
+
+  WithActiveItem.propTypes = {
+    changeActiveItem: PropTypes.func,
+  };
 
   return WithActiveItem;
 };

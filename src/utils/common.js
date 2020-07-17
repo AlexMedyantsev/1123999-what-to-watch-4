@@ -20,3 +20,27 @@ export const getSimilarMoviesByGenres = (moviesArray, movie) => {
 
   return getUniqueArrayElements(similarMoviesByGenre);
 };
+
+import {GENRES, MAX_NUMBER_GENRES} from "./consts.js";
+
+export const getMoviesByGenre = (state) => {
+  return state.movies.filter((movie) => {
+    if (state.currentGenre === GENRES.ALL) {
+      return true;
+    }
+    return movie.genres.includes(state.currentGenre);
+  });
+};
+
+export const getUniqueGenres = (state) => {
+  const genres = new Set();
+  genres.add(`All genres`);
+
+  state.movies.forEach((movie) => {
+    movie.genres.forEach((genre) => genres.add(genre));
+  });
+
+  return Array.from(genres).slice(0, MAX_NUMBER_GENRES);
+};
+
+

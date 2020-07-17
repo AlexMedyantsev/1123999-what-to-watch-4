@@ -1,12 +1,14 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
-import {GENRES, MAX_NUMBER_GENRES} from "../../utils/consts.js";
+import {getMoviesByGenre, getUniqueGenres} from "../../utils/common.js";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 
+const MoviesListWrapped = withActiveItem(MoviesList);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -97,9 +99,10 @@ class Main extends PureComponent {
           />
 
           <div className="catalog__movies-list">
-            <MoviesList
+            <MoviesListWrapped
               movies={slicedMoviesByGenre}
-              onMovieCardClick={onMovieCardClick}
+              // onMovieCardClick={this.handlerMovieClick}
+              changeActiveItem={onMovieCardClick}
             />
           </div>
 
@@ -129,21 +132,8 @@ class Main extends PureComponent {
 }
 
 const mapStateToProps = (state) => {
-  const moviesByGenre = state.movies.filter((movie) => {
-    if (state.currentGenre === GENRES.ALL) {
-      return true;
-    }
-    return movie.genres.includes(state.currentGenre);
-  });
-
-  const genres = new Set();
-  genres.add(`All genres`);
-
-  state.movies.forEach((movie) => {
-    movie.genres.forEach((genre) => genres.has(genre) ? `` : genres.add(genre));
-  });
-
-  const genresList = Array.from(genres).slice(0, MAX_NUMBER_GENRES);
+  const moviesByGenre = getMoviesByGenre(state);
+  const genresList = getUniqueGenres(state);
 
   const slicedMoviesByGenre = moviesByGenre.slice(0, state.countMoviesShow);
   const showMoreButton = moviesByGenre.length > state.countMoviesShow;
@@ -161,7 +151,7 @@ Main.propTypes = {
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
-  currentGenre: PropTypes.string.isRequired,
+  currentGenre: PropTypes.string,
   onSetCurrentGenre: PropTypes.func.isRequired,
   genresList: PropTypes.arrayOf(
       PropTypes.string.isRequired
