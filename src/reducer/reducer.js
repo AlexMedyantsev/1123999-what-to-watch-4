@@ -1,4 +1,4 @@
-import {GENRES, SHOWING_MOVIES_COUNT_ON_START, MOVIES_ADDED_ON_BUTTON_CLICK} from "./utils/consts.js";
+import {GENRES, SHOWING_MOVIES_COUNT_ON_START, MOVIES_ADDED_ON_BUTTON_CLICK} from "../utils/consts.js";
 
 export const initialState = {
   currentGenre: GENRES.ALL,
