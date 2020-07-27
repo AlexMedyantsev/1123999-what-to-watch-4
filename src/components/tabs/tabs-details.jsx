@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const TabsDetails = (props) => {
   const {movie} = props;
-  const {runTime, genres, year, director, starring} = movie;
+  const {runTime, genre, year, director, starring} = movie;
   return (
     <React.Fragment>
       <div className="movie-card__text movie-card__row">
@@ -26,7 +26,7 @@ const TabsDetails = (props) => {
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
-            <span className="movie-card__details-value">{genres.map((genre, index) => <React.Fragment key={index}>{genre}<br /></React.Fragment>)}</span>
+            <span className="movie-card__details-value">{genre}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Released</strong>
@@ -40,7 +40,7 @@ const TabsDetails = (props) => {
 
 TabsDetails.propTypes = {
   movie: PropTypes.shape({
-    genres: PropTypes.array.isRequired,
+    genre: PropTypes.array.isRequired,
     runTime: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     director: PropTypes.array.isRequired,

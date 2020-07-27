@@ -6,7 +6,6 @@ import configureStore from "redux-mock-store";
 
 import Main from "./main.jsx";
 
-import movies from "../../mocks/movies.js";
 import {GENRES} from "../../utils/consts.js";
 
 
@@ -21,6 +20,30 @@ const HeaderMovieData = {
   genre: `Drama`,
   year: 2020
 };
+
+const movies = [
+  {
+    image: `a`,
+    posterSrc: `a`,
+    bgSrc: `a`,
+    title: `Name`,
+    genre: `Genre`,
+    year: 2014,
+    score: 8.9,
+    level: `level`,
+    movieLink: `link`,
+    previewLink: `preview-link`,
+    scoresCount: 220,
+    description: `description`,
+    director: `director`,
+    starring: [`starring`, `next`],
+    runTime: 22,
+    link: `movie-page.html`,
+    key: `1`,
+    backgroundColor: `background_color`,
+    isFavorite: `is_favorite`
+  }
+];
 
 describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {

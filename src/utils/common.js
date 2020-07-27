@@ -12,23 +12,22 @@ export const getUniqueArrayElements = (array) => {
 
 export const getMoviesByFilter = (array, filterType) => array.filter((item) => item.genres.find((it) => it === filterType));
 
-export const getSimilarMoviesByGenres = (moviesArray, movie) => {
+export const getSimilarMoviesByGenres = (moviesArray, openedMovie) => {
   const moviesByGenre = [];
-  const similarMovies = movie.genres.map((genre) => [].concat(getMoviesByFilter(moviesArray, genre)));
-  similarMovies.forEach((movieElement) => movieElement.forEach((it) => moviesByGenre.push(it)));
-  const similarMoviesByGenre = moviesByGenre.filter((it) => it !== movie);
+  const currentMovieGenre = openedMovie.genre;
+  moviesArray.forEach((movie) => (movie.genre === currentMovieGenre ? moviesByGenre.push(movie) : ``));
 
-  return getUniqueArrayElements(similarMoviesByGenre);
+  return moviesByGenre;
 };
 
 import {GENRES, MAX_NUMBER_GENRES} from "./consts.js";
 
 export const getMoviesByGenre = (state) => {
-  return state.movies.filter((movie) => {
-    if (state.currentGenre === GENRES.ALL) {
+  return state.DATA.movies.filter((movie) => {
+    if (state.DATA.currentGenre === GENRES.ALL) {
       return true;
     }
-    return movie.genres.includes(state.currentGenre);
+    return movie.genre.includes(state.currentGenre);
   });
 };
 
@@ -36,11 +35,13 @@ export const getUniqueGenres = (state) => {
   const genres = new Set();
   genres.add(`All genres`);
 
-  state.movies.forEach((movie) => {
-    movie.genres.forEach((genre) => genres.add(genre));
+  state.DATA.movies.forEach((movie) => {
+    genres.add(movie.genre);
   });
 
   return Array.from(genres).slice(0, MAX_NUMBER_GENRES);
 };
 
-
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};

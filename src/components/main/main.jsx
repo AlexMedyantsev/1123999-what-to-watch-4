@@ -1,12 +1,13 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
-import {getMoviesByGenre, getUniqueGenres} from "../../utils/common.js";
+import {ActionCreator} from "../../reducer/condition/condition.js";
+import {getMoviesByGenre, getUniqueGenres, getShowedMoviesCount} from "../../reducer/condition/selectors.js";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
+// import {AuthorizationStatus} from './../../reducer/user/user.js';
 
 const MoviesListWrapped = withActiveItem(MoviesList);
 
@@ -49,11 +50,17 @@ class Main extends PureComponent {
             </a>
           </div>
 
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          {/* {authorizationStatus === AuthorizationStatus.AUTH ?
+            <div className="user-block">
+              <div className="user-block__avatar">
+                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              </div>
             </div>
-          </div>
+            : <div className="user-block">
+              <a href="sign-in.html" className="user-block__link">Sign in</a>
+            </div>
+          } */}
+
         </header>
 
         <div className="movie-card__wrap">
@@ -134,12 +141,11 @@ class Main extends PureComponent {
 const mapStateToProps = (state) => {
   const moviesByGenre = getMoviesByGenre(state);
   const genresList = getUniqueGenres(state);
-
-  const slicedMoviesByGenre = moviesByGenre.slice(0, state.countMoviesShow);
-  const showMoreButton = moviesByGenre.length > state.countMoviesShow;
+  const slicedMoviesByGenre = moviesByGenre.slice(0, getShowedMoviesCount(state));
+  const showMoreButton = moviesByGenre.length > getShowedMoviesCount(state);
 
   return {
-    currentGenre: state.currentGenre,
+    currentGenre: state.CONDITION.currentGenre,
     genresList,
     slicedMoviesByGenre,
     showMoreButton,
@@ -155,7 +161,7 @@ Main.propTypes = {
   onSetCurrentGenre: PropTypes.func.isRequired,
   genresList: PropTypes.arrayOf(
       PropTypes.string.isRequired
-  ).isRequired,
+  ),
   onIncrementCountMoviesShow: PropTypes.func.isRequired,
   onresetCountMoviesShow: PropTypes.func.isRequired,
   slicedMoviesByGenre: PropTypes.array.isRequired,

@@ -51,7 +51,7 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
     <div
       className="movie-rating__score"
     >
-      7.2
+      8.9
     </div>
     <p
       className="movie-rating__meta"
@@ -59,12 +59,12 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
       <span
         className="movie-rating__level"
       >
-        good
+        level
       </span>
       <span
         className="movie-rating__count"
       >
-        248
+        220
          ratings
       </span>
     </p>
@@ -72,15 +72,13 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
   <div
     className="movie-card__text"
   >
-    <p>
-      The second installment of the "Fantastic Beasts" series featuring the adventures of Magizoologist Newt Scamander.
-    </p>
+    description
     <p
       className="movie-card__director"
     >
       <strong>
         Director: 
-        David Yates
+        director
       </strong>
     </p>
     <p
@@ -88,7 +86,7 @@ exports[`MovieCardDescription render MovieCardDescription render 1`] = `
     >
       <strong>
         Starring: 
-        Eddie Redmayne, Katherine Waterson, Dan Folger
+        Bill Murray, Edward Norton, Jude Law, Willem Dafoe, Saoirse Ronan
          and other
       </strong>
     </p>

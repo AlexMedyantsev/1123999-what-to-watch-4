@@ -1,7 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieDetails from "./movie-details.jsx";
-import movies from "../../mocks/movies.js";
 
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
@@ -9,18 +8,50 @@ import {GENRES} from "../../utils/consts.js";
 
 const mockStore = configureStore([]);
 
-const movie = {
-  backgroundImage: `img/movie.jpg`,
-  title: `The Movie`,
-  releaseYear: 2014,
-  genres: [`Drama`],
-  poster: `img/movie-poster.jpg`,
-  ratingScore: 8.9,
-  ratingLevel: `Very Good`,
-  ratingCount: 245,
-  director: [`Wes Andreson`],
-  starring: [`Actors`],
-  description: [`description`],
+const movie = [
+  {
+    image: `a`,
+    posterSrc: `a`,
+    bgSrc: `a`,
+    title: `Name`,
+    genre: `Genre`,
+    year: 2014,
+    score: 8.9,
+    level: `level`,
+    movieLink: `link`,
+    previewLink: `preview-link`,
+    scoresCount: 220,
+    description: `description`,
+    director: `director`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runTime: `22`,
+    link: `movie-page.html`,
+    key: `1`,
+    backgroundColor: `background_color`,
+    isFavorite: `is_favorite`
+  },
+];
+
+const movieAsObject = {
+  image: `a`,
+  posterSrc: `a`,
+  bgSrc: `a`,
+  title: `Name`,
+  genre: `Genre`,
+  year: 2014,
+  score: 8.9,
+  level: `level`,
+  movieLink: `link`,
+  previewLink: `preview-link`,
+  scoresCount: 220,
+  description: `description`,
+  director: `director`,
+  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+  runTime: `22`,
+  link: `movie-page.html`,
+  key: `1`,
+  backgroundColor: `background_color`,
+  isFavorite: `is_favorite`
 };
 
 describe(`Movie Details Snapshot`, () => {
@@ -32,9 +63,9 @@ describe(`Movie Details Snapshot`, () => {
       .create(
           <Provider store={store}>
             <MovieDetails
-              movie={movie}
+              movie={movieAsObject}
               onMovieCardClick={() => {}}
-              similarMovies={movies}
+              similarMovies={movie}
             />
           </Provider>, {
             createNodeMock: () => {

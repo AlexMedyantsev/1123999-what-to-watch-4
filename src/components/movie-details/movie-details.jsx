@@ -11,7 +11,7 @@ const MoviesDetailsDescriptionWrapped = withActiveItem(MovieDetailsDescription, 
 
 const MovieDetails = (props) => {
   const {movie, onMovieCardClick, similarMovies} = props;
-  const {backgroundImage, genres, image, title, year} = movie;
+  const {bgSrc, genre, posterSrc, title, year} = movie;
 
   return (
     <React.Fragment>
@@ -42,7 +42,7 @@ const MovieDetails = (props) => {
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={backgroundImage} alt={title} />
+            <img src={bgSrc} alt={title} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -67,7 +67,7 @@ const MovieDetails = (props) => {
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genres.map((genre) => genre).join(`, `)}</span>
+                <span className="movie-card__genre">{genre}</span>
                 <span className="movie-card__year">{year}</span>
               </p>
 
@@ -93,7 +93,7 @@ const MovieDetails = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={image} alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={posterSrc} alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
             <div className="movie-card__desc">
               <MoviesDetailsDescriptionWrapped
@@ -136,11 +136,11 @@ const MovieDetails = (props) => {
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
-    backgroundImage: PropTypes.string,
-    description: PropTypes.arrayOf(PropTypes.string),
-    director: PropTypes.arrayOf(PropTypes.string),
-    genres: PropTypes.arrayOf(PropTypes.string),
-    image: PropTypes.string,
+    bgSrc: PropTypes.string,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    genre: PropTypes.string,
+    posterSrc: PropTypes.string,
     ratingCount: PropTypes.number,
     ratingLevel: PropTypes.string,
     ratingScore: PropTypes.number,
