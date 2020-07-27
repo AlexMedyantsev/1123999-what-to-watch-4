@@ -39,7 +39,7 @@ const init = () => {
           title={HeaderMovie.TITLE}
           genre={HeaderMovie.GENRE}
           year={HeaderMovie.YEAR}
-        />,
+        />
       </Provider>,
       document.querySelector(`#root`)
   );
