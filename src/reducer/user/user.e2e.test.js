@@ -34,6 +34,7 @@ describe(`Check user reducer`, () => {
       );
   });
 
+
   it(`it should send AuthorizationStatus correctly`, () => {
     const check = Operation.login(authData);
     const apiMock = new MockAdapter(api);
