@@ -136,18 +136,18 @@ const MovieDetails = (props) => {
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
-    bgSrc: PropTypes.string,
+    bgSrc: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    genre: PropTypes.string,
-    posterSrc: PropTypes.string,
+    genre: PropTypes.string.isRequired,
+    posterSrc: PropTypes.string.isRequired,
     ratingCount: PropTypes.number,
     ratingLevel: PropTypes.string,
     ratingScore: PropTypes.number,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    title: PropTypes.string,
-    year: PropTypes.number,
-    runTime: PropTypes.string
+    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+    title: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    runTime: PropTypes.number.isRequired
   }),
   similarMovies: PropTypes.array,
   onMovieCardClick: PropTypes.func.isRequired,

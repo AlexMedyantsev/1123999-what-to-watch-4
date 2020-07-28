@@ -1,4 +1,5 @@
 import {extend} from "../../utils/common.js";
+import history from "../../history.js";
 
 const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
@@ -10,7 +11,7 @@ const SERVER_ROUTE = {
 };
 
 const initialState = {
-  authorizationStatus: AuthorizationStatus.AUTH,
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
 };
 
 const ActionType = {
@@ -53,6 +54,7 @@ const Operation = {
       password: authData.password,
     })
       .then(() => {
+        history.push(`/`);
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       });
   },

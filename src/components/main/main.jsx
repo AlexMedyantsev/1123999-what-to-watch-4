@@ -7,7 +7,8 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-// import {AuthorizationStatus} from './../../reducer/user/user.js';
+import {AuthorizationStatus} from './../../reducer/user/user.js';
+import {Link} from "react-router-dom";
 
 const MoviesListWrapped = withActiveItem(MoviesList);
 
@@ -31,12 +32,12 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {title, genre, genresList, currentGenre, year, slicedMoviesByGenre, showMoreButton, onMovieCardClick} = this.props;
+    const {genresList, movies, currentGenre, authorizationStatus, slicedMoviesByGenre, showMoreButton, onMovieCardClick} = this.props;
 
     return <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={movies[0].bgSrc} alt={movies[0].title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -49,31 +50,30 @@ class Main extends PureComponent {
               <span className="logo__letter logo__letter--3">W</span>
             </a>
           </div>
-
-          {/* {authorizationStatus === AuthorizationStatus.AUTH ?
+          {authorizationStatus === AuthorizationStatus.AUTH ?
             <div className="user-block">
               <div className="user-block__avatar">
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
               </div>
             </div>
             : <div className="user-block">
-              <a href="sign-in.html" className="user-block__link">Sign in</a>
+              <Link to="/login" className="user-block__link">Sign In</Link>
             </div>
-          } */}
+          }
 
         </header>
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={movies[0].posterSrc} alt={movies[0].title} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2 className="movie-card__title">{movies[0].title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{year}</span>
+                <span className="movie-card__genre">{movies[0].genre}</span>
+                <span className="movie-card__year">{movies[0].title}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -145,7 +145,9 @@ const mapStateToProps = (state) => {
   const showMoreButton = moviesByGenre.length > getShowedMoviesCount(state);
 
   return {
+    // Добавить селекторы или неймспейс
     currentGenre: state.CONDITION.currentGenre,
+    authorizationStatus: state.USER.authorizationStatus,
     genresList,
     slicedMoviesByGenre,
     showMoreButton,
@@ -153,15 +155,34 @@ const mapStateToProps = (state) => {
 };
 
 Main.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   currentGenre: PropTypes.string,
   onSetCurrentGenre: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string,
   genresList: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ),
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    posterSrc: PropTypes.string.isRequired,
+    bgSrc: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    score: PropTypes.number.isRequired,
+    level: PropTypes.string.isRequired,
+    movieLink: PropTypes.string.isRequired,
+    previewLink: PropTypes.string.isRequired,
+    scoresCount: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.array.isRequired,
+    runTime: PropTypes.number.isRequired,
+    link: PropTypes.string.isRequired,
+    key: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string.isRequired,
+    isFavorite: PropTypes.string.isRequired
+  })),
   onIncrementCountMoviesShow: PropTypes.func.isRequired,
   onresetCountMoviesShow: PropTypes.func.isRequired,
   slicedMoviesByGenre: PropTypes.array.isRequired,

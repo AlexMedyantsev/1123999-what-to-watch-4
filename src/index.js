@@ -15,12 +15,6 @@ const onUnauthorized = () => {
 
 const api = createAPI(onUnauthorized);
 
-const HeaderMovie = {
-  TITLE: `Movie Title`,
-  GENRE: `Drama`,
-  YEAR: 2009,
-};
-
 const store = createStore(
     reducer,
     compose(
@@ -36,9 +30,6 @@ const init = () => {
   ReactDOM.render(
       <Provider store={store}>
         <App
-          title={HeaderMovie.TITLE}
-          genre={HeaderMovie.GENRE}
-          year={HeaderMovie.YEAR}
         />
       </Provider>,
       document.querySelector(`#root`)

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class AuthScreen extends React.PureComponent {
+export default class SignIn extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -81,7 +81,7 @@ export default class AuthScreen extends React.PureComponent {
                 </div>
               </div>
               <div className="sign-in__submit">
-                <button className="sign-in__btn" type="submit">Sign in</button>
+                <button className="sign-in__btn" onClick={this.handleSubmit} type="submit">Sign in</button>
               </div>
             </form>
           </div>
@@ -104,6 +104,6 @@ export default class AuthScreen extends React.PureComponent {
 
 }
 
-AuthScreen.propTypes = {
+SignIn.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
