@@ -24,7 +24,7 @@ const moviesMock = [
     description: `description`,
     director: `director`,
     starring: [`starring`, `next`],
-    runTime: `22`,
+    runTime: 22,
     link: `movie-page.html`,
     key: `1`,
     backgroundColor: `background_color`,

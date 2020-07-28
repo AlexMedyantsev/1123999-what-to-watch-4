@@ -4,7 +4,8 @@ import Main from "./main.jsx";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import {GENRES, SHOWING_MOVIES_COUNT_ON_START} from "../../utils/consts.js";
-
+import AuthorizationStatus from "../../reducer/user/user.js";
+import {BrowserRouter} from "react-router-dom";
 
 const HeaderMovieData = {
   TITLE: `Movie Title`,
@@ -47,19 +48,24 @@ describe(`Render component`, () => {
       CONDITION: {
         currentGenre: GENRES.ALL,
         countMoviesShow: SHOWING_MOVIES_COUNT_ON_START
+      },
+      USER: {
+        authorizationStatus: AuthorizationStatus,
       }
     });
     const tree = rerender
       .create(
           <Provider store={store}>
-            <Main
-              title={HeaderMovieData.TITLE}
-              genre={HeaderMovieData.GENRE}
-              year={HeaderMovieData.YEAR}
-              movies={movies}
-              onMovieCardClick={() => {}}
-              onMouseEnter={() => {}}
-            />,
+            <BrowserRouter>
+              <Main
+                title={HeaderMovieData.TITLE}
+                genre={HeaderMovieData.GENRE}
+                year={HeaderMovieData.YEAR}
+                movies={movies}
+                onMovieCardClick={() => {}}
+                onMouseEnter={() => {}}
+              />,
+            </BrowserRouter>
           </Provider>, {
             createNodeMock: () => {
               return {};
