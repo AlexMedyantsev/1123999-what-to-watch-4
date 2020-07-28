@@ -10,7 +10,7 @@ const GenresList = (props) => {
         const activeClass = currentGenre === genreItem ? `catalog__genres-item--active` : ``;
 
         return <li
-          key={genreItem}
+          key={genreItem + Math.random() * 100}
           className={`catalog__genres-item ${activeClass}`}
           onClick={(evt)=>{
             evt.preventDefault();
@@ -26,9 +26,7 @@ const GenresList = (props) => {
 
 GenresList.propTypes = {
   currentGenre: PropTypes.string,
-  genresList: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
+  genresList: PropTypes.array.isRequired,
   setCurrentGenre: PropTypes.func,
 };
 

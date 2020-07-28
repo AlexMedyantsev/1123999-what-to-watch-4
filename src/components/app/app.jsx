@@ -3,9 +3,12 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
+import {connect} from "react-redux";
+import {getMovies} from "../../reducer/data/selectors.js";
 import {SIMILAR_MOVIES_COUNT} from "../../utils/consts.js";
 import {getSimilarMoviesByGenres} from "../../utils/common.js";
 
+import AuthScreen from './../auth-screen/auth-screen.jsx';
 
 class App extends PureComponent {
   constructor(props) {
@@ -28,6 +31,10 @@ class App extends PureComponent {
     const {title, genre, year, movies} = this.props;
     const {activeMovie} = this.state;
 
+
+    if (!movies || !movies.length) {
+      return (<div></div>);
+    }
 
     if (activeMovie < 0 || activeMovie === null) {
       return (
@@ -67,6 +74,11 @@ class App extends PureComponent {
               onMovieCardClick={this._handleMovieCardClick}
             />
           </Route>
+          <Route exact path="/dev-sign">
+            <AuthScreen
+              onSubmit={() => {}}
+            />
+          </Route>
         </Switch>
       </BrowserRouter>
     );
@@ -80,4 +92,8 @@ App.propTypes = {
   movies: PropTypes.array.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {movies: getMovies(state)};
+};
+
+export default connect(mapStateToProps)(App);

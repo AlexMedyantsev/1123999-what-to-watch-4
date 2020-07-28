@@ -26,7 +26,7 @@ class SmallMovieCard extends PureComponent {
           onMouseOut={handlerMouseLeave}
         >
           <VideoPlayer
-            source={movie.preview}
+            previewLink={movie.previewLink}
             poster={movie.image}
             isPlaying={isPlaying}
             isMuted={VideoPreview.IS_MUTED}
@@ -49,7 +49,7 @@ SmallMovieCard.propTypes = {
   index: PropTypes.number.isRequired,
   movie: PropTypes.shape({
     image: PropTypes.string.isRequired,
-    preview: PropTypes.string,
+    previewLink: PropTypes.string,
     id: PropTypes.number,
     title: PropTypes.string.isRequired,
   }).isRequired,
