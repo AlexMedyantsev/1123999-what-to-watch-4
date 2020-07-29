@@ -214,6 +214,7 @@ exports[`AuthScreen component render correctly 1`] = `
         >
           <button
             className="sign-in__btn"
+            onClick={[Function]}
             type="submit"
           >
             Sign in

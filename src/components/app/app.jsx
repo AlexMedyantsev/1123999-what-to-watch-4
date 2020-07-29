@@ -1,14 +1,16 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 import {connect} from "react-redux";
+import history from "../../history.js";
 import {getMovies} from "../../reducer/data/selectors.js";
 import {SIMILAR_MOVIES_COUNT} from "../../utils/consts.js";
 import {getSimilarMoviesByGenres} from "../../utils/common.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 
-import AuthScreen from './../auth-screen/auth-screen.jsx';
+import SignIn from '../sign-in/sign-in.jsx';
 
 class App extends PureComponent {
   constructor(props) {
@@ -28,7 +30,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {title, genre, year, movies} = this.props;
+    const {movies} = this.props;
     const {activeMovie} = this.state;
 
 
@@ -39,9 +41,6 @@ class App extends PureComponent {
     if (activeMovie < 0 || activeMovie === null) {
       return (
         <Main
-          title={title}
-          genre={genre}
-          year={year}
           movies={movies}
           onMovieCardClick={this._handleMovieCardClick}
         />
@@ -60,10 +59,10 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movies} = this.props;
+    const {movies, onSubmit} = this.props;
 
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
@@ -74,26 +73,30 @@ class App extends PureComponent {
               onMovieCardClick={this._handleMovieCardClick}
             />
           </Route>
-          <Route exact path="/dev-sign">
-            <AuthScreen
-              onSubmit={() => {}}
+          <Route exact path="/login">
+            <SignIn
+              onSubmit={onSubmit}
             />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
   movies: PropTypes.array.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {movies: getMovies(state)};
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {onSubmit: (authData) => {
+    dispatch(UserOperation.login(authData));
+  }};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

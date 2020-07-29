@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import AuthScreen from "./auth-screen.jsx";
+import AuthScreen from "./sign-in.jsx";
 
 
 const noop = () => {};

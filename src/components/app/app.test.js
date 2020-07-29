@@ -5,6 +5,7 @@ import App from "./app.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {GENRES, SHOWING_MOVIES_COUNT_ON_START} from "../../utils/consts.js";
+import AuthorizationStatus from "../../reducer/user/user.js";
 
 
 const HeaderMovieData = {
@@ -29,7 +30,7 @@ const movies = [
     description: `description`,
     director: `director`,
     starring: [`starring`, `next`],
-    runTime: `22`,
+    runTime: 22,
     link: `movie-page.html`,
     key: `1`,
     backgroundColor: `background_color`,
@@ -48,6 +49,9 @@ describe(`Render component`, () => {
       CONDITION: {
         currentGenre: GENRES.ALL,
         countMoviesShow: SHOWING_MOVIES_COUNT_ON_START,
+      },
+      USER: {
+        authorizationStatus: AuthorizationStatus,
       }
     });
     const tree = rerender
@@ -57,6 +61,7 @@ describe(`Render component`, () => {
               title={HeaderMovieData.TITLE}
               genre={HeaderMovieData.GENRE}
               year={HeaderMovieData.YEAR}
+              authorizationStatus={AuthorizationStatus}
               movies={movies}
             />
           </Provider>, {
