@@ -161,7 +161,8 @@ MovieDetails.propTypes = {
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    runTime: PropTypes.number.isRequired
+    runTime: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired
   }),
   similarMovies: PropTypes.array,
   onMovieCardClick: PropTypes.func.isRequired,

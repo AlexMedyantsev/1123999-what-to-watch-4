@@ -83,6 +83,7 @@ class App extends PureComponent {
             return (
               <AddReview
                 {...props}
+                movie={this.state.activeMovie}
                 activeMovieId={props.match.params.id}
                 onSubmit={onReviewSubmit}
               />);

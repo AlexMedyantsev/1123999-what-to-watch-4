@@ -26,7 +26,7 @@ const movie = [
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: 22,
     link: `movie-page.html`,
-    key: `1`,
+    id: 1,
     backgroundColor: `background_color`,
     isFavorite: `is_favorite`
   },
@@ -49,7 +49,7 @@ const movieAsObject = {
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
   runTime: 22,
   link: `movie-page.html`,
-  key: `1`,
+  id: 1,
   backgroundColor: `background_color`,
   isFavorite: `is_favorite`
 };

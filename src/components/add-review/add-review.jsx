@@ -27,11 +27,12 @@ export default class AddReview extends React.PureComponent {
   }
 
   render() {
+    const {bgSrc, posterSrc, title} = this.props.movie;
     return (
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">
           <div className="movie-card__bg">
-            <img src="/img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={bgSrc} alt="The Grand Budapest Hotel" />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -48,7 +49,7 @@ export default class AddReview extends React.PureComponent {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                  <a href="movie-page.html" className="breadcrumbs__link">{title}</a>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -64,7 +65,7 @@ export default class AddReview extends React.PureComponent {
           </header>
 
           <div className="movie-card__poster movie-card__poster--small">
-            <img src="/img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={posterSrc} alt="The Grand Budapest Hotel poster" width="218" height="327" />
           </div>
         </div>
 
@@ -106,4 +107,10 @@ export default class AddReview extends React.PureComponent {
 
 AddReview.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  activeMovieId: PropTypes.number.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    bgSrc: PropTypes.string.isRequired,
+    postersrc: PropTypes.string.isRequired,
+  })
 };
