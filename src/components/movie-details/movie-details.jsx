@@ -148,7 +148,7 @@ const mapStateToProps = (state) => {
 };
 
 MovieDetails.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string,
   movie: PropTypes.shape({
     bgSrc: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
