@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {MovieDetailsTabs} from "../../utils/consts.js";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 import MoviesList from "../movies-list/movies-list.jsx";
 import MovieDetailsDescription from "../movie-details-description/movie-details-description.jsx";
@@ -13,7 +14,7 @@ const MoviesDetailsDescriptionWrapped = withActiveItem(MovieDetailsDescription, 
 
 const MovieDetails = (props) => {
   const {movie, onMovieCardClick, similarMovies, authorizationStatus} = props;
-  const {bgSrc, genre, posterSrc, title, year} = movie;
+  const {bgSrc, genre, posterSrc, title, year, id} = movie;
 
   return (
     <React.Fragment>
@@ -87,7 +88,7 @@ const MovieDetails = (props) => {
                   <span>My list</span>
                 </button>
                 {authorizationStatus === AuthorizationStatus.AUTH ?
-                  <a href="add-review.html" className="btn movie-card__button">Add review</a> :
+                  <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> :
                   ``
                 }
               </div>
@@ -147,6 +148,7 @@ const mapStateToProps = (state) => {
 };
 
 MovieDetails.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   movie: PropTypes.shape({
     bgSrc: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

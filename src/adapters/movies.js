@@ -35,7 +35,7 @@ export default function (moviesFromServer) {
       starring: movie.starring,
       runTime: movie.run_time,
       link: `movie-page.html`,
-      key: movie.id,
+      id: movie.id,
       backgroundColor: movie.background_color,
       isFavorite: movie.is_favorite
     });
