@@ -4,7 +4,8 @@ import MovieDetails from "./movie-details.jsx";
 
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {GENRES} from "../../utils/consts.js";
+import {GENRES, SHOWING_MOVIES_COUNT_ON_START} from "../../utils/consts.js";
+import AuthorizationStatus from "../../reducer/user/user.js";
 
 const mockStore = configureStore([]);
 
@@ -26,7 +27,7 @@ const movie = [
     starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
     runTime: 22,
     link: `movie-page.html`,
-    key: `1`,
+    id: 1,
     backgroundColor: `background_color`,
     isFavorite: `is_favorite`
   },
@@ -49,7 +50,7 @@ const movieAsObject = {
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
   runTime: 22,
   link: `movie-page.html`,
-  key: `1`,
+  id: 1,
   backgroundColor: `background_color`,
   isFavorite: `is_favorite`
 };
@@ -57,7 +58,13 @@ const movieAsObject = {
 describe(`Movie Details Snapshot`, () => {
   it(`Should MovieDetails render correctly`, () => {
     const store = mockStore({
-      genre: GENRES.ALL,
+      CONDITION: {
+        currentGenre: GENRES.ALL,
+        countMoviesShow: SHOWING_MOVIES_COUNT_ON_START,
+      },
+      USER: {
+        authorizationStatus: AuthorizationStatus,
+      }
     });
     const tree = renderer
       .create(

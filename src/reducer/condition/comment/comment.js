@@ -7,8 +7,7 @@ const AuthorizationStatus = {
 };
 
 const SERVER_ROUTE = {
-  login: `/login`,
-  postComment: `/comments/`,
+  login: `/login`
 };
 
 const initialState = {
@@ -57,16 +56,6 @@ const Operation = {
       .then(() => {
         history.push(`/`);
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-      });
-  },
-
-  postComment: (commentData, movieId) => (dispatch, getState, api) => {
-    return api.post(SERVER_ROUTE.postComment + movieId, {
-      rating: commentData.rating,
-      comment: commentData.comment,
-    })
-      .then(() => {
-        history.goBack();
       });
   },
 };

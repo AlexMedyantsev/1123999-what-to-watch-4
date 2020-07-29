@@ -1,17 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {MovieDetailsTabs} from "../../utils/consts.js";
+import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 import MoviesList from "../movies-list/movies-list.jsx";
 import MovieDetailsDescription from "../movie-details-description/movie-details-description.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
+import {AuthorizationStatus} from './../../reducer/user/user.js';
 
 const MoviesListWrapped = withActiveItem(MoviesList);
 const MoviesDetailsDescriptionWrapped = withActiveItem(MovieDetailsDescription, MovieDetailsTabs.OVERVIEW);
 
 const MovieDetails = (props) => {
-  const {movie, onMovieCardClick, similarMovies} = props;
-  const {bgSrc, genre, posterSrc, title, year} = movie;
+  const {movie, onMovieCardClick, similarMovies, authorizationStatus} = props;
+  const {bgSrc, genre, posterSrc, title, year, id} = movie;
 
   return (
     <React.Fragment>
@@ -84,7 +87,10 @@ const MovieDetails = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {authorizationStatus === AuthorizationStatus.AUTH ?
+                  <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> :
+                  ``
+                }
               </div>
             </div>
           </div>
@@ -134,7 +140,15 @@ const MovieDetails = (props) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    // Добавить селекторы или неймспейс
+    authorizationStatus: state.USER.authorizationStatus,
+  };
+};
+
 MovieDetails.propTypes = {
+  authorizationStatus: PropTypes.string,
   movie: PropTypes.shape({
     bgSrc: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -147,10 +161,11 @@ MovieDetails.propTypes = {
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    runTime: PropTypes.number.isRequired
+    runTime: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired
   }),
   similarMovies: PropTypes.array,
   onMovieCardClick: PropTypes.func.isRequired,
 };
 
-export default MovieDetails;
+export default connect(mapStateToProps)(MovieDetails);

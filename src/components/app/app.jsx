@@ -11,6 +11,7 @@ import {getSimilarMoviesByGenres} from "../../utils/common.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 
 import SignIn from '../sign-in/sign-in.jsx';
+import AddReview from '../add-review/add-review.jsx';
 
 class App extends PureComponent {
   constructor(props) {
@@ -59,7 +60,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {movies, onSubmit} = this.props;
+    const {movies, onReviewSubmit, onAuthSubmit} = this.props;
 
     return (
       <Router history={history}>
@@ -75,8 +76,19 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/login">
             <SignIn
-              onSubmit={onSubmit}
+              onSubmit={onAuthSubmit}
             />
+          </Route>
+          <Route exact path="/films/:id/review" render={(props) => {
+            return (
+              <AddReview
+                {...props}
+                movie={this.state.activeMovie}
+                activeMovieId={props.match.params.id}
+                onSubmit={onReviewSubmit}
+              />);
+          }}>
+
           </Route>
         </Switch>
       </Router>
@@ -86,7 +98,8 @@ class App extends PureComponent {
 
 App.propTypes = {
   movies: PropTypes.array.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onAuthSubmit: PropTypes.func.isRequired,
+  onReviewSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -94,9 +107,13 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {onSubmit: (authData) => {
-    dispatch(UserOperation.login(authData));
-  }};
+  return {
+    onAuthSubmit: (authData) => {
+      dispatch(UserOperation.login(authData));
+    },
+    onReviewSubmit: (reviewData, movieId) => {
+      dispatch(UserOperation.postComment(reviewData, movieId));
+    }};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
