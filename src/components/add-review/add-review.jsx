@@ -111,6 +111,6 @@ AddReview.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     bgSrc: PropTypes.string.isRequired,
-    postersrc: PropTypes.string.isRequired,
+    posterSrc: PropTypes.string.isRequired,
   })
 };
