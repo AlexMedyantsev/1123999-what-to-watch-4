@@ -78,6 +78,11 @@ class App extends PureComponent {
               onSubmit={onSubmit}
             />
           </Route>
+          <Route exact path="/dev-review">
+            <SignIn
+              onSubmit={onSubmit}
+            />
+          </Route>
         </Switch>
       </Router>
     );

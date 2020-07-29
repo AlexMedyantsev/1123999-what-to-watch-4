@@ -1,16 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {MovieDetailsTabs} from "../../utils/consts.js";
+import {connect} from "react-redux";
 
 import MoviesList from "../movies-list/movies-list.jsx";
 import MovieDetailsDescription from "../movie-details-description/movie-details-description.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
+import {AuthorizationStatus} from './../../reducer/user/user.js';
 
 const MoviesListWrapped = withActiveItem(MoviesList);
 const MoviesDetailsDescriptionWrapped = withActiveItem(MovieDetailsDescription, MovieDetailsTabs.OVERVIEW);
 
 const MovieDetails = (props) => {
-  const {movie, onMovieCardClick, similarMovies} = props;
+  const {movie, onMovieCardClick, similarMovies, authorizationStatus} = props;
   const {bgSrc, genre, posterSrc, title, year} = movie;
 
   return (
@@ -84,7 +86,10 @@ const MovieDetails = (props) => {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {authorizationStatus === AuthorizationStatus.AUTH ?
+                  <a href="add-review.html" className="btn movie-card__button">Add review</a> :
+                  ``
+                }
               </div>
             </div>
           </div>
@@ -134,6 +139,13 @@ const MovieDetails = (props) => {
   );
 };
 
+const mapStateToProps = (state) => {
+  return {
+    // Добавить селекторы или неймспейс
+    authorizationStatus: state.USER.authorizationStatus,
+  };
+};
+
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
     bgSrc: PropTypes.string.isRequired,
@@ -153,4 +165,4 @@ MovieDetails.propTypes = {
   onMovieCardClick: PropTypes.func.isRequired,
 };
 
-export default MovieDetails;
+export default connect(mapStateToProps)(MovieDetails);
