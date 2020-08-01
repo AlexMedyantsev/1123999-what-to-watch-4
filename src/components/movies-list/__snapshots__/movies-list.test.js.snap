@@ -3,10 +3,10 @@
 exports[`MovieList snapshot Should movies list render correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
 >
   <div
     className="small-movie-card__image"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseOut={[Function]}
   >
@@ -16,7 +16,6 @@ exports[`MovieList snapshot Should movies list render correctly 1`] = `
   </div>
   <h3
     className="small-movie-card__title"
-    onClick={[Function]}
   >
     <a
       className="small-movie-card__link"

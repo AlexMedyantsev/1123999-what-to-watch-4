@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import MainLogo from "../main-logo/main-logo.jsx";
+
 
 export default class AddReview extends React.PureComponent {
   constructor(props) {

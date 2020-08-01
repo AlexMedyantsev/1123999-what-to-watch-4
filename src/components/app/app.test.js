@@ -32,9 +32,9 @@ const movies = [
     starring: [`starring`, `next`],
     runTime: 22,
     link: `movie-page.html`,
-    key: `1`,
+    id: 1,
     backgroundColor: `background_color`,
-    isFavorite: `is_favorite`
+    isFavorite: true,
   }
 ];
 
@@ -49,6 +49,7 @@ describe(`Render component`, () => {
       CONDITION: {
         currentGenre: GENRES.ALL,
         countMoviesShow: SHOWING_MOVIES_COUNT_ON_START,
+        activeMovie: 1,
       },
       USER: {
         authorizationStatus: AuthorizationStatus,
