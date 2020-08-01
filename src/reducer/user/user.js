@@ -9,6 +9,7 @@ const AuthorizationStatus = {
 const SERVER_ROUTE = {
   login: `/login`,
   postComment: `/comments/`,
+  postFavoriteMovie: `/favorite/`,
 };
 
 const initialState = {
