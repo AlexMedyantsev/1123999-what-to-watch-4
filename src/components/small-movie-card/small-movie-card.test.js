@@ -1,30 +1,56 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import SmallMovieCard from "./small-movie-card.jsx";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
 
-const movie = {
-  backgroundImage: `img/snatch.jpg`,
-  image: `img/snatch.jpg`,
-  preview: `img/snatch.jpg`,
-  title: `Snatch`,
-  id: 3,
+const movieAsObject = {
+  image: `a`,
+  posterSrc: `a`,
+  bgSrc: `a`,
+  title: `Name`,
+  genre: `Genre`,
+  year: 2014,
+  score: 8.9,
+  level: `level`,
+  movieLink: `link`,
+  previewLink: `preview-link`,
+  scoresCount: 220,
+  description: `description`,
+  director: `director`,
+  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+  runTime: 22,
+  link: `movie-page.html`,
+  id: 1,
+  backgroundColor: `background_color`,
+  isFavorite: true,
 };
+
+const mockStore = configureStore([]);
 
 describe(`it should SmallMovieCard render correctly`, () => {
   it(`Small card component`, () => {
+    const store = mockStore({
+      DATA: {
+        movies: movieAsObject,
+      },
+    });
     const tree = renderer
-      .create(<SmallMovieCard
-        movie={movie}
-        index={Math.random() * 100}
-        isPlaying={true}
-        onMovieCardClick={() => {}}
-        handlerMouseEnter={() => {}}
-        handlerMouseLeave={() => {}}
-      />, {
-        createNodeMock: () => {
-          return {};
-        }
-      })
+      .create(
+          <Provider store={store}>
+            <SmallMovieCard
+              movie={movieAsObject}
+              index={Math.random() * 100}
+              isPlaying={true}
+              onMovieCardClick={() => {}}
+              handlerMouseEnter={() => {}}
+              handlerMouseLeave={() => {}}
+            />
+          </Provider>, {
+            createNodeMock: () => {
+              return {};
+            }
+          })
       .toJSON();
 
     expect(tree).toMatchSnapshot();

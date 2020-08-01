@@ -9,6 +9,8 @@ import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {Link} from "react-router-dom";
+import MainLogo from "../main-logo/main-logo.jsx";
+
 
 const MoviesListWrapped = withActiveItem(MoviesList);
 
@@ -17,14 +19,14 @@ class Main extends PureComponent {
     super(props);
 
     this.handlerShowMoreButtonClick = this.handlerShowMoreButtonClick.bind(this);
-    this.handlerSetCurrentGenre = this.handlerSetCurrentGenre.bind(this);
+    this.SetCurrentGenreHandler = this.SetCurrentGenreHandler.bind(this);
   }
 
   handlerShowMoreButtonClick() {
     this.props.onIncrementCountMoviesShow();
   }
 
-  handlerSetCurrentGenre(genre) {
+  SetCurrentGenreHandler(genre) {
     const {onSetCurrentGenre, onresetCountMoviesShow} = this.props;
 
     onSetCurrentGenre(genre);
@@ -32,7 +34,7 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {genresList, movies, currentGenre, authorizationStatus, slicedMoviesByGenre, showMoreButton, onMovieCardClick} = this.props;
+    const {genresList, movies, currentGenre, authorizationStatus, slicedMoviesByGenre, showMoreButton} = this.props;
 
     return <React.Fragment>
       <section className="movie-card">
@@ -43,17 +45,13 @@ class Main extends PureComponent {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <MainLogo />
           {authorizationStatus === AuthorizationStatus.AUTH ?
             <div className="user-block">
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                <Link to="/my-list">
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </Link>
               </div>
             </div>
             : <div className="user-block">
@@ -102,14 +100,12 @@ class Main extends PureComponent {
           <GenresList
             genresList={genresList}
             currentGenre={currentGenre}
-            setCurrentGenre={this.handlerSetCurrentGenre}
+            setCurrentGenre={this.SetCurrentGenreHandler}
           />
 
           <div className="catalog__movies-list">
             <MoviesListWrapped
               movies={slicedMoviesByGenre}
-              // onMovieCardClick={this.handlerMovieClick}
-              changeActiveItem={onMovieCardClick}
             />
           </div>
 
@@ -155,7 +151,6 @@ const mapStateToProps = (state) => {
 };
 
 Main.propTypes = {
-  onMovieCardClick: PropTypes.func.isRequired,
   currentGenre: PropTypes.string,
   onSetCurrentGenre: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string,
@@ -179,9 +174,9 @@ Main.propTypes = {
     starring: PropTypes.array.isRequired,
     runTime: PropTypes.number.isRequired,
     link: PropTypes.string.isRequired,
-    key: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     backgroundColor: PropTypes.string.isRequired,
-    isFavorite: PropTypes.string.isRequired
+    isFavorite: PropTypes.bool.string,
   })),
   onIncrementCountMoviesShow: PropTypes.func.isRequired,
   onresetCountMoviesShow: PropTypes.func.isRequired,

@@ -26,6 +26,8 @@ Array [
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -178,10 +180,10 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
             onMouseEnter={[Function]}
             onMouseOut={[Function]}
           >
@@ -191,7 +193,6 @@ Array [
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"

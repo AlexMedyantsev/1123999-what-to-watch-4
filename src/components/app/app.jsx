@@ -6,87 +6,93 @@ import Main from "../main/main.jsx";
 import {connect} from "react-redux";
 import history from "../../history.js";
 import {getMovies} from "../../reducer/data/selectors.js";
+import {getActiveMovie} from "../../reducer/condition/selectors.js";
 import {SIMILAR_MOVIES_COUNT} from "../../utils/consts.js";
 import {getSimilarMoviesByGenres} from "../../utils/common.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 
+
 import SignIn from '../sign-in/sign-in.jsx';
 import AddReview from '../add-review/add-review.jsx';
+import MyList from '../my-list/my-list.jsx';
+
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeMovie: null,
-    };
-
-    this._handleMovieCardClick = this._handleMovieCardClick.bind(this);
   }
 
-  _handleMovieCardClick(movie) {
-    this.setState({
-      activeMovie: movie,
-    });
-  }
-
-  _renderApp() {
-    const {movies} = this.props;
-    const {activeMovie} = this.state;
-
-
+  renderMain(movies) {
     if (!movies || !movies.length) {
       return (<div></div>);
-    }
-
-    if (activeMovie < 0 || activeMovie === null) {
+    } else {
       return (
         <Main
           movies={movies}
-          onMovieCardClick={this._handleMovieCardClick}
         />
       );
     }
-
-    const similarMovies = getSimilarMoviesByGenres(movies, this.state.activeMovie).slice(0, SIMILAR_MOVIES_COUNT);
-
-    return (
-      <MovieDetails
-        movie={this.state.activeMovie}
-        similarMovies={similarMovies}
-        onMovieCardClick={this._handleMovieCardClick}
-      />
-    );
   }
 
+  renderMyList(movies) {
+    if (!movies || !movies.length) {
+      return (<div></div>);
+    } else {
+      return (
+        <MyList
+          movies={movies}
+        />
+      );
+    }
+  }
+
+
   render() {
-    const {movies, onReviewSubmit, onAuthSubmit} = this.props;
+    const {movies, onReviewSubmit, activeMovie, onAuthSubmit} = this.props;
 
     return (
       <Router history={history}>
         <Switch>
           <Route exact path="/">
-            {this._renderApp()}
+            {this.renderMain(movies)}
           </Route>
-          <Route exact path="/dev-film-details">
-            <MovieDetails
-              movie={movies[0]}
-              onMovieCardClick={this._handleMovieCardClick}
-            />
+          <Route exact path="/films/:id" render={(props) => {
+            if (!movies || !movies.length) {
+              return (<div></div>);
+            } else {
+              const movie = movies.find((movieItem)=> +movieItem.id === +props.match.params.id);
+              const similarMovies = getSimilarMoviesByGenres(movies, movie).slice(0, SIMILAR_MOVIES_COUNT);
+              return (
+                <MovieDetails
+                  movie={movie}
+                  similarMovies={similarMovies}
+                />
+              );
+            }
+          }}>
           </Route>
           <Route exact path="/login">
             <SignIn
               onSubmit={onAuthSubmit}
             />
           </Route>
+          <Route exact path="/my-list">
+            {this.renderMyList(movies)}
+          </Route>
           <Route exact path="/films/:id/review" render={(props) => {
-            return (
-              <AddReview
-                {...props}
-                movie={this.state.activeMovie}
-                activeMovieId={props.match.params.id}
-                onSubmit={onReviewSubmit}
-              />);
+            if (!movies || !movies.length) {
+              return (<div></div>);
+            } else {
+              return (
+                <AddReview
+                  {...props}
+                  movie={movies[activeMovie - 1]}
+                  activeMovieId={+props.match.params.id}
+                  onSubmit={onReviewSubmit}
+                />
+              );
+            }
           }}>
 
           </Route>
@@ -99,21 +105,27 @@ class App extends PureComponent {
 App.propTypes = {
   movies: PropTypes.array.isRequired,
   onAuthSubmit: PropTypes.func.isRequired,
+  activeMovie: PropTypes.number.isRequired,
   onReviewSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
-  return {movies: getMovies(state)};
+  return {
+    movies: getMovies(state),
+    activeMovie: getActiveMovie(state)
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    // onMovieClick: DataActionCreator.setActiveMovie,
     onAuthSubmit: (authData) => {
       dispatch(UserOperation.login(authData));
     },
     onReviewSubmit: (reviewData, movieId) => {
       dispatch(UserOperation.postComment(reviewData, movieId));
-    }};
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -14,8 +14,10 @@ export const getMoviesByFilter = (array, filterType) => array.filter((item) => i
 
 export const getSimilarMoviesByGenres = (moviesArray, openedMovie) => {
   const moviesByGenre = [];
-  const currentMovieGenre = openedMovie.genre;
-  moviesArray.forEach((movie) => (movie.genre === currentMovieGenre ? moviesByGenre.push(movie) : ``));
+  if (moviesArray && openedMovie) {
+    const currentMovieGenre = openedMovie.genre;
+    moviesArray.forEach((movie) => (movie.genre === currentMovieGenre ? moviesByGenre.push(movie) : ``));
+  }
 
   return moviesByGenre;
 };

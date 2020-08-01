@@ -12,14 +12,13 @@ class MoviesList extends PureComponent {
   }
 
   render() {
-    const {movies, setActiveItem} = this.props;
+    const {movies} = this.props;
 
     return (
       movies.map((movie, index) =>
         <SmallMovieCardWrapped
           movie={movie}
           index={index}
-          onMovieCardClick={setActiveItem}
           key={movie.id + movie.title}
         />)
     );
@@ -28,11 +27,11 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = {
   movies: PropTypes.array.isRequired,
-  setActiveItem: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   genre: state.genre,
+  movie: state.movie,
 });
 
 

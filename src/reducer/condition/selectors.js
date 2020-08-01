@@ -25,3 +25,5 @@ export const getUniqueGenres = (state) => {
 };
 
 export const getShowedMoviesCount = (state) => state[NameSpace.CONDITION].countMoviesShowed;
+
+export const getActiveMovie = (state) => state[NameSpace.CONDITION].activeMovie;

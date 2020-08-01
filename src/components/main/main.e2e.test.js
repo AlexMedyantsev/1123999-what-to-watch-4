@@ -39,9 +39,9 @@ const movies = [
     starring: [`starring`, `next`],
     runTime: 22,
     link: `movie-page.html`,
-    key: `1`,
+    id: 1,
     backgroundColor: `background_color`,
-    isFavorite: `is_favorite`
+    isFavorite: true,
   }
 ];
 
@@ -49,8 +49,12 @@ describe(`Click button`, () => {
   it(`Should title link be pressed`, () => {
     const onMovieClick = jest.fn();
     const store = mockStore({
-      currentGenre: GENRES.ALL,
-      movies,
+      DATA: {
+        movies,
+      },
+      CONDITION: {
+        currentGenre: GENRES.ALL,
+      },
     });
 
     const main = shallow(
