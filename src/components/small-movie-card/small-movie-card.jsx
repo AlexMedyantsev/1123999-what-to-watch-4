@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import VideoPlayer from "../video-player/video-player.jsx";
+import VideoPlayerPreview from "../video-player-preview/video-player-preview.jsx";
 import {VideoPreview} from "../../utils/consts.js";
 import history from "../../history";
 import {connect} from "react-redux";
@@ -32,7 +32,7 @@ class SmallMovieCard extends PureComponent {
           onMouseEnter={handlerMouseEnter}
           onMouseOut={handlerMouseLeave}
         >
-          <VideoPlayer
+          <VideoPlayerPreview
             previewLink={movie.previewLink}
             poster={movie.image}
             isPlaying={isPlaying}

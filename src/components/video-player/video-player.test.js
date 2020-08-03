@@ -1,31 +1,31 @@
 import VideoPlayer from "./video-player.jsx";
 import React from "react";
 import renderer from "react-test-renderer";
-
-const Video = {
-  WIDTH: 300,
-  HEIGHT: 100,
-  INTERVAL_IN_SEC: 1500,
-  IS_MUTED: false,
-};
+import {Provider} from "react-redux";
+import {BrowserRouter} from "react-router-dom";
+import configureStore from "redux-mock-store";
 
 const movie = {
   preview: `https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4`,
-  image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
 };
 
+const mockStore = configureStore([]);
+
+
 it(`VideoPlayer is rendered correctly`, () => {
-  const {preview, image} = movie;
+  const {preview} = movie;
+
+  const store = mockStore({
+  });
 
   const tree = renderer.create(
-      <VideoPlayer
-        source={preview}
-        poster={image}
-        isMuted={Video.IS_MUTED}
-        isPlaying={true}
-        width={Video.WIDTH}
-        height={Video.HEIGHT}
-      />, {
+      <Provider store={store}>
+        <BrowserRouter>
+          <VideoPlayer
+            movieLink={preview}
+          />,
+        </BrowserRouter>
+      </Provider>, {
         createNodeMock: () => {
           return {};
         }

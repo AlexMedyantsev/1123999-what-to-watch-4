@@ -1,7 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VideoPlayer is rendered correctly 1`] = `
-<video>
-  Sorry, this preview is not available in your browser
-</video>
+Array [
+  <div
+    className="player"
+  >
+    <video
+      className="player__video"
+      controls={true}
+      poster="img/player-poster.jpg"
+      src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
+    />
+    <button
+      className="player__exit"
+      onClick={[Function]}
+      type="button"
+    >
+      Exit
+    </button>
+  </div>,
+  ",",
+]
 `;

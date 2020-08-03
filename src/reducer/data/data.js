@@ -1,12 +1,14 @@
 import {extend} from "../../utils/common.js";
-import adaptMovies from '../../adapters/movies.js';
+import {adaptMovie, adaptMovies} from '../../adapters/movies.js';
 
 const initialState = {
   movies: [],
+  promoMovie: null,
 };
 
 const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
+  LOAD_PROMO_MOVIES: `LOAD_PROMO_MOVIES`,
   UPDATE_MOVIE: `UPDATE_MOVIE`,
 };
 
@@ -21,6 +23,12 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_MOVIES,
       payload: movies,
+    };
+  },
+  loadPromoMovie: (movie) => {
+    return {
+      type: ActionType.LOAD_PROMO_MOVIES,
+      payload: movie,
     };
   },
   updateMovie: (movie) => {
@@ -38,6 +46,12 @@ const Operation = {
         dispatch(ActionCreator.loadMovies(adaptMovies(responce.data)));
       });
   },
+  loadPromoMovie: () => (dispatch, getState, api) => {
+    return api.get(`/films/promo`)
+      .then((responce) => {
+        dispatch(ActionCreator.loadPromoMovie(adaptMovie(responce.data)));
+      });
+  },
   postFavoriteMovie: (filmId, status) => (dispatch, getState, api) => {
     return api.post(`${SERVER_ROUTE.postFavoriteMovie}${filmId}/${+status}`, {
       "film_id": filmId,
@@ -53,6 +67,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_MOVIES:
       return extend(state, {movies: action.payload});
+    case ActionType.LOAD_PROMO_MOVIES:
+      return extend(state, {promoMovie: action.payload});
     case ActionType.UPDATE_MOVIE:
       return extend(state, {
         movies: state.movies.map((movie) => {
@@ -60,7 +76,8 @@ const reducer = (state = initialState, action) => {
             return action.payload;
           }
           return movie;
-        })});
+        })
+      });
   }
   return state;
 };

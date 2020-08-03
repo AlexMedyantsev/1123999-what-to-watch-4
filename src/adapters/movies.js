@@ -16,7 +16,7 @@ const getLevel = (score) => {
   return level;
 };
 
-export default function (moviesFromServer) {
+export const adaptMovies = (moviesFromServer) => {
   return moviesFromServer.map((movie) => {
     return ({
       image: movie.preview_image,
@@ -40,4 +40,28 @@ export default function (moviesFromServer) {
       isFavorite: movie.is_favorite
     });
   });
-}
+};
+
+export const adaptMovie = (movie) => {
+  return ({
+    image: movie.preview_image,
+    posterSrc: movie.poster_image,
+    bgSrc: movie.background_image,
+    title: movie.name,
+    genre: movie.genre,
+    year: movie.released,
+    score: movie.rating,
+    level: getLevel(movie.rating),
+    movieLink: movie.video_link,
+    previewLink: movie.preview_video_link,
+    scoresCount: movie.scores_count,
+    description: movie.description,
+    director: movie.director,
+    starring: movie.starring,
+    runTime: movie.run_time,
+    link: `movie-page.html`,
+    id: movie.id,
+    backgroundColor: movie.background_color,
+    isFavorite: movie.is_favorite
+  });
+};

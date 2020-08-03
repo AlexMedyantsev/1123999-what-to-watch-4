@@ -34,6 +34,9 @@ describe(`it should SmallMovieCard render correctly`, () => {
       DATA: {
         movies: movieAsObject,
       },
+      PLAYER: {
+        isVideoPlayerOpened: false,
+      }
     });
     const tree = renderer
       .create(

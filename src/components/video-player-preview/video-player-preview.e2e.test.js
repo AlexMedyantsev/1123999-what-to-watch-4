@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import VideoPlayer from "./video-player.jsx";
+import VideoPlayerPreview from "./video-player-preview.jsx";
 
 const Video = {
   WIDTH: 300,
@@ -24,7 +24,7 @@ it(`Video player can be playing or paused`, () => {
   let isVideoPlaying = false;
 
   let videoPlayer = mount(
-      <VideoPlayer
+      <VideoPlayerPreview
         source={preview}
         poster={image}
         isMuted={Video.IS_MUTED}
@@ -39,7 +39,7 @@ it(`Video player can be playing or paused`, () => {
   isVideoPlaying = true;
 
   videoPlayer = mount(
-      <VideoPlayer
+      <VideoPlayerPreview
         source={preview}
         poster={image}
         isMuted={Video.IS_MUTED}

@@ -1,6 +1,5 @@
 import NameSpace from './../name-space.js';
 
-
 import {GENRES, MAX_NUMBER_GENRES} from "../../utils/consts.js";
 
 export const getMoviesByGenre = (state) => {
@@ -27,3 +26,5 @@ export const getUniqueGenres = (state) => {
 export const getShowedMoviesCount = (state) => state[NameSpace.CONDITION].countMoviesShowed;
 
 export const getActiveMovie = (state) => state[NameSpace.CONDITION].activeMovie;
+
+

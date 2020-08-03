@@ -24,6 +24,7 @@ const store = createStore(
 );
 
 store.dispatch(Operation.loadMovies());
+store.dispatch(Operation.loadPromoMovie());
 store.dispatch(UserOperation.checkAuth());
 
 const init = () => {

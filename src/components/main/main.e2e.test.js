@@ -55,6 +55,9 @@ describe(`Click button`, () => {
       CONDITION: {
         currentGenre: GENRES.ALL,
       },
+      PLAYER: {
+        isVideoPlayerOpened: false,
+      }
     });
 
     const main = shallow(

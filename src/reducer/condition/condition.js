@@ -20,7 +20,7 @@ export const ActionCreator = {
   }),
   setActiveMovie: (movie) => ({
     type: ActionType.SET_ACTIVE_MOVIE,
-    payload: movie.id,
+    payload: movie,
   }),
   incrementCountMoviesShow: () => ({
     type: ActionType.INCREMENT_COUNT_MOVIES_SHOW,

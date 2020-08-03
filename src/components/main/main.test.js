@@ -37,6 +37,28 @@ const movies = [
   }
 ];
 
+const movieAsObject = {
+  image: `a`,
+  posterSrc: `a`,
+  bgSrc: `a`,
+  title: `Name`,
+  genre: `Genre`,
+  year: 2014,
+  score: 8.9,
+  level: `level`,
+  movieLink: `link`,
+  previewLink: `preview-link`,
+  scoresCount: 220,
+  description: `description`,
+  director: `director`,
+  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+  runTime: 22,
+  link: `movie-page.html`,
+  id: 1,
+  backgroundColor: `background_color`,
+  isFavorite: true,
+};
+
 const mockStore = configureStore([]);
 
 describe(`Render component`, () => {
@@ -51,6 +73,9 @@ describe(`Render component`, () => {
       },
       USER: {
         authorizationStatus: AuthorizationStatus,
+      },
+      PLAYER: {
+        isVideoPlayerOpened: false,
       }
     });
     const tree = rerender
@@ -62,6 +87,7 @@ describe(`Render component`, () => {
                 genre={HeaderMovieData.GENRE}
                 year={HeaderMovieData.YEAR}
                 movies={movies}
+                promoMovie={movieAsObject}
                 onMovieCardClick={() => {}}
                 onMouseEnter={() => {}}
               />,
