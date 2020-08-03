@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VideoPlayer is rendered correctly 1`] = `
+exports[`VideoPlayerPreview is rendered correctly 1`] = `
 <video>
   Sorry, this preview is not available in your browser
 </video>

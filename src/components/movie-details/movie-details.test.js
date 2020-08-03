@@ -69,6 +69,9 @@ describe(`Movie Details Snapshot`, () => {
       },
       USER: {
         authorizationStatus: AuthorizationStatus,
+      },
+      PLAYER: {
+        isVideoPlayerOpened: false,
       }
     });
     const tree = renderer

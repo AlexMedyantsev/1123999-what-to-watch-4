@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render component Should App render correctly 1`] = `
-Array [
+<div>
   <section
     className="movie-card"
   >
@@ -101,6 +101,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -137,7 +138,7 @@ Array [
         </div>
       </div>
     </div>
-  </section>,
+  </section>
   <div
     className="page-content"
   >
@@ -239,6 +240,6 @@ Array [
         </p>
       </div>
     </footer>
-  </div>,
-]
+  </div>
+</div>
 `;

@@ -38,6 +38,9 @@ describe(`MovieList snapshot`, () => {
       DATA: {
         moviesMock,
       },
+      PLAYER: {
+        isVideoPlayerOpened: false,
+      },
       genre: GENRES.ALL,
     });
     const tree = renderer
