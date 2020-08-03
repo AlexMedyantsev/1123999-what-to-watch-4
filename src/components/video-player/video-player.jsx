@@ -8,18 +8,23 @@ class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
+    this._handleEscPress = this._handleEscPress.bind(this);
     this._handleEscClick = this._handleEscClick.bind(this);
   }
 
   componentDidMount() {
-    document.addEventListener(`keydown`, this._handleEscClick);
+    document.addEventListener(`keydown`, this._handleEscPress);
   }
 
   componentWillUnmount() {
-    document.removeEventListener(`keydown`, this._handleEscClick);
+    document.removeEventListener(`keydown`, this._handleEscPress);
   }
 
-  _handleEscClick(event) {
+  _handleEscClick() {
+    this.props.onChangeVideoPlayerState();
+  }
+
+  _handleEscPress(event) {
     if (event.keyCode === ESCAPE_KEY) {
       this.props.onChangeVideoPlayerState();
     }
