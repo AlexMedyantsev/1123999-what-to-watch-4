@@ -1,6 +1,6 @@
 import {GENRES, SHOWING_MOVIES_COUNT_ON_START, MOVIES_ADDED_ON_BUTTON_CLICK} from "../../utils/consts.js";
 
-export const initialState = {
+const initialState = {
   currentGenre: GENRES.ALL,
   countMoviesShowed: SHOWING_MOVIES_COUNT_ON_START,
   activeMovie: null,
@@ -20,7 +20,7 @@ export const ActionCreator = {
   }),
   setActiveMovie: (movie) => ({
     type: ActionType.SET_ACTIVE_MOVIE,
-    payload: movie.id,
+    payload: movie,
   }),
   incrementCountMoviesShow: () => ({
     type: ActionType.INCREMENT_COUNT_MOVIES_SHOW,

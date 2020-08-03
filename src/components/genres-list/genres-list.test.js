@@ -7,13 +7,13 @@ const GENRES = [`Comedy`, `Drama`, `Sience`, `Action`, `Fantasy`, `Thriller`, `R
 
 describe(`Render Correctly`, () => {
   it(`Should GenresList render correctly`, () => {
-    const handlerSetCurrentGenre = jest.fn();
+    const setCurrentGenreHandler = jest.fn();
     const tree = renderer
       .create(
           <GenresList
             genresList={GENRES}
             currentGenre={GENRES.ALL}
-            setCurrentGenre={handlerSetCurrentGenre}
+            setCurrentGenre={setCurrentGenreHandler}
           />)
       .toJSON();
 
