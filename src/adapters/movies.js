@@ -40,7 +40,7 @@ export const adaptMovies = (moviesFromServer) => {
       isFavorite: movie.is_favorite
     });
   });
-}
+};
 
 export const adaptMovie = (movie) => {
   return ({
