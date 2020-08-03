@@ -1,4 +1,4 @@
-import VideoPlayer from "./video-player.jsx";
+import VideoPlayerPreview from "./video-player-preview.jsx";
 import React from "react";
 import renderer from "react-test-renderer";
 
@@ -14,11 +14,11 @@ const movie = {
   image: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
 };
 
-it(`VideoPlayer is rendered correctly`, () => {
+it(`VideoPlayerPreview is rendered correctly`, () => {
   const {preview, image} = movie;
 
   const tree = renderer.create(
-      <VideoPlayer
+      <VideoPlayerPreview
         source={preview}
         poster={image}
         isMuted={Video.IS_MUTED}

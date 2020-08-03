@@ -1,67 +1,57 @@
-import React, {PureComponent, createRef} from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer/condition/condition.js";
+import {ESCAPE_KEY} from "../../utils/consts.js";
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._videoRef = createRef();
+    this._handleEscClick = this._handleEscClick.bind(this);
   }
 
   componentDidMount() {
-    const {isMuted, poster, previewLink, width, height} = this.props;
-    const video = this._videoRef.current;
-
-    if (isMuted) {
-      video.muted = true;
-    }
-
-    video.src = previewLink;
-    video.width = width;
-    video.poster = poster;
-    video.height = height;
-  }
-
-  componentDidUpdate(prevProps) {
-    const {isPlaying, previewLink} = this.props;
-    const video = this._videoRef.current;
-
-    if (this.props.isPlaying !== prevProps.isPlaying) {
-      if (isPlaying) {
-        video.src = previewLink;
-        video.play();
-      } else {
-        video.src = ``;
-      }
-    }
+    document.addEventListener(`keydown`, this._handleEscClick);
   }
 
   componentWillUnmount() {
-    const video = this._videoRef.current;
+    document.removeEventListener(`keydown`, this._handleEscClick);
+  }
 
-    video.onplay = null;
-    video.onpause = null;
-    video.ontimeupdate = null;
-    video.src = ``;
+  _handleEscClick(event) {
+    if (event.keyCode === ESCAPE_KEY) {
+      this.props.onChangeVideoPlayerState();
+    }
   }
 
   render() {
+    const {movieLink} = this.props;
     return (
-      <video
-        ref={this._videoRef}>
-        Sorry, this preview is not available in your browser
-      </video>
+      <div className="player">
+        <video src={movieLink} className="player__video" poster="img/player-poster.jpg" controls></video>
+
+        <button type="button" onClick={this._handleEscClick} className="player__exit">Exit</button>
+      </div>
+
     );
+
   }
 }
 
 VideoPlayer.propTypes = {
-  isPlaying: PropTypes.bool.isRequired,
-  previewLink: PropTypes.string,
-  poster: PropTypes.string.isRequired,
-  isMuted: PropTypes.bool.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
+  onChangeVideoPlayerState: PropTypes.func.isRequired,
+  movieLink: PropTypes.string.isRequired,
 };
 
-export default VideoPlayer;
+
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = {
+  onChangeVideoPlayerState: ActionCreator.changeVideoPlayerState,
+};
+
+export {VideoPlayer};
+export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayer);
