@@ -1,4 +1,3 @@
-import {ActionCreator} from "../../reducer/player/player.js";
 import AddReview from '../add-review/add-review.jsx';
 import {connect} from "react-redux";
 import {getSimilarMoviesByGenres} from "../../utils/common.js";
@@ -53,7 +52,7 @@ class App extends PureComponent {
 
 
   render() {
-    const {movies, onReviewSubmit, activeMovie, onAuthSubmit, onChangeVideoPlayerState} = this.props;
+    const {movies, onReviewSubmit, activeMovie, onAuthSubmit} = this.props;
 
     return (
       <Router history={history}>
@@ -70,7 +69,6 @@ class App extends PureComponent {
               return (
                 <MovieDetails
                   movie={movie}
-                  onChangeVideoPlayerState={onChangeVideoPlayerState}
                   similarMovies={similarMovies}
                 />
               );
@@ -113,7 +111,6 @@ App.propTypes = {
   activeMovie: PropTypes.object.isRequired,
   promoMovie: PropTypes.object.isRequired,
   onReviewSubmit: PropTypes.func.isRequired,
-  onChangeVideoPlayerState: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -129,7 +126,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(UserOperation.login(authData)),
   onReviewSubmit: (reviewData, movieId) =>
     dispatch(UserOperation.postComment(reviewData, movieId)),
-  onChangeVideoPlayerState: ActionCreator.changeVideoPlayerState,
 });
 
 
