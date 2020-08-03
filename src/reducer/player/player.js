@@ -2,17 +2,17 @@ const initialState = {
   isVideoPlayerOpened: false,
 };
 
-const ActionType = {
+export const ActionType = {
   CHANGE_VIDEO_PLAYER_STATE: `CHANGE_VIDEO_PLAYER_STATE`,
 };
 
-const ActionCreator = {
+export const ActionCreator = {
   changeVideoPlayerState: () => ({
     type: ActionType.CHANGE_VIDEO_PLAYER_STATE,
   }),
 };
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_VIDEO_PLAYER_STATE:
       return Object.assign({}, state, {
@@ -23,9 +23,3 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-
-export {
-  reducer,
-  ActionType,
-  ActionCreator
-};

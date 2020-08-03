@@ -38,3 +38,5 @@ export const SHOWING_MOVIES_COUNT_ON_START = 8;
 export const SIMILAR_MOVIES_COUNT = 4;
 
 export const MOVIES_ADDED_ON_BUTTON_CLICK = 8;
+
+export const ESCAPE_KEY = 27;

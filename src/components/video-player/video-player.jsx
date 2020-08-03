@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/condition/condition.js";
+import {ActionCreator} from "../../reducer/player/player.js";
 import {ESCAPE_KEY} from "../../utils/consts.js";
 
 class VideoPlayer extends PureComponent {
