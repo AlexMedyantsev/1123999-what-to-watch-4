@@ -5,29 +5,20 @@ const withVideoPlay = (Component) => {
     constructor(props) {
       super(props);
 
-      this.timerId = null;
-
       this.state = {
         isPlaying: false,
       };
 
-      this.handlerMouseEnter = this.handlerMouseEnter.bind(this);
-      this.handlerMouseLeave = this.handlerMouseLeave.bind(this);
+      this.clickPlayHandler = this.clickPlayHandler.bind(this);
+      this.clickPauseHandler = this.clickPauseHandler.bind(this);
     }
 
-    handlerMouseEnter() {
-      this.timerId = setTimeout(() =>
-        this.setState({
-          isPlaying: true
-        }), 1000);
+    clickPlayHandler() {
+      this.setState({isPlaying: true});
     }
 
-    handlerMouseLeave() {
-      clearTimeout(this.timerId);
-
-      this.setState({
-        isPlaying: false
-      });
+    clickPauseHandler() {
+      this.setState({isPlaying: false});
     }
 
     render() {
@@ -35,8 +26,8 @@ const withVideoPlay = (Component) => {
         <Component
           {...this.props}
           isPlaying={this.state.isPlaying}
-          handlerMouseEnter={this.handlerMouseEnter}
-          handlerMouseLeave={this.handlerMouseLeave}
+          clickPlayHandler={this.clickPlayHandler}
+          clickPauseHandler={this.clickPauseHandler}
         />
       );
     }

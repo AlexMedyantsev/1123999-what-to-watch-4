@@ -14,10 +14,12 @@ import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
+import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
 import VideoPlayer from "../video-player/video-player.jsx";
 
 
 const MoviesListWrapped = withActiveItem(MoviesList);
+const VideoPlayerWrapped = withVideoPlay(VideoPlayer);
 const MoviesDetailsDescriptionWrapped = withActiveItem(MovieDetailsDescription, MovieDetailsTabs.OVERVIEW);
 
 class MovieDetails extends PureComponent {
@@ -47,8 +49,9 @@ class MovieDetails extends PureComponent {
 
     return <React.Fragment>
       {isVideoPlayerOpened ?
-        <VideoPlayer
+        <VideoPlayerWrapped
           movieLink={movieLink}
+          movieTitle={title}
         /> :
         <div>
           <section className="movie-card movie-card--full">
@@ -79,11 +82,12 @@ class MovieDetails extends PureComponent {
 
                   <div className="movie-card__buttons">
                     <button className="btn btn--play movie-card__button" onClick={this.changeVideoPlayerStateHandler} type="button">
-                      <svg viewBox="0 0 19 19" width="19" height="19">
-                        <use xlinkHref="#play-s"></use>
+                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
                       </svg>
                       <span>Play</span>
                     </button>
+
                     <button className="btn btn--list movie-card__button" onClick={this.myListButtonClickhandler} type="button">
                       {isFavorite ?
                         <svg viewBox="0 0 18 14" width="18" height="14">
@@ -132,10 +136,8 @@ class MovieDetails extends PureComponent {
 
             <footer className="page-footer">
               <div className="logo">
-                <a href="main.html" className="logo__link logo__link--light">
-                  <span className="logo__letter logo__letter--1">W</span>
-                  <span className="logo__letter logo__letter--2">T</span>
-                  <span className="logo__letter logo__letter--3">W</span>
+                <a href="#" className="logo__link logo__link--light">
+                  <MainLogo />
                 </a>
               </div>
 

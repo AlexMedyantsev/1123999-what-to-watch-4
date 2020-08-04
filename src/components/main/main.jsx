@@ -13,9 +13,11 @@ import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {Link} from "react-router-dom";
 import MainLogo from "../main-logo/main-logo.jsx";
 import VideoPlayer from "../video-player/video-player.jsx";
+import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
 
 
 const MoviesListWrapped = withActiveItem(MoviesList);
+const VideoPlayerWrapped = withVideoPlay(VideoPlayer);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -46,8 +48,9 @@ class Main extends PureComponent {
 
     return <React.Fragment>
       {isVideoPlayerOpened ?
-        <VideoPlayer
+        <VideoPlayerWrapped
           movieLink={promoMovie.movieLink}
+          movieTitle={promoMovie.title}
         /> :
         <div>
           <section className="movie-card">
