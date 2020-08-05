@@ -40,3 +40,11 @@ export const SIMILAR_MOVIES_COUNT = 4;
 export const MOVIES_ADDED_ON_BUTTON_CLICK = 8;
 
 export const ESCAPE_KEY = 27;
+
+export const SERVER_ROUTE = {
+  LOGIN: `/login`,
+  PROMO_MOVIE: `/films/promo`,
+  POST_COMMENT: `/comments/`,
+  MOVIES: `/films`,
+  POST_FAVORITE_MOVIE: `/favorite/`,
+};

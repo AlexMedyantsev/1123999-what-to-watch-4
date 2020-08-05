@@ -10,6 +10,7 @@ import MyList from '../my-list/my-list.jsx';
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 
 import PropTypes from "prop-types";
+import PrivateRoute from "../private-route/private-route.jsx";
 import React, {PureComponent} from "react";
 import SignIn from '../sign-in/sign-in.jsx';
 import {Switch, Route, Router} from "react-router-dom";
@@ -23,36 +24,67 @@ class App extends PureComponent {
 
   }
 
+  getMovie(movies, props) {
+    const movie = movies.find((movieItem)=> movieItem.id === +props.match.params.id);
+    return movie;
+  }
+
   renderMain() {
     const {movies, promoMovie} = this.props;
+    return (
+      <Main
+        movies={movies}
+        promoMovie={promoMovie}
+      />
+    );
+  }
 
-    if (!movies || promoMovie === null || !movies.length) {
-      return (<div></div>);
-    } else {
-      return (
-        <Main
-          movies={movies}
-          promoMovie={promoMovie}
-        />
-      );
-    }
+  renderMovieDetails(movies, props) {
+    const movie = movies.find((movieItem)=> movieItem.id === +props.match.params.id);
+    const similarMovies = getSimilarMoviesByGenres(movies, movie).slice(0, SIMILAR_MOVIES_COUNT);
+
+    return (
+      <MovieDetails
+        movie={movie}
+        similarMovies={similarMovies}
+      />
+    );
   }
 
   renderMyList(movies) {
-    if (!movies || !movies.length) {
-      return (<div></div>);
-    } else {
-      return (
-        <MyList
-          movies={movies}
-        />
-      );
-    }
+    return (
+      <MyList
+        movies={movies}
+      />
+    );
+  }
+
+  renderLoginPage(onAuthSubmit) {
+    return (
+      <SignIn
+        onSubmit={onAuthSubmit}
+      />
+    );
+  }
+
+  renderAddReview(props, activeMovie, onReviewSubmit) {
+    return (
+      <AddReview
+        {...props}
+        movie={activeMovie}
+        activeMovieId={+props.match.params.id}
+        onSubmit={onReviewSubmit}
+      />
+    );
   }
 
 
   render() {
-    const {movies, onReviewSubmit, activeMovie, onAuthSubmit} = this.props;
+    const {movies, onReviewSubmit, promoMovie, activeMovie, onAuthSubmit} = this.props;
+
+    if (!movies || promoMovie === null || !movies.length) {
+      return <div>...Loading. Wait a few seconds</div>;
+    }
 
     return (
       <Router history={history}>
@@ -61,44 +93,19 @@ class App extends PureComponent {
             {this.renderMain()}
           </Route>
           <Route exact path="/films/:id" render={(props) => {
-            if (!movies || !movies.length) {
-              return (<div></div>);
-            } else {
-              const movie = movies.find((movieItem)=> movieItem.id === +props.match.params.id);
-              const similarMovies = getSimilarMoviesByGenres(movies, movie).slice(0, SIMILAR_MOVIES_COUNT);
-              return (
-                <MovieDetails
-                  movie={movie}
-                  similarMovies={similarMovies}
-                />
-              );
-            }
+            this.renderMovieDetails(movies, props);
           }}>
           </Route>
           <Route exact path="/login">
-            <SignIn
-              onSubmit={onAuthSubmit}
-            />
+            {this.renderLoginPage(onAuthSubmit)}
           </Route>
-          <Route exact path="/my-list">
+          <PrivateRoute exact path="/my-list">
             {this.renderMyList(movies)}
-          </Route>
-          <Route exact path="/films/:id/review" render={(props) => {
-            if (!movies || !movies.length) {
-              return (<div></div>);
-            } else {
-              return (
-                <AddReview
-                  {...props}
-                  movie={activeMovie}
-                  activeMovieId={+props.match.params.id}
-                  onSubmit={onReviewSubmit}
-                />
-              );
-            }
+          </PrivateRoute>
+          <PrivateRoute exact path="/films/:id/review" render={(props) => {
+            this.renderAddReview(props, activeMovie, onReviewSubmit);
           }}>
-
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     );

@@ -1,18 +1,18 @@
-import React, {PureComponent} from "react";
-import {connect} from "react-redux";
+import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {ActionCreator as ActionCreatorCondition} from "../../reducer/condition/condition.js";
 import {ActionCreator as ActionCreatorPlayer} from "../../reducer/player/player.js";
+import {connect} from "react-redux";
+import GenresList from "../genres-list/genres-list.jsx";
 import {getMoviesByGenre, getUniqueGenres, getShowedMoviesCount} from "../../reducer/condition/selectors.js";
 import {getVideoPlayerState} from "../../reducer/player/selectors.js";
-import PropTypes from "prop-types";
-import MoviesList from "../movies-list/movies-list.jsx";
-import GenresList from "../genres-list/genres-list.jsx";
-import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
-import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {Link} from "react-router-dom";
 import MainLogo from "../main-logo/main-logo.jsx";
+import MoviesList from "../movies-list/movies-list.jsx";
+import PropTypes from "prop-types";
+import React, {PureComponent} from "react";
+import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import VideoPlayer from "../video-player/video-player.jsx";
+import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
 import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
 
 
@@ -62,6 +62,7 @@ class Main extends PureComponent {
 
             <header className="page-header movie-card__head">
               <MainLogo />
+
               {authorizationStatus === AuthorizationStatus.AUTH ?
                 <div className="user-block">
                   <div className="user-block__avatar">

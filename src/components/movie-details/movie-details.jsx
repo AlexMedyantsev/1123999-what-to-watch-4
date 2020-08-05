@@ -2,6 +2,7 @@ import {ActionCreator as ActionCreatorPlayer} from "../../reducer/player/player.
 import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {connect} from "react-redux";
 import {getVideoPlayerState} from "../../reducer/player/selectors.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 
 import {Link} from "react-router-dom";
 import MainLogo from "../main-logo/main-logo.jsx";
@@ -65,11 +66,18 @@ class MovieDetails extends PureComponent {
               <header className="page-header movie-card__head">
                 <MainLogo />
 
-                <div className="user-block">
-                  <div className="user-block__avatar">
-                    <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                {authorizationStatus === AuthorizationStatus.AUTH ?
+                  <div className="user-block">
+                    <div className="user-block__avatar">
+                      <Link to="/my-list">
+                        <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                  : <div className="user-block">
+                    <Link to="/login" className="user-block__link">Sign In</Link>
+                  </div>
+                }
               </header>
 
               <div className="movie-card__wrap">
@@ -102,7 +110,7 @@ class MovieDetails extends PureComponent {
 
                     {authorizationStatus === AuthorizationStatus.AUTH ?
                       <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> :
-                      ``
+                      <Link to={`/login`} className="btn movie-card__button">Add review</Link>
                     }
                   </div>
                 </div>
@@ -156,14 +164,15 @@ class MovieDetails extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     // Добавить селекторы или неймспейс
-    authorizationStatus: state.USER.authorizationStatus,
+    authorizationStatus: getAuthorizationStatus(status),
     isVideoPlayerOpened: getVideoPlayerState(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeVideoPlayerState: () => dispatch(ActionCreatorPlayer.changeVideoPlayerState()),
-  onFavoriteButtonClick: (id, status) => dispatch(Operation.postFavoriteMovie(id, status)),
+  onFavoriteButtonClick: (id, status) => dispatch(Operation.postFavoriteMovie(id, status), Operation.loadIsFavoriteMovies),
+
 });
 
 

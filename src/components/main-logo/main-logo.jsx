@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 
-export default class MyList extends PureComponent {
+export default class MainLogo extends PureComponent {
   constructor(props) {
     super(props);
   }
