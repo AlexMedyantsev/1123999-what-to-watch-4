@@ -28,14 +28,14 @@ class MovieDetails extends PureComponent {
     super(props);
 
     this.changeVideoPlayerStateHandler = this.changeVideoPlayerStateHandler.bind(this);
-    this.myListButtonClickhandler = this.myListButtonClickhandler.bind(this);
+    this.myListButtonClickHandler = this.myListButtonClickHandler.bind(this);
   }
 
   changeVideoPlayerStateHandler() {
     this.props.onChangeVideoPlayerState();
   }
 
-  myListButtonClickhandler() {
+  myListButtonClickHandler() {
     const {authorizationStatus, onFavoriteButtonClick, movie} = this.props;
     if (authorizationStatus === AuthorizationStatus.AUTH) {
       onFavoriteButtonClick(movie.id, !movie.isFavorite);
@@ -96,7 +96,7 @@ class MovieDetails extends PureComponent {
                       <span>Play</span>
                     </button>
 
-                    <button className="btn btn--list movie-card__button" onClick={this.myListButtonClickhandler} type="button">
+                    <button className="btn btn--list movie-card__button" onClick={this.myListButtonClickHandler} type="button">
                       {isFavorite ?
                         <svg viewBox="0 0 18 14" width="18" height="14">
                           <use xlinkHref="#in-list"></use>
@@ -163,16 +163,15 @@ class MovieDetails extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    // Добавить селекторы или неймспейс
-    authorizationStatus: getAuthorizationStatus(status),
+    authorizationStatus: getAuthorizationStatus(state),
     isVideoPlayerOpened: getVideoPlayerState(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeVideoPlayerState: () => dispatch(ActionCreatorPlayer.changeVideoPlayerState()),
-  onFavoriteButtonClick: (id, status) => dispatch(Operation.postFavoriteMovie(id, status), Operation.loadIsFavoriteMovies),
-
+  onFavoriteButtonClick: (id, status) => dispatch(Operation.postFavoriteMovie(id, status)),
+  loadFavoriteMovies: () => dispatch(Operation.loadFavoriteMovies()),
 });
 
 

@@ -28,7 +28,7 @@ const ActionCreator = {
       payload: movie,
     };
   },
-  loadIsFavoriteMovies: (movie) => {
+  loadFavoriteMovies: (movie) => {
     return {
       type: ActionType.LOAD_IS_FAVORITE_MOVIES,
       payload: movie,
@@ -55,10 +55,10 @@ const Operation = {
         dispatch(ActionCreator.loadPromoMovie(adaptMovie(responce.data)));
       });
   },
-  loadIsFavoriteMovies: () => (dispatch, getState, api) => {
-    return api.get(SERVER_ROUTE.POST_FAVORITE_MOVIE)
+  loadFavoriteMovies: () => (dispatch, getState, api) => {
+    return api.get(SERVER_ROUTE.GET_FAVORITE_MOVIE)
       .then((responce) => {
-        dispatch(ActionCreator.loadIsFavoriteMovies(adaptMovies(responce.data)));
+        dispatch(ActionCreator.loadFavoriteMovies(adaptMovies(responce.data)));
       });
   },
   postFavoriteMovie: (filmId, status) => (dispatch, getState, api) => {
@@ -68,6 +68,7 @@ const Operation = {
     })
       .then((response) => {
         dispatch(ActionCreator.updateMovie(...adaptMovies([response.data])));
+        dispatch(Operation.loadFavoriteMovies());
       });
   },
 };

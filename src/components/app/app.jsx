@@ -92,9 +92,9 @@ class App extends PureComponent {
           <Route exact path="/">
             {this.renderMain()}
           </Route>
-          <Route exact path="/films/:id" render={(props) => {
-            this.renderMovieDetails(movies, props);
-          }}>
+          <Route exact path="/films/:id" render={(props) => (
+            this.renderMovieDetails(movies, props)
+          )}>
           </Route>
           <Route exact path="/login">
             {this.renderLoginPage(onAuthSubmit)}
@@ -102,9 +102,9 @@ class App extends PureComponent {
           <PrivateRoute exact path="/my-list">
             {this.renderMyList(movies)}
           </PrivateRoute>
-          <PrivateRoute exact path="/films/:id/review" render={(props) => {
-            this.renderAddReview(props, activeMovie, onReviewSubmit);
-          }}>
+          <PrivateRoute exact path="/films/:id/review" render={(props) => (
+            this.renderAddReview(props, activeMovie, onReviewSubmit)
+          )}>
           </PrivateRoute>
         </Switch>
       </Router>

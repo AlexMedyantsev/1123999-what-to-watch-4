@@ -47,4 +47,5 @@ export const SERVER_ROUTE = {
   POST_COMMENT: `/comments/`,
   MOVIES: `/films`,
   POST_FAVORITE_MOVIE: `/favorite/`,
+  GET_FAVORITE_MOVIE: `/favorite/`,
 };
