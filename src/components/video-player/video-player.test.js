@@ -7,14 +7,17 @@ import configureStore from "redux-mock-store";
 
 const movie = {
   preview: `https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4`,
+  title: `The Legend`,
+  isPlaying: false,
 };
 
 const mockStore = configureStore([]);
 
 
 it(`VideoPlayer is rendered correctly`, () => {
-  const {preview} = movie;
+  const {preview, title, isPlaying} = movie;
 
+  const mockFunction = jest.fn();
   const store = mockStore({
   });
 
@@ -23,6 +26,10 @@ it(`VideoPlayer is rendered correctly`, () => {
         <BrowserRouter>
           <VideoPlayer
             movieLink={preview}
+            movieTitle={title}
+            isPlaying={isPlaying}
+            clickPlayHandler={mockFunction}
+            clickPauseHandler={mockFunction}
           />,
         </BrowserRouter>
       </Provider>, {

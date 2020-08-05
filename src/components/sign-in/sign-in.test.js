@@ -1,16 +1,30 @@
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import configureStore from "redux-mock-store";
+import NameSpace from "../../reducer/name-space.js";
 import React from "react";
-import renderer from "react-test-renderer";
-import AuthScreen from "./sign-in.jsx";
-
+import rerender from "react-test-renderer";
+import SignIn from "./sign-in.jsx";
+import {Provider} from "react-redux";
 
 const noop = () => {};
 
-it(`AuthScreen component render correctly`, () => {
-  const tree = renderer.create(
-      <AuthScreen
-        onSubmit={noop}
-      />
-  ).toJSON();
+const mockStore = configureStore([]);
 
-  expect(tree).toMatchSnapshot();
+describe(`SignIn test`, () => {
+  it(`SignIn renfer correctly`, () => {
+    const store = mockStore({
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
+      }
+    });
+    const tree = rerender.create(
+        <Provider store={store}>
+          <SignIn
+            onSubmit={noop}
+          />
+        </Provider>
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

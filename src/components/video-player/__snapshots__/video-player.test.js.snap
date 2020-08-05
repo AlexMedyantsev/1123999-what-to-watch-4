@@ -71,7 +71,9 @@ Array [
         </button>
         <div
           className="player__name"
-        />
+        >
+          The Legend
+        </div>
         <button
           className="player__full-screen"
           onClick={[Function]}

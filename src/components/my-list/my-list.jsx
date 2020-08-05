@@ -11,7 +11,7 @@ class MyList extends PureComponent {
   }
 
   render() {
-    const {movies, isFavoriteMovies} = this.props;
+    const {isFavoriteMovies} = this.props;
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -60,6 +60,7 @@ const mapStateToProps = (state) => ({
 
 MyList.propTypes = {
   movies: PropTypes.array.isRequired,
+  isFavoriteMovies: PropTypes.array.isRequired,
 };
 
 export {MyList};
