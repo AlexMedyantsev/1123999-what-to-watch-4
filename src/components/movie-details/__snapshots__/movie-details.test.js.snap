@@ -301,9 +301,8 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
       <div
         className="logo"
       >
-        <a
+        <div
           className="logo__link logo__link--light"
-          href="#"
         >
           <div
             className="logo"
@@ -330,7 +329,7 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
               </span>
             </a>
           </div>
-        </a>
+        </div>
       </div>
       <div
         className="copyright"

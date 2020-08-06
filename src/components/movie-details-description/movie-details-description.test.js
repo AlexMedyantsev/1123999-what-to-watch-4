@@ -19,7 +19,7 @@ const movie = {
   description: `description`,
   director: `director`,
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
-  runTime: 22,
+  runTime: `01h30m`,
   link: `movie-page.html`,
   id: 1,
   backgroundColor: `background_color`,
