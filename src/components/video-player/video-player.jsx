@@ -76,11 +76,12 @@ class VideoPlayer extends PureComponent {
     this.props.clickPauseHandler();
   }
 
-  _getCurrentPlayTime() {
+  _getCurrentPlayTimeLeft() {
     const video = this._videoRef.current;
+    const totalTime = this._getTotalDurationRaw();
 
     if (video) {
-      const currentPlayTime = formatSeconds(video.currentTime);
+      const currentPlayTime = formatSeconds(totalTime - video.currentTime);
       return currentPlayTime;
     } else {
       return ``;
@@ -117,9 +118,6 @@ class VideoPlayer extends PureComponent {
     if (progressBar) {
       progressBar.value = this.state.togglerValue;
     }
-  }
-
-  _progressBarClickHandler() {
   }
 
   _updateTogglerPosition() {
@@ -166,10 +164,10 @@ class VideoPlayer extends PureComponent {
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" ref={this._progressBarRef} onClick={this.progressBarClickHandler} value="0" max="100"></progress>
+              <progress className="player__progress" ref={this._progressBarRef} value="0" max="100"></progress>
               <div className="player__toggler" ref={this._togglerRef}>Toggler</div>
             </div>
-            <div className="player__time-value">{this._getCurrentPlayTime()}</div>
+            <div className="player__time-value">{this._getCurrentPlayTimeLeft()}</div>
           </div>
 
           <div className="player__controls-row">
