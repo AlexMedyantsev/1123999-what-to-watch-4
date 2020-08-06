@@ -27,4 +27,4 @@ export const getShowedMoviesCount = (state) => state[NameSpace.CONDITION].countM
 
 export const getActiveMovie = (state) => state[NameSpace.CONDITION].activeMovie;
 
-
+export const getCurrentGenre = (state) => state[NameSpace.CONDITION].currentGenre;

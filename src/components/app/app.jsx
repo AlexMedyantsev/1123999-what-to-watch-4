@@ -115,8 +115,8 @@ class App extends PureComponent {
 App.propTypes = {
   movies: PropTypes.array.isRequired,
   onAuthSubmit: PropTypes.func.isRequired,
-  activeMovie: PropTypes.object.isRequired,
-  promoMovie: PropTypes.object.isRequired,
+  activeMovie: PropTypes.object,
+  promoMovie: PropTypes.object,
   onReviewSubmit: PropTypes.func.isRequired,
 };
 

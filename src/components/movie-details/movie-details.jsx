@@ -10,7 +10,7 @@ import MainLogo from "../main-logo/main-logo.jsx";
 import {MovieDetailsTabs} from "../../utils/consts.js";
 import MoviesList from "../movies-list/movies-list.jsx";
 import MovieDetailsDescription from "../movie-details-description/movie-details-description.jsx";
-import {Operation} from "../../reducer/data/data.js";
+import {Operation as OperationData} from "../../reducer/data/data.js";
 
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
@@ -145,9 +145,9 @@ class MovieDetails extends PureComponent {
 
             <footer className="page-footer">
               <div className="logo">
-                <a href="#" className="logo__link logo__link--light">
+                <div className="logo__link logo__link--light">
                   <MainLogo />
-                </a>
+                </div>
               </div>
 
               <div className="copyright">
@@ -171,8 +171,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeVideoPlayerState: () => dispatch(ActionCreatorPlayer.changeVideoPlayerState()),
-  onFavoriteButtonClick: (id, status) => dispatch(Operation.postFavoriteMovie(id, status)),
-  loadFavoriteMovies: () => dispatch(Operation.loadFavoriteMovies()),
+  onFavoriteButtonClick: (id, status) => dispatch(OperationData.postFavoriteMovie(id, status)),
 });
 
 
@@ -192,7 +191,7 @@ MovieDetails.propTypes = {
     movieLink: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    runTime: PropTypes.number.isRequired,
+    runTime: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     isFavorite: PropTypes.boolean,
   }),

@@ -13,6 +13,7 @@ const ActionType = {
   LOAD_PROMO_MOVIES: `LOAD_PROMO_MOVIES`,
   LOAD_IS_FAVORITE_MOVIES: `LOAD_IS_FAVORITE_MOVIES`,
   UPDATE_MOVIE: `UPDATE_MOVIE`,
+  UPDATE_PROMO_MOVIE: `UPDATE_PROMO_MOVIE`,
 };
 
 const ActionCreator = {
@@ -37,6 +38,12 @@ const ActionCreator = {
   updateMovie: (movie) => {
     return {
       type: ActionType.UPDATE_MOVIE,
+      payload: movie,
+    };
+  },
+  updatePromoMovie: (movie) => {
+    return {
+      type: ActionType.UPDATE_PROMO_MOVIE,
       payload: movie,
     };
   }
@@ -68,6 +75,7 @@ const Operation = {
     })
       .then((response) => {
         dispatch(ActionCreator.updateMovie(...adaptMovies([response.data])));
+        dispatch(ActionCreator.updatePromoMovie(adaptMovie(response.data)));
         dispatch(Operation.loadFavoriteMovies());
       });
   },
@@ -89,6 +97,10 @@ const reducer = (state = initialState, action) => {
           }
           return movie;
         })
+      });
+    case ActionType.UPDATE_PROMO_MOVIE:
+      return extend(state, {
+        promoMovie: action.payload,
       });
   }
   return state;
