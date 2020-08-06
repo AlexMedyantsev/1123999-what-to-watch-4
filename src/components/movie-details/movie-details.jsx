@@ -3,6 +3,7 @@ import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {connect} from "react-redux";
 import {getVideoPlayerState} from "../../reducer/player/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import history from "../../history.js";
 
 import {Link} from "react-router-dom";
 import MainLogo from "../main-logo/main-logo.jsx";
