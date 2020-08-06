@@ -2,22 +2,26 @@ import {ActionCreator as ActionCreatorPlayer} from "../../reducer/player/player.
 import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {connect} from "react-redux";
 import {getVideoPlayerState} from "../../reducer/player/selectors.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import history from "../../history.js";
 
 import {Link} from "react-router-dom";
 import MainLogo from "../main-logo/main-logo.jsx";
 import {MovieDetailsTabs} from "../../utils/consts.js";
 import MoviesList from "../movies-list/movies-list.jsx";
 import MovieDetailsDescription from "../movie-details-description/movie-details-description.jsx";
-import {Operation} from "../../reducer/data/data.js";
+import {Operation as OperationData} from "../../reducer/data/data.js";
 
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
+import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
 import VideoPlayer from "../video-player/video-player.jsx";
 
 
 const MoviesListWrapped = withActiveItem(MoviesList);
+const VideoPlayerWrapped = withVideoPlay(VideoPlayer);
 const MoviesDetailsDescriptionWrapped = withActiveItem(MovieDetailsDescription, MovieDetailsTabs.OVERVIEW);
 
 class MovieDetails extends PureComponent {
@@ -25,14 +29,14 @@ class MovieDetails extends PureComponent {
     super(props);
 
     this.changeVideoPlayerStateHandler = this.changeVideoPlayerStateHandler.bind(this);
-    this.myListButtonClickhandler = this.myListButtonClickhandler.bind(this);
+    this.myListButtonClickHandler = this.myListButtonClickHandler.bind(this);
   }
 
   changeVideoPlayerStateHandler() {
     this.props.onChangeVideoPlayerState();
   }
 
-  myListButtonClickhandler() {
+  myListButtonClickHandler() {
     const {authorizationStatus, onFavoriteButtonClick, movie} = this.props;
     if (authorizationStatus === AuthorizationStatus.AUTH) {
       onFavoriteButtonClick(movie.id, !movie.isFavorite);
@@ -47,8 +51,9 @@ class MovieDetails extends PureComponent {
 
     return <React.Fragment>
       {isVideoPlayerOpened ?
-        <VideoPlayer
+        <VideoPlayerWrapped
           movieLink={movieLink}
+          movieTitle={title}
         /> :
         <div>
           <section className="movie-card movie-card--full">
@@ -62,11 +67,18 @@ class MovieDetails extends PureComponent {
               <header className="page-header movie-card__head">
                 <MainLogo />
 
-                <div className="user-block">
-                  <div className="user-block__avatar">
-                    <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                {authorizationStatus === AuthorizationStatus.AUTH ?
+                  <div className="user-block">
+                    <div className="user-block__avatar">
+                      <Link to="/my-list">
+                        <img src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                      </Link>
+                    </div>
                   </div>
-                </div>
+                  : <div className="user-block">
+                    <Link to="/login" className="user-block__link">Sign In</Link>
+                  </div>
+                }
               </header>
 
               <div className="movie-card__wrap">
@@ -79,12 +91,13 @@ class MovieDetails extends PureComponent {
 
                   <div className="movie-card__buttons">
                     <button className="btn btn--play movie-card__button" onClick={this.changeVideoPlayerStateHandler} type="button">
-                      <svg viewBox="0 0 19 19" width="19" height="19">
-                        <use xlinkHref="#play-s"></use>
+                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
                       </svg>
                       <span>Play</span>
                     </button>
-                    <button className="btn btn--list movie-card__button" onClick={this.myListButtonClickhandler} type="button">
+
+                    <button className="btn btn--list movie-card__button" onClick={this.myListButtonClickHandler} type="button">
                       {isFavorite ?
                         <svg viewBox="0 0 18 14" width="18" height="14">
                           <use xlinkHref="#in-list"></use>
@@ -98,7 +111,7 @@ class MovieDetails extends PureComponent {
 
                     {authorizationStatus === AuthorizationStatus.AUTH ?
                       <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link> :
-                      ``
+                      <Link to={`/login`} className="btn movie-card__button">Add review</Link>
                     }
                   </div>
                 </div>
@@ -132,11 +145,9 @@ class MovieDetails extends PureComponent {
 
             <footer className="page-footer">
               <div className="logo">
-                <a href="main.html" className="logo__link logo__link--light">
-                  <span className="logo__letter logo__letter--1">W</span>
-                  <span className="logo__letter logo__letter--2">T</span>
-                  <span className="logo__letter logo__letter--3">W</span>
-                </a>
+                <div className="logo__link logo__link--light">
+                  <MainLogo />
+                </div>
               </div>
 
               <div className="copyright">
@@ -153,15 +164,14 @@ class MovieDetails extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    // Добавить селекторы или неймспейс
-    authorizationStatus: state.USER.authorizationStatus,
+    authorizationStatus: getAuthorizationStatus(state),
     isVideoPlayerOpened: getVideoPlayerState(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeVideoPlayerState: () => dispatch(ActionCreatorPlayer.changeVideoPlayerState()),
-  onFavoriteButtonClick: (id, status) => dispatch(Operation.postFavoriteMovie(id, status)),
+  onFavoriteButtonClick: (id, status) => dispatch(OperationData.postFavoriteMovie(id, status)),
 });
 
 
@@ -181,7 +191,7 @@ MovieDetails.propTypes = {
     movieLink: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    runTime: PropTypes.number.isRequired,
+    runTime: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     isFavorite: PropTypes.boolean,
   }),

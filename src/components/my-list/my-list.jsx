@@ -2,19 +2,16 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MainLogo from "../main-logo/main-logo.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
+import {connect} from "react-redux";
+import {getIsFavoriteMovies} from "../../reducer/data/selectors.js";
 
-export default class MyList extends PureComponent {
+class MyList extends PureComponent {
   constructor(props) {
     super(props);
   }
 
-  getFavoriteMovies(movies) {
-    const isFavoriteMovies = movies.filter((movie) => movie.isFavorite);
-    return isFavoriteMovies;
-  }
-
   render() {
-    const {movies} = this.props;
+    const {isFavoriteMovies} = this.props;
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -34,7 +31,7 @@ export default class MyList extends PureComponent {
 
           <div className="catalog__movies-list">
             <MoviesList
-              movies={this.getFavoriteMovies(movies)}
+              movies={isFavoriteMovies}
             />
           </div>
         </section>
@@ -57,6 +54,14 @@ export default class MyList extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  isFavoriteMovies: getIsFavoriteMovies(state),
+});
+
 MyList.propTypes = {
   movies: PropTypes.array.isRequired,
+  isFavoriteMovies: PropTypes.array.isRequired,
 };
+
+export {MyList};
+export default connect(mapStateToProps)(MyList);

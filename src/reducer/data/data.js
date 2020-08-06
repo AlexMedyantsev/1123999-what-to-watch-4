@@ -1,21 +1,19 @@
 import {extend} from "../../utils/common.js";
 import {adaptMovie, adaptMovies} from '../../adapters/movies.js';
+import {SERVER_ROUTE} from "../../utils/consts.js";
 
 const initialState = {
   movies: [],
+  isFavoriteMovies: [],
   promoMovie: null,
 };
 
 const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
   LOAD_PROMO_MOVIES: `LOAD_PROMO_MOVIES`,
+  LOAD_IS_FAVORITE_MOVIES: `LOAD_IS_FAVORITE_MOVIES`,
   UPDATE_MOVIE: `UPDATE_MOVIE`,
-};
-
-const SERVER_ROUTE = {
-  login: `/login`,
-  postComment: `/comments/`,
-  postFavoriteMovie: `/favorite/`,
+  UPDATE_PROMO_MOVIE: `UPDATE_PROMO_MOVIE`,
 };
 
 const ActionCreator = {
@@ -31,9 +29,21 @@ const ActionCreator = {
       payload: movie,
     };
   },
+  loadFavoriteMovies: (movie) => {
+    return {
+      type: ActionType.LOAD_IS_FAVORITE_MOVIES,
+      payload: movie,
+    };
+  },
   updateMovie: (movie) => {
     return {
       type: ActionType.UPDATE_MOVIE,
+      payload: movie,
+    };
+  },
+  updatePromoMovie: (movie) => {
+    return {
+      type: ActionType.UPDATE_PROMO_MOVIE,
       payload: movie,
     };
   }
@@ -41,24 +51,32 @@ const ActionCreator = {
 
 const Operation = {
   loadMovies: () => (dispatch, getState, api) => {
-    return api.get(`/films`)
+    return api.get(SERVER_ROUTE.MOVIES)
       .then((responce) => {
         dispatch(ActionCreator.loadMovies(adaptMovies(responce.data)));
       });
   },
   loadPromoMovie: () => (dispatch, getState, api) => {
-    return api.get(`/films/promo`)
+    return api.get(SERVER_ROUTE.PROMO_MOVIE)
       .then((responce) => {
         dispatch(ActionCreator.loadPromoMovie(adaptMovie(responce.data)));
       });
   },
+  loadFavoriteMovies: () => (dispatch, getState, api) => {
+    return api.get(SERVER_ROUTE.GET_FAVORITE_MOVIE)
+      .then((responce) => {
+        dispatch(ActionCreator.loadFavoriteMovies(adaptMovies(responce.data)));
+      });
+  },
   postFavoriteMovie: (filmId, status) => (dispatch, getState, api) => {
-    return api.post(`${SERVER_ROUTE.postFavoriteMovie}${filmId}/${+status}`, {
+    return api.post(`${SERVER_ROUTE.POST_FAVORITE_MOVIE}${filmId}/${+status}`, {
       "film_id": filmId,
       "status": +status,
     })
       .then((response) => {
         dispatch(ActionCreator.updateMovie(...adaptMovies([response.data])));
+        dispatch(ActionCreator.updatePromoMovie(adaptMovie(response.data)));
+        dispatch(Operation.loadFavoriteMovies());
       });
   },
 };
@@ -69,6 +87,8 @@ const reducer = (state = initialState, action) => {
       return extend(state, {movies: action.payload});
     case ActionType.LOAD_PROMO_MOVIES:
       return extend(state, {promoMovie: action.payload});
+    case ActionType.LOAD_IS_FAVORITE_MOVIES:
+      return extend(state, {isFavoriteMovies: action.payload});
     case ActionType.UPDATE_MOVIE:
       return extend(state, {
         movies: state.movies.map((movie) => {
@@ -77,6 +97,10 @@ const reducer = (state = initialState, action) => {
           }
           return movie;
         })
+      });
+    case ActionType.UPDATE_PROMO_MOVIE:
+      return extend(state, {
+        promoMovie: action.payload,
       });
   }
   return state;

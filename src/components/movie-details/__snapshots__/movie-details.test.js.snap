@@ -52,16 +52,13 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
         <div
           className="user-block"
         >
-          <div
-            className="user-block__avatar"
+          <a
+            className="user-block__link"
+            href="/login"
+            onClick={[Function]}
           >
-            <img
-              alt="User avatar"
-              height="63"
-              src="/img/avatar.jpg"
-              width="63"
-            />
-          </div>
+            Sign In
+          </a>
         </div>
       </header>
       <div
@@ -98,12 +95,17 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
               type="button"
             >
               <svg
+                fill="none"
                 height="19"
                 viewBox="0 0 19 19"
                 width="19"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <use
-                  xlinkHref="#play-s"
+                <path
+                  clipRule="evenodd"
+                  d="M0 0L19 9.5L0 19V0Z"
+                  fill="#EEE5B5"
+                  fillRule="evenodd"
                 />
               </svg>
               <span>
@@ -128,7 +130,13 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
                 My list
               </span>
             </button>
-            
+            <a
+              className="btn movie-card__button"
+              href="/login"
+              onClick={[Function]}
+            >
+              Add review
+            </a>
           </div>
         </div>
       </div>
@@ -293,26 +301,35 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
       <div
         className="logo"
       >
-        <a
+        <div
           className="logo__link logo__link--light"
-          href="main.html"
         >
-          <span
-            className="logo__letter logo__letter--1"
+          <div
+            className="logo"
           >
-            W
-          </span>
-          <span
-            className="logo__letter logo__letter--2"
-          >
-            T
-          </span>
-          <span
-            className="logo__letter logo__letter--3"
-          >
-            W
-          </span>
-        </a>
+            <a
+              className="logo__link"
+              href="/"
+              onClick={[Function]}
+            >
+              <span
+                className="logo__letter logo__letter--1"
+              >
+                W
+              </span>
+              <span
+                className="logo__letter logo__letter--2"
+              >
+                T
+              </span>
+              <span
+                className="logo__letter logo__letter--3"
+              >
+                W
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
       <div
         className="copyright"

@@ -7,7 +7,6 @@ Array [
   >
     <video
       className="player__video"
-      controls={true}
       poster="img/player-poster.jpg"
       src="https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4"
     />
@@ -18,6 +17,83 @@ Array [
     >
       Exit
     </button>
+    <div
+      className="player__controls"
+    >
+      <div
+        className="player__controls-row"
+      >
+        <div
+          className="player__time"
+        >
+          <progress
+            className="player__progress"
+            max="100"
+            value="0"
+          />
+          <div
+            className="player__toggler"
+          >
+            Toggler
+          </div>
+        </div>
+        <div
+          className="player__time-value"
+        >
+          
+        </div>
+      </div>
+      <div
+        className="player__controls-row"
+      >
+        <button
+          className="player__play"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            fill="none"
+            height="19"
+            viewBox="0 0 19 19"
+            width="19"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              clipRule="evenodd"
+              d="M0 0L19 9.5L0 19V0Z"
+              fill="#EEE5B5"
+              fillRule="evenodd"
+            />
+          </svg>
+          <span>
+            Play
+          </span>
+        </button>
+        <div
+          className="player__name"
+        >
+          The Legend
+        </div>
+        <button
+          className="player__full-screen"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            height="27"
+            viewBox="0 0 27 27"
+            width="27"
+          >
+            <use
+              xlinkHref="#full-screen"
+            />
+          </svg>
+          <span>
+            Full screen
+          </span>
+        </button>
+      </div>
+    </div>
   </div>,
   ",",
 ]

@@ -1,15 +1,10 @@
 import {extend} from "../../utils/common.js";
 import history from "../../history.js";
+import {SERVER_ROUTE} from "../../utils/consts.js";
 
 const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
   AUTH: `AUTH`
-};
-
-const SERVER_ROUTE = {
-  login: `/login`,
-  postComment: `/comments/`,
-  postFavoriteMovie: `/favorite/`,
 };
 
 const initialState = {
@@ -41,7 +36,7 @@ const reducer = (state = initialState, action) => {
 
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
-    return api.get(SERVER_ROUTE.login)
+    return api.get(SERVER_ROUTE.LOGIN)
       .then(() => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       })
@@ -51,7 +46,7 @@ const Operation = {
   },
 
   login: (authData) => (dispatch, getState, api) => {
-    return api.post(SERVER_ROUTE.login, {
+    return api.post(SERVER_ROUTE.LOGIN, {
       email: authData.login,
       password: authData.password,
     })
@@ -62,7 +57,7 @@ const Operation = {
   },
 
   postComment: (commentData, movieId) => (dispatch, getState, api) => {
-    return api.post(SERVER_ROUTE.postComment + movieId, {
+    return api.post(SERVER_ROUTE.POST_COMMENT + movieId, {
       rating: commentData.rating,
       comment: commentData.comment,
     })

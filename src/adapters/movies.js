@@ -16,6 +16,14 @@ const getLevel = (score) => {
   return level;
 };
 
+const convertMinutesToHoursMinutes = (minutesCount) => {
+  let hours = Math.floor(minutesCount / 60);
+  let minutes = minutesCount % 60;
+  hours = hours < 10 ? `0` + hours : hours;
+  minutes = minutes < 10 ? `0` + minutes : minutes;
+  return hours + `:` + minutes;
+};
+
 export const adaptMovies = (moviesFromServer) => {
   return moviesFromServer.map((movie) => {
     return ({
@@ -33,7 +41,7 @@ export const adaptMovies = (moviesFromServer) => {
       description: movie.description,
       director: movie.director,
       starring: movie.starring,
-      runTime: movie.run_time,
+      runTime: convertMinutesToHoursMinutes(movie.run_time),
       link: `movie-page.html`,
       id: movie.id,
       backgroundColor: movie.background_color,
@@ -58,7 +66,7 @@ export const adaptMovie = (movie) => {
     description: movie.description,
     director: movie.director,
     starring: movie.starring,
-    runTime: movie.run_time,
+    runTime: convertMinutesToHoursMinutes(movie.run_time),
     link: `movie-page.html`,
     id: movie.id,
     backgroundColor: movie.background_color,

@@ -67,7 +67,7 @@ SmallMovieCard.propTypes = {
     starring: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    runTime: PropTypes.number.isRequired,
+    runTime: PropTypes.string.isRequired,
     id: PropTypes.number,
     isFavorite: PropTypes.boolean,
   }).isRequired,

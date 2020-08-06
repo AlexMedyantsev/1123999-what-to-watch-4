@@ -37,7 +37,7 @@ const movies = [
     description: `description`,
     director: `director`,
     starring: [`starring`, `next`],
-    runTime: 22,
+    runTime: `01h30m`,
     link: `movie-page.html`,
     id: 1,
     backgroundColor: `background_color`,
