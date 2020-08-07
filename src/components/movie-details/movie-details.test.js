@@ -5,11 +5,14 @@ import {Router} from "react-router-dom";
 import history from "../../history.js";
 
 import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
 import {GENRES, SHOWING_MOVIES_COUNT_ON_START} from "../../utils/consts.js";
 import AuthorizationStatus from "../../reducer/user/user.js";
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
-const mockStore = configureStore([]);
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
 
 const movies = [
   {
@@ -57,6 +60,19 @@ const movieAsObject = {
   isFavorite: true,
 };
 
+const comments = [
+  {
+    id: 1,
+    user: {
+      id: 13,
+      name: `Zak`,
+    },
+    rating: 9,
+    comment: `Unfortunately we don't have a reliable way to tell the true ratings of a movie.`,
+    date: `2020-07-19T16:06:01.831Z`,
+  }
+];
+
 describe(`Movie Details Snapshot`, () => {
   it(`Should MovieDetails render correctly`, () => {
     const store = mockStore({
@@ -72,6 +88,9 @@ describe(`Movie Details Snapshot`, () => {
       },
       PLAYER: {
         isVideoPlayerOpened: false,
+      },
+      COMMENTS: {
+        comments,
       }
     });
     const tree = renderer

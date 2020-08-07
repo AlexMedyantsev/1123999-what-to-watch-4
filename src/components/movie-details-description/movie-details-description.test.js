@@ -24,8 +24,20 @@ const movie = {
   id: 1,
   backgroundColor: `background_color`,
   isFavorite: `is_favorite`
-}
-  ;
+};
+
+const comments = [
+  {
+    id: 1,
+    user: {
+      id: 13,
+      name: `Zak`,
+    },
+    rating: 9,
+    comment: `Unfortunately we don't have a reliable way to tell the true ratings of a movie.`,
+    date: `2020-07-19T16:06:01.831Z`,
+  }
+];
 
 describe(`MovieCardDescription render`, () => {
   it(`MovieCardDescription render`, () => {
@@ -35,6 +47,7 @@ describe(`MovieCardDescription render`, () => {
           movie={movie}
           activeItem={`Overview`}
           setActiveItem={handlerSetActive}
+          comments={comments}
         />
     ).toJSON();
 

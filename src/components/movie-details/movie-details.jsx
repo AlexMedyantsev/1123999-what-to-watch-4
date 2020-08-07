@@ -3,6 +3,7 @@ import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {connect} from "react-redux";
 import {getVideoPlayerState} from "../../reducer/player/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {getComments} from "../../reducer/comments/selectors.js";
 import history from "../../history.js";
 
 import {Link} from "react-router-dom";
@@ -11,6 +12,7 @@ import {MovieDetailsTabs} from "../../utils/consts.js";
 import MoviesList from "../movies-list/movies-list.jsx";
 import MovieDetailsDescription from "../movie-details-description/movie-details-description.jsx";
 import {Operation as OperationData} from "../../reducer/data/data.js";
+import {Operation as OperationComment} from "../../reducer/comments/comments.js";
 
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
@@ -45,8 +47,12 @@ class MovieDetails extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    this.props.onLoadComments(this.props.movie.id);
+  }
+
   render() {
-    const {movie, similarMovies, isVideoPlayerOpened, authorizationStatus} = this.props;
+    const {movie, similarMovies, isVideoPlayerOpened, authorizationStatus, comments} = this.props;
     const {bgSrc, genre, posterSrc, title, year, id, isFavorite, movieLink} = movie;
 
     return <React.Fragment>
@@ -126,6 +132,7 @@ class MovieDetails extends PureComponent {
                 <div className="movie-card__desc">
                   <MoviesDetailsDescriptionWrapped
                     movie={movie}
+                    comments={comments}
                   />
                 </div>
               </div>
@@ -166,12 +173,14 @@ const mapStateToProps = (state) => {
   return {
     authorizationStatus: getAuthorizationStatus(state),
     isVideoPlayerOpened: getVideoPlayerState(state),
+    comments: getComments(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onChangeVideoPlayerState: () => dispatch(ActionCreatorPlayer.changeVideoPlayerState()),
   onFavoriteButtonClick: (id, status) => dispatch(OperationData.postFavoriteMovie(id, status)),
+  onLoadComments: (id) => dispatch(OperationComment.getComments(id)),
 });
 
 
@@ -195,9 +204,11 @@ MovieDetails.propTypes = {
     id: PropTypes.number.isRequired,
     isFavorite: PropTypes.boolean,
   }),
+  comments: PropTypes.array.isRequired,
   similarMovies: PropTypes.array,
   isVideoPlayerOpened: PropTypes.bool.isRequired,
   onChangeVideoPlayerState: PropTypes.func.isRequired,
+  onLoadComments: PropTypes.func.isRequired,
 };
 
 export {MovieDetails};

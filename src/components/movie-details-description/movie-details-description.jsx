@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import TabsOverview from "../tabs/tabs-overview.jsx";
@@ -7,13 +7,14 @@ import TabsReviews from "../tabs/tabs-reviews.jsx";
 import {MovieDetailsTabs} from "../../utils/consts.js";
 
 
-export default class MovieDetailsDescription extends React.PureComponent {
+export default class MovieDetailsDescription extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   render() {
     const {movie, setActiveItem} = this.props;
+
     switch (this.props.activeItem) {
       case MovieDetailsTabs.OVERVIEW:
         return (
@@ -46,8 +47,9 @@ export default class MovieDetailsDescription extends React.PureComponent {
             tab={MovieDetailsTabs.REVIEWS}
             onTabClick={setActiveItem}
           >
-            {<TabsReviews>
-            </TabsReviews>}
+            {<TabsReviews
+              comments={this.props.comments}
+            />}
           </Tabs>
         );
     }
@@ -59,4 +61,5 @@ MovieDetailsDescription.propTypes = {
   movie: PropTypes.object.isRequired,
   setActiveItem: PropTypes.func.isRequired,
   activeItem: PropTypes.string.isRequired,
+  comments: PropTypes.array.isRequired,
 };

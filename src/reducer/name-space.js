@@ -3,6 +3,7 @@ const NameSpace = {
   CONDITION: `CONDITION`,
   USER: `USER`,
   PLAYER: `PLAYER`,
+  COMMENTS: `COMMENTS`,
 };
 
 export default NameSpace;

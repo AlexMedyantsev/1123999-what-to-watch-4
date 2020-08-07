@@ -22,6 +22,12 @@ const ActionCreator = {
       payload: status,
     };
   },
+  loadComments: (comments) => {
+    return {
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: comments,
+    };
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -63,6 +69,13 @@ const Operation = {
     })
       .then(() => {
         history.goBack();
+      });
+  },
+
+  loadComments: (movieId) => (dispatch, getState, api) => {
+    return api.get(SERVER_ROUTE.POST_COMMENT + movieId)
+      .then((response) => {
+        dispatch(ActionCreator.loadComments([response.data]));
       });
   },
 };
