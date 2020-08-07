@@ -24,11 +24,6 @@ class App extends PureComponent {
 
   }
 
-  getMovie(movies, props) {
-    const movie = movies.find((movieItem)=> movieItem.id === +props.match.params.id);
-    return movie;
-  }
-
   renderMain() {
     const {movies, promoMovie} = this.props;
     return (

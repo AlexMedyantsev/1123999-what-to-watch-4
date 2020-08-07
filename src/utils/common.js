@@ -10,8 +10,6 @@ export const getUniqueArrayElements = (array) => {
   return result;
 };
 
-export const getMoviesByFilter = (array, filterType) => array.filter((item) => item.genres.find((it) => it === filterType));
-
 export const getSimilarMoviesByGenres = (moviesArray, openedMovie) => {
   const moviesByGenre = [];
   if (moviesArray && openedMovie) {

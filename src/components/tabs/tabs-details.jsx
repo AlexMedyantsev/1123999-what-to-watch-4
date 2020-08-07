@@ -40,7 +40,7 @@ const TabsDetails = (props) => {
 
 TabsDetails.propTypes = {
   movie: PropTypes.shape({
-    genre: PropTypes.array.isRequired,
+    genre: PropTypes.string.isRequired,
     runTime: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
     director: PropTypes.array.isRequired,
