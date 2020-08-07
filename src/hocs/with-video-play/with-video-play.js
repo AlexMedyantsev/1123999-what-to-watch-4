@@ -7,10 +7,13 @@ const withVideoPlay = (Component) => {
 
       this.state = {
         isPlaying: false,
+        secondsPlayed: 0,
+        togglerValue: 0,
       };
 
       this.clickPlayHandler = this.clickPlayHandler.bind(this);
       this.clickPauseHandler = this.clickPauseHandler.bind(this);
+      this.setIntervalForVideoPLayer = this.setIntervalForVideoPLayer.bind(this);
     }
 
     clickPlayHandler() {
@@ -21,13 +24,40 @@ const withVideoPlay = (Component) => {
       this.setState({isPlaying: false});
     }
 
+    _getTotalDurationRaw(videoRef) {
+      if (videoRef) {
+        return Math.floor(videoRef.duration);
+      } else {
+        return ``;
+      }
+    }
+
+    calculateOnePercent(videoRef) {
+      if (this.state.isPlaying) {
+        const onePercent = 100 / this._getTotalDurationRaw(videoRef);
+        return onePercent;
+      } else {
+        const onePercent = 0;
+        return onePercent;
+      }
+    }
+
+    setIntervalForVideoPLayer(videoRef) {
+      if (videoRef) {
+        setInterval(() => this.setState({secondsPlayed: this.state.secondsPlayed, togglerValue: this.state.togglerValue + this.calculateOnePercent(videoRef)}), 1000);
+      }
+    }
+
     render() {
       return (
         <Component
           {...this.props}
           isPlaying={this.state.isPlaying}
+          secondsPlayed={this.state.secondsPlayed}
+          togglerValue={this.state.togglerValue}
           clickPlayHandler={this.clickPlayHandler}
           clickPauseHandler={this.clickPauseHandler}
+          setIntervalForVideoPLayer={this.setIntervalForVideoPLayer}
         />
       );
     }

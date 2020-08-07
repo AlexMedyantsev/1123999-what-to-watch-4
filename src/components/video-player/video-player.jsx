@@ -20,14 +20,12 @@ class VideoPlayer extends PureComponent {
     this._togglerRef = createRef();
     this._progressBarRef = createRef();
     this._videoContainerRef = createRef();
-
-    this.state = {secondsPlayed: 0, togglerValue: 0};
   }
 
   componentDidMount() {
     if (this._videoRef) {
       const video = this._videoRef.current;
-      this.interval = setInterval(() => this.setState({secondsPlayed: this.state.secondsPlayed, togglerValue: this.state.togglerValue + this.calculateOnePercent()}), 1000);
+      this.interval = this.props.setIntervalForVideoPLayer(this._videoRef.current);
       video.src = this.props.movieLink;
     }
     document.addEventListener(`keydown`, this._handleEscPress);
@@ -88,16 +86,6 @@ class VideoPlayer extends PureComponent {
     }
   }
 
-  calculateOnePercent() {
-    if (this.props.isPlaying) {
-      const onePercent = 100 / this._getTotalDurationRaw();
-      return onePercent;
-    } else {
-      const onePercent = 0;
-      return onePercent;
-    }
-  }
-
   _toggleFullScreen() {
     const videoContainer = this._videoContainerRef.current;
 
@@ -116,7 +104,7 @@ class VideoPlayer extends PureComponent {
     const progressBar = this._progressBarRef.current;
 
     if (progressBar) {
-      progressBar.value = this.state.togglerValue;
+      progressBar.value = this.props.togglerValue;
     }
   }
 
@@ -124,7 +112,7 @@ class VideoPlayer extends PureComponent {
     const toggler = this._togglerRef.current;
 
     if (toggler) {
-      toggler.style.left = this.state.togglerValue + `%`;
+      toggler.style.left = this.props.togglerValue + `%`;
     }
   }
 
@@ -210,6 +198,8 @@ VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   clickPlayHandler: PropTypes.func.isRequired,
   clickPauseHandler: PropTypes.func.isRequired,
+  setIntervalForVideoPLayer: PropTypes.func.isRequired,
+  togglerValue: PropTypes.number.isRequired,
 };
 
 

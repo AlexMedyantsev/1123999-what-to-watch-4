@@ -3,13 +3,13 @@ const getLevel = (score) => {
 
   if (score < 3) {
     level = `Bad`;
-  } else if (score >= 3 && score < 5) {
+  } if (score >= 3 && score < 5) {
     level = `Normal`;
-  } else if (score >= 5 && score < 8) {
+  } if (score >= 5 && score < 8) {
     level = `Good`;
-  } else if (score >= 8 && score < 10) {
+  } if (score >= 8 && score < 10) {
     level = `Very Good`;
-  } else if (score === 10) {
+  } if (score === 10) {
     level = `Awesome`;
   }
 
