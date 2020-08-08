@@ -55,7 +55,6 @@ const Operation = {
   sendComment: ({movieId, rating, comment}) => (dispatch, getState, api) => {
     return api.post(`/comments/${movieId}`, {rating, comment})
       .then(() => {
-        history.push(`${SERVER_ROUTE.MOVIES}/${movieId}`);
       });
   },
   getComments: (movieId) => (dispatch, getState, api) => {

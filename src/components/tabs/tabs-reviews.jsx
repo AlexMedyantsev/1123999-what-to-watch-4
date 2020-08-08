@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {columnNumbers} from "../../utils/consts.js";
 
 const formatCommentTime = (commentDate) => {
   const d = Date.parse(commentDate);
@@ -8,11 +9,6 @@ const formatCommentTime = (commentDate) => {
   const day = new Intl.DateTimeFormat(`en`, {day: `2-digit`}).format(d);
 
   return month + ` ` + day + `, ` + year;
-};
-
-const columnNumbers = {
-  first: `first`,
-  second: `second`,
 };
 
 class TabsReviews extends PureComponent {

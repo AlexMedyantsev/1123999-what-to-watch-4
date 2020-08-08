@@ -49,3 +49,8 @@ export const SERVER_ROUTE = {
   POST_FAVORITE_MOVIE: `/favorite/`,
   GET_FAVORITE_MOVIE: `/favorite/`,
 };
+
+export const columnNumbers = {
+  first: `first`,
+  second: `second`,
+};

@@ -1,5 +1,4 @@
 import {extend} from "../../utils/common.js";
-import history from "../../history.js";
 import {SERVER_ROUTE} from "../../utils/consts.js";
 
 const AuthorizationStatus = {
@@ -57,7 +56,6 @@ const Operation = {
       password: authData.password,
     })
       .then(() => {
-        history.push(`/`);
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       });
   },
@@ -68,7 +66,6 @@ const Operation = {
       comment: commentData.comment,
     })
       .then(() => {
-        history.goBack();
       });
   },
 

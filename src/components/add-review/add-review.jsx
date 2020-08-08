@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MainLogo from "../main-logo/main-logo.jsx";
+import history from "../../history.js";
 
 
 export default class AddReview extends React.PureComponent {
@@ -25,6 +26,7 @@ export default class AddReview extends React.PureComponent {
       },
       activeMovieId
       );
+      history.goBack();
     }
   }
 

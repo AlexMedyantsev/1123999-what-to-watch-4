@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MainLogo from "../main-logo/main-logo.jsx";
+import history from "../../history.js";
 
 export default class SignIn extends React.PureComponent {
   constructor(props) {
@@ -21,6 +22,8 @@ export default class SignIn extends React.PureComponent {
       login: this.loginRef.current.value,
       password: this.passwordRef.current.value,
     });
+
+    history.push(`/`);
   }
 
   render() {
