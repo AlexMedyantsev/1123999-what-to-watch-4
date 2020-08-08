@@ -31,6 +31,7 @@ it(`VideoPlayer is rendered correctly`, () => {
             clickPlayHandler={mockFunction}
             clickPauseHandler={mockFunction}
             setIntervalForVideoPLayer={mockFunction}
+            togglerValue={1}
           />,
         </BrowserRouter>
       </Provider>, {
