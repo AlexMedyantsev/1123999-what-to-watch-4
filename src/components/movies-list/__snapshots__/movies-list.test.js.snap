@@ -1,28 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MovieList snapshot Should movies list render correctly 1`] = `
-<article
-  className="small-movie-card catalog__movies-card"
-  onClick={[Function]}
->
-  <div
-    className="small-movie-card__image"
-    onMouseEnter={[Function]}
-    onMouseOut={[Function]}
+Array [
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
   >
-    <video>
-      Sorry, this preview is not available in your browser
-    </video>
-  </div>
-  <h3
-    className="small-movie-card__title"
-  >
-    <a
-      className="small-movie-card__link"
-      href="movie-page.html"
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
     >
-      Name
-    </a>
-  </h3>
-</article>
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Name
+      </a>
+    </h3>
+  </article>,
+  <article
+    className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+      onMouseEnter={[Function]}
+      onMouseOut={[Function]}
+    >
+      <video>
+        Sorry, this preview is not available in your browser
+      </video>
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Name
+      </a>
+    </h3>
+  </article>,
+]
 `;

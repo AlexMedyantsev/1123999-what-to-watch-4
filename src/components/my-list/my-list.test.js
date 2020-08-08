@@ -1,14 +1,13 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import MoviesList from "./movies-list.jsx";
+import rerender from "react-test-renderer";
+import MyList from "./my-list.jsx";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {GENRES, SHOWING_MOVIES_COUNT_ON_START} from "../../utils/consts.js";
+import AuthorizationStatus from "../../reducer/user/user.js";
+import {BrowserRouter} from "react-router-dom";
 
-import {GENRES} from "../../utils/consts.js";
-
-const mockStore = configureStore([]);
-
-const moviesMock = [
+const movies = [
   {
     image: `a`,
     posterSrc: `a`,
@@ -24,11 +23,11 @@ const moviesMock = [
     description: `description`,
     director: `director`,
     starring: [`starring`, `next`],
-    runTime: `01h23m`,
+    runTime: `01h30m`,
     link: `movie-page.html`,
     id: 1,
     backgroundColor: `background_color`,
-    isFavorite: true,
+    isFavorite: true
   },
   {
     image: `a`,
@@ -45,33 +44,43 @@ const moviesMock = [
     description: `description`,
     director: `director`,
     starring: [`starring`, `next`],
-    runTime: `01h23m`,
+    runTime: `01h30m`,
     link: `movie-page.html`,
     id: 2,
     backgroundColor: `background_color`,
-    isFavorite: true,
+    isFavorite: true
   }
 ];
 
-describe(`MovieList snapshot`, () => {
-  it(`Should movies list render correctly`, () => {
+const mockStore = configureStore([]);
+
+describe(`Render component`, () => {
+  it(`Should MyList render correctly`, () => {
     const store = mockStore({
       DATA: {
-        moviesMock,
+        movies,
+        isFavoriteMovies: movies,
+      },
+      CONDITION: {
+        currentGenre: GENRES.ALL,
+        countMoviesShow: SHOWING_MOVIES_COUNT_ON_START
+      },
+      USER: {
+        authorizationStatus: AuthorizationStatus,
       },
       PLAYER: {
         isVideoPlayerOpened: false,
-      },
-      genre: GENRES.ALL,
+      }
     });
-    const tree = renderer
+    const tree = rerender
       .create(
           <Provider store={store}>
-            <MoviesList
-              movies={moviesMock}
-              onMovieCardClick={() => {}}
-              setActiveItem={() => {}}
-            />
+            <BrowserRouter>
+              <MyList
+                movies={movies}
+                isFavoriteMovies={movies}
+              />,
+            </BrowserRouter>
           </Provider>, {
             createNodeMock: () => {
               return {};
