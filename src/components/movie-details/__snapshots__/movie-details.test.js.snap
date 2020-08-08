@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
+exports[`MoviePage test Should MoviePage component render correctly 1`] = `
 <div>
   <section
     className="movie-card movie-card--full"
@@ -12,8 +12,7 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
         className="movie-card__bg"
       >
         <img
-          alt="Name"
-          src="a"
+          alt="Pulp Fuction"
         />
       </div>
       <h1
@@ -70,7 +69,7 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
           <h2
             className="movie-card__title"
           >
-            Name
+            Pulp Fuction
           </h2>
           <p
             className="movie-card__meta"
@@ -78,13 +77,11 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
             <span
               className="movie-card__genre"
             >
-              Genre
+              Action
             </span>
             <span
               className="movie-card__year"
-            >
-              2014
-            </span>
+            />
           </p>
           <div
             className="movie-card__buttons"
@@ -118,12 +115,12 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
               type="button"
             >
               <svg
-                height="14"
-                viewBox="0 0 18 14"
-                width="18"
+                height="20"
+                viewBox="0 0 19 20"
+                width="19"
               >
                 <use
-                  xlinkHref="#in-list"
+                  xlinkHref="#add"
                 />
               </svg>
               <span>
@@ -153,7 +150,6 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
           <img
             alt="The Grand Budapest Hotel poster"
             height="327"
-            src="a"
             width="218"
           />
         </div>
@@ -209,21 +205,16 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
             >
               <div
                 className="movie-rating__score"
-              >
-                8.9
-              </div>
+              />
               <p
                 className="movie-rating__meta"
               >
                 <span
                   className="movie-rating__level"
-                >
-                  level
-                </span>
+                />
                 <span
                   className="movie-rating__count"
                 >
-                  220
                    ratings
                 </span>
               </p>
@@ -231,13 +222,12 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
             <div
               className="movie-card__text"
             >
-              description
+              The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.
               <p
                 className="movie-card__director"
               >
                 <strong>
                   Director: 
-                  director
                 </strong>
               </p>
               <p
@@ -289,7 +279,31 @@ exports[`Movie Details Snapshot Should MovieDetails render correctly 1`] = `
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Name
+              Pulp Fuction
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+            onMouseEnter={[Function]}
+            onMouseOut={[Function]}
+          >
+            <video>
+              Sorry, this preview is not available in your browser
+            </video>
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Pulp Fuction
             </a>
           </h3>
         </article>

@@ -59,22 +59,6 @@ const Operation = {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       });
   },
-
-  postComment: (commentData, movieId) => (dispatch, getState, api) => {
-    return api.post(SERVER_ROUTE.POST_COMMENT + movieId, {
-      rating: commentData.rating,
-      comment: commentData.comment,
-    })
-      .then(() => {
-      });
-  },
-
-  loadComments: (movieId) => (dispatch, getState, api) => {
-    return api.get(SERVER_ROUTE.POST_COMMENT + movieId)
-      .then((response) => {
-        dispatch(ActionCreator.loadComments([response.data]));
-      });
-  },
 };
 
 export {

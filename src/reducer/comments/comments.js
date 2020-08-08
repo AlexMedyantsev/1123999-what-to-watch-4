@@ -1,5 +1,4 @@
 import {extend} from "../../utils/common.js";
-import history from "../../history.js";
 import {SERVER_ROUTE} from "../../utils/consts.js";
 
 
@@ -53,12 +52,12 @@ const reducer = (state = initialState, action) => {
 
 const Operation = {
   sendComment: ({movieId, rating, comment}) => (dispatch, getState, api) => {
-    return api.post(`/comments/${movieId}`, {rating, comment})
+    return api.post(`${SERVER_ROUTE.POST_COMMENT}${movieId}`, {rating, comment})
       .then(() => {
       });
   },
   getComments: (movieId) => (dispatch, getState, api) => {
-    return api.get(`/comments/${movieId}`)
+    return api.get(`${SERVER_ROUTE.POST_COMMENT}${movieId}`)
       .then((response) => {
         const comments = response.data;
         dispatch(ActionCreator.setComments(comments));
