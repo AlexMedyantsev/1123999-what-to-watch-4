@@ -43,7 +43,7 @@ TabsDetails.propTypes = {
     genre: PropTypes.string.isRequired,
     runTime: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    director: PropTypes.array.isRequired,
+    director: PropTypes.string.isRequired,
     starring: PropTypes.array.isRequired,
   })
 };
