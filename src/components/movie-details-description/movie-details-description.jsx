@@ -1,9 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
-import TabsOverview from "../tabs/tabs-overview.jsx";
-import TabsDetails from "../tabs/tabs-details.jsx";
-import TabsReviews from "../tabs/tabs-reviews.jsx";
+import TabsOverview from "../tabs/tabs-overview/tabs-overview.jsx";
+import TabsDetails from "../tabs/tabs-details/tabs-details.jsx";
+import TabsReviews from "../tabs/tabs-reviews/tabs-reviews.jsx";
 import {MovieDetailsTabs} from "../../utils/consts.js";
 
 

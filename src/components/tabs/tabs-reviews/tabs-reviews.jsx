@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {columnNumbers} from "../../utils/consts.js";
+import {columnNumbers} from "../../../utils/consts.js";
 
 const formatCommentTime = (commentDate) => {
   const d = Date.parse(commentDate);
