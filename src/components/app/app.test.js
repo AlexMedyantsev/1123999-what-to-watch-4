@@ -73,6 +73,7 @@ describe(`Render component`, () => {
         currentGenre: GENRES.ALL,
         countMoviesShow: SHOWING_MOVIES_COUNT_ON_START,
         activeMovie: movieAsObject,
+        isError: false,
       },
       USER: {
         authorizationStatus: AuthorizationStatus,
@@ -89,6 +90,7 @@ describe(`Render component`, () => {
               genre={HeaderMovieData.GENRE}
               year={HeaderMovieData.YEAR}
               authorizationStatus={AuthorizationStatus}
+              isError={false}
               movies={movies}
               promoMovie={movieAsObject}
             />

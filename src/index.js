@@ -4,12 +4,18 @@ import {Provider} from "react-redux";
 import reducer from "./reducer/reducer.js";
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Operation} from "./reducer/data/data.js";
+import {ActionCreator as ActionCreatorCondition} from "./reducer/condition/condition.js";
 import {Operation as UserOperation} from "./reducer/user/user.js";
 import App from "./components/app/app.jsx";
 import thunk from 'redux-thunk';
 import {createAPI} from "./api.js";
 
-const api = createAPI();
+const onError = (responce) => {
+  store.dispatch(ActionCreatorCondition.setErrorMessage(responce));
+  store.dispatch(ActionCreatorCondition.changeErrorFlag());
+};
+
+const api = createAPI(onError);
 
 const store = createStore(
     reducer,
@@ -33,5 +39,6 @@ const init = () => {
       document.querySelector(`#root`)
   );
 };
+
 
 init();

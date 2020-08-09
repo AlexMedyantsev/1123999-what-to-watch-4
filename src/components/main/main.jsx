@@ -23,16 +23,11 @@ class Main extends PureComponent {
 
     this.handlerShowMoreButtonClick = this.handlerShowMoreButtonClick.bind(this);
     this.setCurrentGenreHandler = this.setCurrentGenreHandler.bind(this);
-    this.changeVideoPlayerStateHandler = this.changeVideoPlayerStateHandler.bind(this);
     this.myListButtonClickHandler = this.myListButtonClickHandler.bind(this);
   }
 
   handlerShowMoreButtonClick() {
     this.props.onIncrementCountMoviesShow();
-  }
-
-  changeVideoPlayerStateHandler() {
-    this.props.onChangeVideoPlayerState();
   }
 
   setCurrentGenreHandler(genre) {

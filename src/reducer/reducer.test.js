@@ -41,7 +41,9 @@ describe(`Reducer tests`, () => {
     const newInitialState = {
       currentGenre: moviesMock[2].genre,
       activeMovie: null,
-      countMoviesShowed: SHOWING_MOVIES_COUNT_ON_START
+      countMoviesShowed: SHOWING_MOVIES_COUNT_ON_START,
+      errorMessage: null,
+      isError: false,
     };
 
     expect(reducer(initialState, ActionCreator.setCurrentGenre(moviesMock[2].genre))).toEqual(newInitialState);
@@ -51,7 +53,10 @@ describe(`Reducer tests`, () => {
     const newInitialState = {
       currentGenre: GENRES.ALL,
       activeMovie: null,
-      countMoviesShowed: SHOWING_MOVIES_COUNT_ON_START + 8
+      countMoviesShowed: SHOWING_MOVIES_COUNT_ON_START + 8,
+      errorMessage: null,
+      isError: false,
+
     };
     expect(reducer(initialState, ActionCreator.incrementCountMoviesShow())).toEqual(newInitialState);
   });
@@ -61,6 +66,9 @@ describe(`Reducer tests`, () => {
       currentGenre: GENRES.ALL,
       activeMovie: null,
       countMoviesShowed: SHOWING_MOVIES_COUNT_ON_START + SHOWING_MOVIES_COUNT_ON_START,
+      errorMessage: null,
+      isError: false,
+
     };
     expect(reducer(newInitialState, ActionCreator.resetCountMoviesShow())).toEqual(initialState);
   });

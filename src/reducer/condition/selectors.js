@@ -28,3 +28,8 @@ export const getShowedMoviesCount = (state) => state[NameSpace.CONDITION].countM
 export const getActiveMovie = (state) => state[NameSpace.CONDITION].activeMovie;
 
 export const getCurrentGenre = (state) => state[NameSpace.CONDITION].currentGenre;
+
+export const getErrorStatus = (state) => state[NameSpace.CONDITION].isError;
+
+export const getErrorMessage = (state) => state[NameSpace.CONDITION].errorMessage;
+

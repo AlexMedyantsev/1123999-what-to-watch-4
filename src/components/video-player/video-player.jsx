@@ -1,6 +1,5 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
 import {ESCAPE_KEY} from "../../utils/consts.js";
 import {formatSeconds} from "../../utils/common.js";
 import history from "../../history.js";
@@ -196,11 +195,4 @@ VideoPlayer.propTypes = {
   togglerValue: PropTypes.number.isRequired,
 };
 
-
-const mapStateToProps = () => {
-  return {
-  };
-};
-
 export {VideoPlayer};
-export default connect(mapStateToProps)(VideoPlayer);

@@ -5,6 +5,8 @@ import {GENRES, SHOWING_MOVIES_COUNT_ON_START, MOVIES_ADDED_ON_BUTTON_CLICK} fro
 const initialState = {
   currentGenre: GENRES.ALL,
   countMoviesShowed: SHOWING_MOVIES_COUNT_ON_START,
+  isError: false,
+  errorMessage: null,
   activeMovie: null,
 };
 
@@ -64,6 +66,14 @@ describe(`Check condition reducer`, () => {
 
   it(`it should set active Movie`, () => {
     expect(reducer({}, {type: ActionType.SET_ACTIVE_MOVIE, payload: moviesArray[0]})).toEqual({activeMovie: moviesArray[0]});
+  });
+
+  it(`it should set error Message`, () => {
+    expect(reducer({}, {type: ActionType.SET_ERROR_MESSAGE, payload: moviesArray[0].title})).toEqual({errorMessage: moviesArray[0].title});
+  });
+
+  it(`it should change isError state`, () => {
+    expect(reducer({}, {type: ActionType.CHANGE_ERROR_FLAG})).toEqual({isError: !initialState.isError});
   });
 
   it(`it should incriment countMoviesShowed`, () => {

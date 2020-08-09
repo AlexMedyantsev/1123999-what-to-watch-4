@@ -1,7 +1,9 @@
 import AddReview from '../add-review/add-review.jsx';
 import {connect} from "react-redux";
+import {ErrorMessage} from "../error-message/error-message.jsx";
 import {getSimilarMoviesByGenres} from "../../utils/common.js";
 import {getMovies, getPromoMovie} from "../../reducer/data/selectors.js";
+import {getErrorMessage} from "../../reducer/condition/selectors.js";
 import {getActiveMovie} from "../../reducer/condition/selectors.js";
 import history from "../../history.js";
 import Main from "../main/main.jsx";
@@ -14,13 +16,16 @@ import PrivateRoute from "../private-route/private-route.jsx";
 import React, {PureComponent} from "react";
 import SignIn from '../sign-in/sign-in.jsx';
 import {Switch, Route, Router} from "react-router-dom";
-import VideoPlayer from '../video-player/video-player.jsx';
+import {VideoPlayer} from '../video-player/video-player.jsx';
 import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
+import {withPopupMessage} from "../../hocs/with-popup-message/with-popup-message.js";
 
 import {SIMILAR_MOVIES_COUNT} from "../../utils/consts.js";
 import {getElementFromArrayById} from "../../utils/common.js";
+import {getErrorStatus} from "../../reducer/condition/selectors";
 
 const VideoPlayerWrapped = withVideoPlay(VideoPlayer);
+const ErrorMessageWrapped = withPopupMessage(ErrorMessage);
 
 class App extends PureComponent {
   constructor(props) {
@@ -86,14 +91,15 @@ class App extends PureComponent {
 
 
   render() {
-    const {movies, onReviewSubmit, promoMovie, onAuthSubmit} = this.props;
+    const {movies, onReviewSubmit, promoMovie, onAuthSubmit, errorMessage, isError} = this.props;
 
     if (!movies || promoMovie === null || !movies.length) {
       return <div>...Loading. Wait a few seconds</div>;
     }
 
     return (
-      // { isError && <errorMessage/>}
+      <>
+      {isError ? <ErrorMessageWrapped errorMessage={errorMessage}/> : ``}
       <Router history={history}>
         <Switch>
           <Route exact path="/">
@@ -119,6 +125,7 @@ class App extends PureComponent {
           </PrivateRoute>
         </Switch>
       </Router>
+      </>
     );
   }
 }
@@ -129,13 +136,17 @@ App.propTypes = {
   activeMovie: PropTypes.object,
   promoMovie: PropTypes.object,
   onReviewSubmit: PropTypes.func.isRequired,
+  isError: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.number,
 };
 
 const mapStateToProps = (state) => {
   return {
     movies: getMovies(state),
     promoMovie: getPromoMovie(state),
-    activeMovie: getActiveMovie(state)
+    activeMovie: getActiveMovie(state),
+    isError: getErrorStatus(state),
+    errorMessage: getErrorMessage(state),
   };
 };
 

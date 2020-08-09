@@ -25,12 +25,7 @@ class MovieDetails extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.changeVideoPlayerStateHandler = this.changeVideoPlayerStateHandler.bind(this);
     this.myListButtonClickHandler = this.myListButtonClickHandler.bind(this);
-  }
-
-  changeVideoPlayerStateHandler() {
-    this.props.onChangeVideoPlayerState();
   }
 
   myListButtonClickHandler() {
