@@ -44,8 +44,12 @@ const withVideoPlay = (Component) => {
 
     setIntervalForVideoPLayer(videoRef) {
       if (videoRef) {
-        setInterval(() => this.setState({secondsPlayed: this.state.secondsPlayed, togglerValue: this.state.togglerValue + this.calculateOnePercent(videoRef)}), 1000);
+        this.interval = setInterval(() => this.setState({secondsPlayed: this.state.secondsPlayed, togglerValue: this.state.togglerValue + this.calculateOnePercent(videoRef)}), 1000);
       }
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.interval);
     }
 
     render() {

@@ -24,9 +24,7 @@ class VideoPlayer extends PureComponent {
 
   componentDidMount() {
     if (this._videoRef) {
-      const video = this._videoRef.current;
-      this.interval = this.props.setIntervalForVideoPLayer(this._videoRef.current);
-      video.src = this.props.movieLink;
+      this.props.setIntervalForVideoPLayer(this._videoRef.current);
     }
     document.addEventListener(`keydown`, this._handleEscPress);
   }
@@ -45,15 +43,7 @@ class VideoPlayer extends PureComponent {
   }
 
   componentWillUnmount() {
-    const video = this._videoRef.current;
-
-    clearInterval(this.interval);
     document.removeEventListener(`keydown`, this._handleEscPress);
-
-    video.onplay = null;
-    video.onpause = null;
-    video.ontimeupdate = null;
-    video.src = ``;
   }
 
   _handleEscClick() {
