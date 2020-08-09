@@ -89,8 +89,9 @@ exports[`MoviePage test Should MoviePage component render correctly 1`] = `
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/2"
               onClick={[Function]}
               type="button"
             >
@@ -111,7 +112,7 @@ exports[`MoviePage test Should MoviePage component render correctly 1`] = `
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
               onClick={[Function]}

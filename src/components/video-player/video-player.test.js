@@ -13,10 +13,30 @@ const movie = {
 
 const mockStore = configureStore([]);
 
+const moviesMock = [
+  {
+    image: `a`,
+    posterSrc: `a`,
+    bgSrc: `a`,
+    title: `Name`,
+    genre: `Genre`,
+    year: 2014,
+    score: 8.9,
+    level: `level`,
+    movieLink: `link`,
+    previewLink: `preview-link`,
+    scoresCount: 220,
+    description: `description`,
+    director: `director`,
+    starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
+    runTime: `01h30m`,
+    link: `movie-page.html`,
+    id: 2,
+    backgroundColor: `background_color`,
+    isFavorite: true,
+  }];
 
 it(`VideoPlayer is rendered correctly`, () => {
-  const {preview, title, isPlaying} = movie;
-
   const mockFunction = jest.fn();
   const store = mockStore({
   });
@@ -25,9 +45,8 @@ it(`VideoPlayer is rendered correctly`, () => {
       <Provider store={store}>
         <BrowserRouter>
           <VideoPlayer
-            movieLink={preview}
-            movieTitle={title}
-            isPlaying={isPlaying}
+            activeMovie={moviesMock[0]}
+            isPlaying={true}
             clickPlayHandler={mockFunction}
             clickPauseHandler={mockFunction}
             setIntervalForVideoPLayer={mockFunction}
