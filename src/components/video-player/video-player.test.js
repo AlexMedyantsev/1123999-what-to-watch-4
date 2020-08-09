@@ -5,12 +5,6 @@ import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import configureStore from "redux-mock-store";
 
-const movie = {
-  preview: `https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4`,
-  title: `The Legend`,
-  isPlaying: false,
-};
-
 const mockStore = configureStore([]);
 
 const moviesMock = [
