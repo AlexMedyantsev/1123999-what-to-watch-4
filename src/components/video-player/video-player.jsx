@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/player/player.js";
 import {ESCAPE_KEY} from "../../utils/consts.js";
 import {formatSeconds} from "../../utils/common.js";
+import history from "../../history.js";
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -47,12 +48,12 @@ class VideoPlayer extends PureComponent {
   }
 
   _handleEscClick() {
-    this.props.onChangeVideoPlayerState();
+    history.goBack();
   }
 
   _handleEscPress(event) {
     if (event.keyCode === ESCAPE_KEY) {
-      this.props.onChangeVideoPlayerState();
+      history.goBack();
     }
   }
 
@@ -126,7 +127,8 @@ class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {movieLink, movieTitle, isPlaying} = this.props;
+    const {activeMovie, isPlaying} = this.props;
+    const {movieLink, title} = activeMovie;
 
     if (isPlaying) {
       this._updateTogglerPosition();
@@ -164,7 +166,7 @@ class VideoPlayer extends PureComponent {
                 <span>Play</span>
               </button>
             }
-            <div className="player__name">{movieTitle}</div>
+            <div className="player__name">{title}</div>
 
             <button type="button" onClick={this._clickFullScreenHandler} className="player__full-screen">
               <svg viewBox="0 0 27 27" width="27" height="27">
@@ -183,8 +185,10 @@ class VideoPlayer extends PureComponent {
 
 VideoPlayer.propTypes = {
   onChangeVideoPlayerState: PropTypes.func.isRequired,
-  movieLink: PropTypes.string.isRequired,
-  movieTitle: PropTypes.string.isRequired,
+  activeMovie: PropTypes.shape({
+    movieLink: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
   clickPlayHandler: PropTypes.func.isRequired,
   clickPauseHandler: PropTypes.func.isRequired,

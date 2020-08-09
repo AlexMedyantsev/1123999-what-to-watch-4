@@ -14,9 +14,12 @@ import PrivateRoute from "../private-route/private-route.jsx";
 import React, {PureComponent} from "react";
 import SignIn from '../sign-in/sign-in.jsx';
 import {Switch, Route, Router} from "react-router-dom";
+import VideoPlayer from '../video-player/video-player.jsx';
+import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
 
 import {SIMILAR_MOVIES_COUNT} from "../../utils/consts.js";
 
+const VideoPlayerWrapped = withVideoPlay(VideoPlayer);
 
 class App extends PureComponent {
   constructor(props) {
@@ -62,6 +65,14 @@ class App extends PureComponent {
     );
   }
 
+  renderVideoPlayer(movie) {
+    return (
+      <VideoPlayerWrapped
+        activeMovie={movie}
+      />
+    );
+  }
+
   renderAddReview(props, activeMovie, onReviewSubmit) {
     return (
       <AddReview
@@ -93,6 +104,9 @@ class App extends PureComponent {
           </Route>
           <Route exact path="/login">
             {this.renderLoginPage(onAuthSubmit)}
+          </Route>
+          <Route exact path="/player/:id">
+            {this.renderVideoPlayer(activeMovie)}
           </Route>
           <PrivateRoute exact path="/my-list">
             {this.renderMyList(movies)}
