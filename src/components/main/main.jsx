@@ -1,12 +1,10 @@
 import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {ActionCreator as ActionCreatorCondition} from "../../reducer/condition/condition.js";
-import {ActionCreator as ActionCreatorPlayer} from "../../reducer/player/player.js";
 import {connect} from "react-redux";
 import GenresList from "../genres-list/genres-list.jsx";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {getCurrentGenre} from "../../reducer/condition/selectors.js";
 import {getMoviesByGenre, getUniqueGenres, getShowedMoviesCount} from "../../reducer/condition/selectors.js";
-import {getVideoPlayerState} from "../../reducer/player/selectors.js";
 import {Link} from "react-router-dom";
 import MainLogo from "../main-logo/main-logo.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
@@ -14,13 +12,10 @@ import {Operation as OperationData} from "../../reducer/data/data.js";
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import VideoPlayer from "../video-player/video-player.jsx";
 import withActiveItem from "../../hocs/with-active-item/with-active-item.js";
-import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
 
 
 const MoviesListWrapped = withActiveItem(MoviesList);
-const VideoPlayerWrapped = withVideoPlay(VideoPlayer);
 
 class Main extends PureComponent {
   constructor(props) {
@@ -215,9 +210,7 @@ Main.propTypes = {
     backgroundColor: PropTypes.string.isRequired,
     isFavorite: PropTypes.bool.string,
   }).isRequired,
-  isVideoPlayerOpened: PropTypes.bool.isRequired,
   onIncrementCountMoviesShow: PropTypes.func.isRequired,
-  onChangeVideoPlayerState: PropTypes.func.isRequired,
   onresetCountMoviesShow: PropTypes.func.isRequired,
   slicedMoviesByGenre: PropTypes.array.isRequired,
   onFavoriteButtonClick: PropTypes.func.isRequired,
@@ -234,7 +227,6 @@ const mapStateToProps = (state) => {
     // Добавить селекторы или неймспейс
     currentGenre: getCurrentGenre(state),
     authorizationStatus: getAuthorizationStatus(state),
-    isVideoPlayerOpened: getVideoPlayerState(state),
     genresList,
     slicedMoviesByGenre,
     showMoreButton,
@@ -244,7 +236,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onSetCurrentGenre: (genre) => dispatch(ActionCreatorCondition.setCurrentGenre(genre)),
   onresetCountMoviesShow: () => dispatch(ActionCreatorCondition.resetCountMoviesShow()),
-  onChangeVideoPlayerState: () => dispatch(ActionCreatorPlayer.changeVideoPlayerState()),
   onIncrementCountMoviesShow: () => dispatch(ActionCreatorCondition.incrementCountMoviesShow()),
   onFavoriteButtonClick: (id, status) => dispatch(OperationData.postFavoriteMovie(id, status)),
 });

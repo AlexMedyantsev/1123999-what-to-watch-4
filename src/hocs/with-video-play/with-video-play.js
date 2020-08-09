@@ -17,7 +17,9 @@ const withVideoPlay = (Component) => {
     }
 
     clickPlayHandler() {
+      // if (videoRef.readyState === 2) {
       this.setState({isPlaying: true});
+      // }
     }
 
     clickPauseHandler() {

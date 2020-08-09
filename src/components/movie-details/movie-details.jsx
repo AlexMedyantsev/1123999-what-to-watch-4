@@ -1,7 +1,5 @@
-import {ActionCreator as ActionCreatorPlayer} from "../../reducer/player/player.js";
 import {AuthorizationStatus} from './../../reducer/user/user.js';
 import {connect} from "react-redux";
-import {getVideoPlayerState} from "../../reducer/player/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {getComments} from "../../reducer/comments/selectors.js";
 import history from "../../history.js";
@@ -163,13 +161,11 @@ class MovieDetails extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     authorizationStatus: getAuthorizationStatus(state),
-    isVideoPlayerOpened: getVideoPlayerState(state),
     comments: getComments(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onChangeVideoPlayerState: () => dispatch(ActionCreatorPlayer.changeVideoPlayerState()),
   onFavoriteButtonClick: (id, status) => dispatch(OperationData.postFavoriteMovie(id, status)),
   onLoadComments: (id) => dispatch(OperationComment.getComments(id)),
 });
@@ -197,8 +193,6 @@ MovieDetails.propTypes = {
   }),
   comments: PropTypes.array.isRequired,
   similarMovies: PropTypes.array,
-  isVideoPlayerOpened: PropTypes.bool.isRequired,
-  onChangeVideoPlayerState: PropTypes.func.isRequired,
   onLoadComments: PropTypes.func.isRequired,
 };
 

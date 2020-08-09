@@ -82,8 +82,8 @@ describe(`Render component`, () => {
           <Provider store={store}>
             <BrowserRouter>
               <AddReview
-                movie={movieAsObject}
-                activeMovieId={movieAsObject.id}
+                activeMovie={movieAsObject}
+                activeMovieId={1}
                 onSubmit={mockFunction}
               />
             </BrowserRouter>

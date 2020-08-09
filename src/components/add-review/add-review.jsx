@@ -25,7 +25,7 @@ export default class AddReview extends React.PureComponent {
         rating: this.ratingRef.current.rating.value,
         comment: this.commentRef.current.value,
       },
-      activeMovie.id
+      id
       );
       history.goBack();
     }
@@ -106,9 +106,10 @@ export default class AddReview extends React.PureComponent {
 AddReview.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   activeMovieId: PropTypes.number.isRequired,
-  movie: PropTypes.shape({
+  activeMovie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     bgSrc: PropTypes.string.isRequired,
     posterSrc: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   })
 };

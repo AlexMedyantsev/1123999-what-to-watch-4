@@ -1,12 +1,9 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/player/player.js";
 import {ESCAPE_KEY} from "../../utils/consts.js";
 import {formatSeconds} from "../../utils/common.js";
 import history from "../../history.js";
-import {getActiveMovie} from "../../reducer/condition/selectors.js";
-import {getPromoMovie} from "../../reducer/data/selectors.js";
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -59,8 +56,8 @@ class VideoPlayer extends PureComponent {
     }
   }
 
-  _playVideo() {
-    this.props.clickPlayHandler();
+  _playVideo(videoRef) {
+    this.props.clickPlayHandler(videoRef);
   }
 
   _pauseVideo() {
@@ -186,7 +183,6 @@ class VideoPlayer extends PureComponent {
 }
 
 VideoPlayer.propTypes = {
-  onChangeVideoPlayerState: PropTypes.func.isRequired,
   activeMovie: PropTypes.shape({
     movieLink: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,

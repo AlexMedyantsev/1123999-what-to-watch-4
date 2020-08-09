@@ -10,7 +10,7 @@ const initialState = {
 
 const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
-  LOAD_PROMO_MOVIES: `LOAD_PROMO_MOVIES`,
+  LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
   LOAD_IS_FAVORITE_MOVIES: `LOAD_IS_FAVORITE_MOVIES`,
   UPDATE_MOVIE: `UPDATE_MOVIE`,
   UPDATE_PROMO_MOVIE: `UPDATE_PROMO_MOVIE`,
@@ -25,7 +25,7 @@ const ActionCreator = {
   },
   loadPromoMovie: (movie) => {
     return {
-      type: ActionType.LOAD_PROMO_MOVIES,
+      type: ActionType.LOAD_PROMO_MOVIE,
       payload: movie,
     };
   },
@@ -85,7 +85,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_MOVIES:
       return extend(state, {movies: action.payload});
-    case ActionType.LOAD_PROMO_MOVIES:
+    case ActionType.LOAD_PROMO_MOVIE:
       return extend(state, {promoMovie: action.payload});
     case ActionType.LOAD_IS_FAVORITE_MOVIES:
       return extend(state, {isFavoriteMovies: action.payload});

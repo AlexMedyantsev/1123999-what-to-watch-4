@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {getSimilarMoviesByGenres} from "../../utils/common.js";
 import {getMovies, getPromoMovie} from "../../reducer/data/selectors.js";
 import {getActiveMovie} from "../../reducer/condition/selectors.js";
-import {getMovieById} from "../../reducer/data/selectors.js";
 import history from "../../history.js";
 import Main from "../main/main.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
@@ -94,6 +93,7 @@ class App extends PureComponent {
     }
 
     return (
+      // { isError && <errorMessage/>}
       <Router history={history}>
         <Switch>
           <Route exact path="/">
