@@ -15,7 +15,8 @@ export default class AddReview extends React.PureComponent {
   }
 
   handleSubmit(evt) {
-    const {onSubmit, activeMovieId} = this.props;
+    const {onSubmit, activeMovie} = this.props;
+    const {id} = activeMovie;
 
     evt.preventDefault();
 
@@ -24,14 +25,14 @@ export default class AddReview extends React.PureComponent {
         rating: this.ratingRef.current.rating.value,
         comment: this.commentRef.current.value,
       },
-      activeMovieId
+      activeMovie.id
       );
       history.goBack();
     }
   }
 
   render() {
-    const {bgSrc, posterSrc, title} = this.props.movie;
+    const {bgSrc, posterSrc, title} = this.props.activeMovie;
     return (
       <section className="movie-card movie-card--full">
         <div className="movie-card__header">

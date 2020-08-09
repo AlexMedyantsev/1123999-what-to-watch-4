@@ -1,3 +1,5 @@
+import {GENRES, MAX_NUMBER_GENRES} from "./consts.js";
+
 export const getUniqueArrayElements = (array) => {
   let result = [];
 
@@ -20,7 +22,6 @@ export const getSimilarMoviesByGenres = (moviesArray, openedMovie) => {
   return moviesByGenre;
 };
 
-import {GENRES, MAX_NUMBER_GENRES} from "./consts.js";
 
 export const getMoviesByGenre = (state) => {
   return state.DATA.movies.filter((movie) => {
@@ -30,6 +31,9 @@ export const getMoviesByGenre = (state) => {
     return movie.genre.includes(state.currentGenre);
   });
 };
+
+export const getElementFromArrayById = (array, id) => array.find((arrayItem) => id === arrayItem.id);
+
 
 export const getUniqueGenres = (state) => {
   const genres = new Set();

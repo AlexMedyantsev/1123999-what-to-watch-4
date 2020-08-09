@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {getSimilarMoviesByGenres} from "../../utils/common.js";
 import {getMovies, getPromoMovie} from "../../reducer/data/selectors.js";
 import {getActiveMovie} from "../../reducer/condition/selectors.js";
+import {getMovieById} from "../../reducer/data/selectors.js";
 import history from "../../history.js";
 import Main from "../main/main.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
@@ -18,6 +19,7 @@ import VideoPlayer from '../video-player/video-player.jsx';
 import withVideoPlay from "../../hocs/with-video-play/with-video-play.js";
 
 import {SIMILAR_MOVIES_COUNT} from "../../utils/consts.js";
+import {getElementFromArrayById} from "../../utils/common.js";
 
 const VideoPlayerWrapped = withVideoPlay(VideoPlayer);
 
@@ -65,20 +67,19 @@ class App extends PureComponent {
     );
   }
 
-  renderVideoPlayer(movie) {
+  renderVideoPlayer(movies, props) {
     return (
       <VideoPlayerWrapped
-        activeMovie={movie}
+        activeMovie={getElementFromArrayById(movies, +props.match.params.id)}
       />
     );
   }
 
-  renderAddReview(props, activeMovie, onReviewSubmit) {
+  renderAddReview(props, movies, onReviewSubmit) {
     return (
       <AddReview
         {...props}
-        movie={activeMovie}
-        activeMovieId={+props.match.params.id}
+        activeMovie={getElementFromArrayById(movies, +props.match.params.id)}
         onSubmit={onReviewSubmit}
       />
     );
@@ -86,7 +87,7 @@ class App extends PureComponent {
 
 
   render() {
-    const {movies, onReviewSubmit, promoMovie, activeMovie, onAuthSubmit} = this.props;
+    const {movies, onReviewSubmit, promoMovie, onAuthSubmit} = this.props;
 
     if (!movies || promoMovie === null || !movies.length) {
       return <div>...Loading. Wait a few seconds</div>;
@@ -105,14 +106,15 @@ class App extends PureComponent {
           <Route exact path="/login">
             {this.renderLoginPage(onAuthSubmit)}
           </Route>
-          <Route exact path="/player/:id">
-            {this.renderVideoPlayer(activeMovie)}
+          <Route exact path="/player/:id" render={(props) => (
+            this.renderVideoPlayer(movies, props)
+          )}>
           </Route>
           <PrivateRoute exact path="/my-list">
             {this.renderMyList(movies)}
           </PrivateRoute>
           <PrivateRoute exact path="/films/:id/review" render={(props) => (
-            this.renderAddReview(props, activeMovie, onReviewSubmit)
+            this.renderAddReview(props, movies, onReviewSubmit)
           )}>
           </PrivateRoute>
         </Switch>

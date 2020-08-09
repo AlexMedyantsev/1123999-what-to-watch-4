@@ -5,6 +5,8 @@ import {ActionCreator} from "../../reducer/player/player.js";
 import {ESCAPE_KEY} from "../../utils/consts.js";
 import {formatSeconds} from "../../utils/common.js";
 import history from "../../history.js";
+import {getActiveMovie} from "../../reducer/condition/selectors.js";
+import {getPromoMovie} from "../../reducer/data/selectors.js";
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -202,9 +204,5 @@ const mapStateToProps = () => {
   };
 };
 
-const mapDispatchToProps = {
-  onChangeVideoPlayerState: ActionCreator.changeVideoPlayerState,
-};
-
 export {VideoPlayer};
-export default connect(mapStateToProps, mapDispatchToProps)(VideoPlayer);
+export default connect(mapStateToProps)(VideoPlayer);

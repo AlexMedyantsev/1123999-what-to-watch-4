@@ -57,118 +57,112 @@ class Main extends PureComponent {
   }
 
   render() {
-    const {genresList, currentGenre, authorizationStatus, isVideoPlayerOpened, promoMovie, slicedMoviesByGenre, showMoreButton} = this.props;
-    const {bgSrc, genre, posterSrc, title, year, isFavorite, movieLink} = promoMovie;
+    const {genresList, currentGenre, authorizationStatus, promoMovie, slicedMoviesByGenre, showMoreButton} = this.props;
+    const {bgSrc, genre, posterSrc, title, year, isFavorite, id} = promoMovie;
 
 
     return <React.Fragment>
-      {isVideoPlayerOpened ?
-        <VideoPlayerWrapped
-          movieLink={movieLink}
-          movieTitle={title}
-        /> :
-        <div>
-          <section className="movie-card">
-            <div className="movie-card__bg">
-              <img src={bgSrc} alt={title}/>
-            </div>
+      <div>
+        <section className="movie-card">
+          <div className="movie-card__bg">
+            <img src={bgSrc} alt={title}/>
+          </div>
 
-            <h1 className="visually-hidden">WTW</h1>
+          <h1 className="visually-hidden">WTW</h1>
 
-            <header className="page-header movie-card__head">
-              <MainLogo />
+          <header className="page-header movie-card__head">
+            <MainLogo />
 
-              {authorizationStatus === AuthorizationStatus.AUTH ?
-                <div className="user-block">
-                  <div className="user-block__avatar">
-                    <Link to="/my-list">
-                      <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                    </Link>
-                  </div>
+            {authorizationStatus === AuthorizationStatus.AUTH ?
+              <div className="user-block">
+                <div className="user-block__avatar">
+                  <Link to="/my-list">
+                    <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                  </Link>
                 </div>
-                : <div className="user-block">
-                  <Link to="/login" className="user-block__link">Sign In</Link>
-                </div>
-              }
+              </div>
+              : <div className="user-block">
+                <Link to="/login" className="user-block__link">Sign In</Link>
+              </div>
+            }
 
-            </header>
+          </header>
 
-            <div className="movie-card__wrap">
-              <div className="movie-card__info">
-                <div className="movie-card__poster">
-                  <img src={posterSrc} alt={title} width="218" height="327" />
-                </div>
+          <div className="movie-card__wrap">
+            <div className="movie-card__info">
+              <div className="movie-card__poster">
+                <img src={posterSrc} alt={title} width="218" height="327" />
+              </div>
 
-                <div className="movie-card__desc">
-                  <h2 className="movie-card__title">{title}</h2>
-                  <p className="movie-card__meta">
-                    <span className="movie-card__genre">{genre}</span>
-                    <span className="movie-card__year">{year}</span>
-                  </p>
+              <div className="movie-card__desc">
+                <h2 className="movie-card__title">{title}</h2>
+                <p className="movie-card__meta">
+                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__year">{year}</span>
+                </p>
 
-                  <div className="movie-card__buttons">
-                    <button className="btn btn--play movie-card__button" onClick={this.changeVideoPlayerStateHandler} type="button">
-                      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
+                <div className="movie-card__buttons">
+                  <Link to={`/player/${id}`} className="btn btn--play movie-card__button" onClick={this.changeVideoPlayerStateHandler} type="button">
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
+                    </svg>
+                    <span>Play</span>
+                  </Link>
+                  <button className="btn btn--list movie-card__button" onClick={this.myListButtonClickHandler} type="button">
+                    {isFavorite ?
+                      <svg viewBox="0 0 18 14" width="18" height="14">
+                        <use xlinkHref="#in-list"></use>
+                      </svg> :
+                      <svg viewBox="0 0 19 20" width="19" height="20">
+                        <use xlinkHref="#add"></use>
                       </svg>
-                      <span>Play</span>
-                    </button>
-                    <button className="btn btn--list movie-card__button" onClick={this.myListButtonClickHandler} type="button">
-                      {isFavorite ?
-                        <svg viewBox="0 0 18 14" width="18" height="14">
-                          <use xlinkHref="#in-list"></use>
-                        </svg> :
-                        <svg viewBox="0 0 19 20" width="19" height="20">
-                          <use xlinkHref="#add"></use>
-                        </svg>
-                      }
-                      <span>My list</span>
-                    </button>
-                  </div>
+                    }
+                    <span>My list</span>
+                  </button>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <div className="page-content">
+          <section className="catalog">
+            <h2 className="catalog__title visually-hidden">Catalog</h2>
+
+            <GenresList
+              genresList={genresList}
+              currentGenre={currentGenre}
+              setCurrentGenre={this.setCurrentGenreHandler}
+            />
+
+            <div className="catalog__movies-list">
+              <MoviesListWrapped
+                movies={slicedMoviesByGenre}
+              />
+            </div>
+
+            {showMoreButton ?
+              <ShowMoreButton
+                onButtonClick={this.handlerShowMoreButtonClick}
+              /> : ``}
+
           </section>
 
-          <div className="page-content">
-            <section className="catalog">
-              <h2 className="catalog__title visually-hidden">Catalog</h2>
+          <footer className="page-footer">
+            <div className="logo">
+              <a className="logo__link logo__link--light">
+                <span className="logo__letter logo__letter--1">W</span>
+                <span className="logo__letter logo__letter--2">T</span>
+                <span className="logo__letter logo__letter--3">W</span>
+              </a>
+            </div>
 
-              <GenresList
-                genresList={genresList}
-                currentGenre={currentGenre}
-                setCurrentGenre={this.setCurrentGenreHandler}
-              />
-
-              <div className="catalog__movies-list">
-                <MoviesListWrapped
-                  movies={slicedMoviesByGenre}
-                />
-              </div>
-
-              {showMoreButton ?
-                <ShowMoreButton
-                  onButtonClick={this.handlerShowMoreButtonClick}
-                /> : ``}
-
-            </section>
-
-            <footer className="page-footer">
-              <div className="logo">
-                <a className="logo__link logo__link--light">
-                  <span className="logo__letter logo__letter--1">W</span>
-                  <span className="logo__letter logo__letter--2">T</span>
-                  <span className="logo__letter logo__letter--3">W</span>
-                </a>
-              </div>
-
-              <div className="copyright">
-                <p>© 2019 What to watch Ltd.</p>
-              </div>
-            </footer>
-          </div>
+            <div className="copyright">
+              <p>© 2019 What to watch Ltd.</p>
+            </div>
+          </footer>
         </div>
-      }
+      </div>
     </React.Fragment>;
   }
 }
