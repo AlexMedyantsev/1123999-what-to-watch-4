@@ -30,6 +30,10 @@ const withPreviewVideoPlay = (Component) => {
       });
     }
 
+    componentWillUnmount() {
+      clearTimeout(this.timerId);
+    }
+
     render() {
       return (
         <Component
