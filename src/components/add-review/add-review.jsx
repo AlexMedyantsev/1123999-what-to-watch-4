@@ -105,7 +105,6 @@ export default class AddReview extends React.PureComponent {
 
 AddReview.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  activeMovieId: PropTypes.number.isRequired,
   activeMovie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     bgSrc: PropTypes.string.isRequired,

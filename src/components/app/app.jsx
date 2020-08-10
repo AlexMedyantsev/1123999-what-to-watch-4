@@ -10,6 +10,7 @@ import Main from "../main/main.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MyList from '../my-list/my-list.jsx';
 import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {Operation as CommentOperation} from "../../reducer/comments/comments.js";
 
 import PropTypes from "prop-types";
 import PrivateRoute from "../private-route/private-route.jsx";
@@ -28,11 +29,6 @@ const VideoPlayerWrapped = withVideoPlay(VideoPlayer);
 const ErrorMessageWrapped = withPopupMessage(ErrorMessage);
 
 class App extends PureComponent {
-  constructor(props) {
-    super(props);
-
-  }
-
   renderMain() {
     const {movies, promoMovie} = this.props;
     return (
@@ -154,7 +150,7 @@ const mapDispatchToProps = (dispatch) => ({
   onAuthSubmit: (authData) =>
     dispatch(UserOperation.login(authData)),
   onReviewSubmit: (reviewData, movieId) =>
-    dispatch(UserOperation.postComment(reviewData, movieId)),
+    dispatch(CommentOperation.postComment(reviewData, movieId)),
 });
 
 

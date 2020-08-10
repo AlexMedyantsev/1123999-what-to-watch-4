@@ -162,7 +162,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onFavoriteButtonClick: (id, status) => dispatch(OperationData.postFavoriteMovie(id, status)),
-  onLoadComments: (id) => dispatch(OperationComment.getComments(id)),
+  onLoadComments: (id) => dispatch(OperationComment.loadComments(id)),
 });
 
 
