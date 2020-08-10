@@ -149,8 +149,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onAuthSubmit: (authData) =>
     dispatch(UserOperation.login(authData)),
-  onReviewSubmit: (reviewData, movieId) =>
-    dispatch(CommentOperation.postComment(reviewData, movieId)),
+  onReviewSubmit: (reviewData, movieId, callback) =>
+    dispatch(CommentOperation.postComment(reviewData, movieId, callback)),
 });
 
 

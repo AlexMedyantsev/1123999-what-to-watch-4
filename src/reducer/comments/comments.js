@@ -18,45 +18,32 @@ const ActionCreator = {
       payload: comments,
     };
   },
-  // addComment: (comment) => {
-  //   return {
-  //     type: ActionType.ADD_COMMENT,
-  //     payload: comment,
-  //   };
-  // },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_COMMENTS:
-      console.log(`check reducer trigger`);
       return extend(state, {
         comments: action.payload,
       });
-    // case ActionType.ADD_COMMENT:
-    //   console.log(`check reducer trigger`);
-    //   return extend(state, {
-    //     comments: [...state.comments, action.payload],
-    //   });
   }
   return state;
 };
 
 const Operation = {
-  postComment: (commentData, movieId) => (dispatch, getState, api) => {
+  postComment: (commentData, movieId, callback) => (dispatch, getState, api) => {
     return api.post(SERVER_ROUTE.POST_COMMENT + movieId, {
       rating: commentData.rating,
       comment: commentData.comment,
     })
       .then(() => {
-        // Operation.loadComments(movieId);
+        callback();
       });
   },
 
   loadComments: (movieId) => (dispatch, getState, api) => {
     return api.get(SERVER_ROUTE.POST_COMMENT + movieId)
       .then((response) => {
-        console.log(`check loadComments trigger`);
         dispatch(ActionCreator.loadComments(response.data));
       });
   },

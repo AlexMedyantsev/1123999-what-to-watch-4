@@ -5,7 +5,6 @@ export const getIsLoading = (state) => {
 };
 
 export const getComments = (state) => {
-  console.log(state);
   return state[NameSpace.COMMENTS].comments;
 };
 

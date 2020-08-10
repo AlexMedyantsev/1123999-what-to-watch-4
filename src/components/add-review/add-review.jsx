@@ -25,9 +25,11 @@ export default class AddReview extends React.PureComponent {
         rating: this.ratingRef.current.rating.value,
         comment: this.commentRef.current.value,
       },
-      id
+      id,
+      () => {
+        history.goBack();
+      }
       );
-      history.goBack();
     }
   }
 
@@ -112,3 +114,4 @@ AddReview.propTypes = {
     id: PropTypes.number.isRequired,
   })
 };
+
