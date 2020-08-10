@@ -43,13 +43,14 @@ const Operation = {
       comment: commentData.comment,
     })
       .then(() => {
+        Operation.loadComments(movieId);
       });
   },
 
   loadComments: (movieId) => (dispatch, getState, api) => {
     return api.get(SERVER_ROUTE.POST_COMMENT + movieId)
       .then((response) => {
-        dispatch(ActionCreator.loadComments([response.data]));
+        dispatch(ActionCreator.loadComments(response.data));
       });
   },
 };

@@ -20,7 +20,7 @@ class TabsReviews extends PureComponent {
     let commentsArrayHalf = ``;
 
     if (columnNumber === `first`) {
-      commentsArrayHalf = comments.slice(0, Math.floor((comments.length / 2) + 1));
+      commentsArrayHalf = comments.length % 2 === 0 ? comments.slice(0, comments.length / 2) : comments.slice(0, Math.floor((comments.length / 2) + 1));
     } else if (columnNumber === `second`) {
       commentsArrayHalf = comments.slice(Math.round((comments.length / 2)), comments.length);
     }
