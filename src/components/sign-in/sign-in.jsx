@@ -22,9 +22,9 @@ export default class SignIn extends React.PureComponent {
       login: this.loginRef.current.value,
       password: this.passwordRef.current.value,
     });
-
     history.push(`/`);
   }
+
 
   render() {
     return (
@@ -37,21 +37,22 @@ export default class SignIn extends React.PureComponent {
             <h1 className="page-title user-page__title">Sign in</h1>
           </header>
           <div className="sign-in user-page__content">
-            <form action="#" className="sign-in__form">
+            <form action="#" className="sign-in__form" onSubmit={this.handleSubmit}>
               <div className="sign-in__fields">
                 <div className="sign-in__field">
-                  <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email"
+                  <input className="sign-in__input"
+                    required type="email" placeholder="Email address" name="user-email" id="user-email"
                     ref={this.loginRef} />
                   <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
                 </div>
                 <div className="sign-in__field">
-                  <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password"
+                  <input className="sign-in__input" type="password" placeholder="Password" name="user-password" required id="user-password"
                     ref={this.passwordRef} />
                   <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
                 </div>
               </div>
               <div className="sign-in__submit">
-                <button className="sign-in__btn" onClick={this.handleSubmit} type="submit">Sign in</button>
+                <button className="sign-in__btn" type="submit">Sign in</button>
               </div>
             </form>
           </div>

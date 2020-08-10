@@ -22,13 +22,13 @@ const createAPI = (onError) => {
     const {response} = err;
     if (response) {
       onError(response.status);
+    } else if (response.status === Error.UNAUTHORIZED) {
+      onError(`Вы не авторизированы`);
     } else {
       onError(`Отсутствует интернет подключение`);
     }
 
-    if (response.status === Error.UNAUTHORIZED) {
-      throw err;
-    }
+    
   };
 
   api.interceptors.response.use(onSuccess, onFail);
