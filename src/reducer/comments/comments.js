@@ -1,20 +1,14 @@
 import {extend} from "../../utils/common.js";
 import {SERVER_ROUTE} from "../../utils/consts.js";
 
-
-const AuthorizationStatus = {
-  comments: []
-};
-
 const initialState = {
-  isLoading: false,
   comments: [],
-  isCommentsLoaded: false,
 };
 
 const ActionType = {
   LOAD_COMMENTS: `LOAD_COMMENTS`,
   SET_COMMENTS: `SET_COMMENTS`,
+  ADD_COMMENT: `ADD_COMMENT`,
 };
 
 const ActionCreator = {
@@ -24,14 +18,26 @@ const ActionCreator = {
       payload: comments,
     };
   },
+  // addComment: (comment) => {
+  //   return {
+  //     type: ActionType.ADD_COMMENT,
+  //     payload: comment,
+  //   };
+  // },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.LOAD_COMMENTS:
+      console.log(`check reducer trigger`);
       return extend(state, {
         comments: action.payload,
       });
+    // case ActionType.ADD_COMMENT:
+    //   console.log(`check reducer trigger`);
+    //   return extend(state, {
+    //     comments: [...state.comments, action.payload],
+    //   });
   }
   return state;
 };
@@ -43,13 +49,14 @@ const Operation = {
       comment: commentData.comment,
     })
       .then(() => {
-        Operation.loadComments(movieId);
+        // Operation.loadComments(movieId);
       });
   },
 
   loadComments: (movieId) => (dispatch, getState, api) => {
     return api.get(SERVER_ROUTE.POST_COMMENT + movieId)
       .then((response) => {
+        console.log(`check loadComments trigger`);
         dispatch(ActionCreator.loadComments(response.data));
       });
   },
@@ -58,7 +65,6 @@ const Operation = {
 export {
   ActionCreator,
   ActionType,
-  AuthorizationStatus,
   Operation,
   reducer,
 };

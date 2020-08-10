@@ -21,12 +21,12 @@ const ActionCreator = {
       payload: status,
     };
   },
-  loadComments: (comments) => {
-    return {
-      type: ActionType.REQUIRED_AUTHORIZATION,
-      payload: comments,
-    };
-  },
+  // loadComments: (comments) => {
+  //   return {
+  //     type: ActionType.REQUIRED_AUTHORIZATION,
+  //     payload: comments,
+  //   };
+  // },
 };
 
 const reducer = (state = initialState, action) => {
