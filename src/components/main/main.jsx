@@ -219,7 +219,6 @@ const mapStateToProps = (state) => {
   const showMoreButton = moviesByGenre.length > getShowedMoviesCount(state);
 
   return {
-    // Добавить селекторы или неймспейс
     currentGenre: getCurrentGenre(state),
     authorizationStatus: getAuthorizationStatus(state),
     genresList,
@@ -232,7 +231,7 @@ const mapDispatchToProps = (dispatch) => ({
   onSetCurrentGenre: (genre) => dispatch(ActionCreatorCondition.setCurrentGenre(genre)),
   onresetCountMoviesShow: () => dispatch(ActionCreatorCondition.resetCountMoviesShow()),
   onIncrementCountMoviesShow: () => dispatch(ActionCreatorCondition.incrementCountMoviesShow()),
-  onFavoriteButtonClick: (id, status) => dispatch(OperationData.postFavoriteMovie(id, status)),
+  onFavoriteButtonClick: (id, status) => dispatch(OperationData.postFavoritePromoMovie(id, status)),
 });
 
 export {Main};

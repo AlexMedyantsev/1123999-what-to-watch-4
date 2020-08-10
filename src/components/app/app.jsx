@@ -132,8 +132,8 @@ App.propTypes = {
   activeMovie: PropTypes.object,
   promoMovie: PropTypes.object,
   onReviewSubmit: PropTypes.func.isRequired,
-  isError: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.number,
+  isError: PropTypes.bool,
+  errorMessage: PropTypes.any,
 };
 
 const mapStateToProps = (state) => {

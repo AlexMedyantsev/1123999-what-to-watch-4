@@ -75,6 +75,15 @@ const Operation = {
     })
       .then((response) => {
         dispatch(ActionCreator.updateMovie(...adaptMovies([response.data])));
+        dispatch(Operation.loadFavoriteMovies());
+      });
+  },
+  postFavoritePromoMovie: (filmId, status) => (dispatch, getState, api) => {
+    return api.post(`${SERVER_ROUTE.POST_FAVORITE_MOVIE}${filmId}/${+status}`, {
+      "film_id": filmId,
+      "status": +status,
+    })
+      .then((response) => {
         dispatch(ActionCreator.updatePromoMovie(adaptMovie(response.data)));
         dispatch(Operation.loadFavoriteMovies());
       });

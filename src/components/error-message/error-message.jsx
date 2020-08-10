@@ -18,7 +18,10 @@ class ErrorMessage extends PureComponent {
 }
 
 ErrorMessage.propTypes = {
-  errorMessage: PropTypes.number.isRequired,
+  errorMessage: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   isVisible: PropTypes.bool.isRequired,
 };
 

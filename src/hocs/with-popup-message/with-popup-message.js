@@ -48,7 +48,10 @@ const withPopupMessage = (Component) => {
   }
 
   WithPopupMessage.propTypes = {
-    errorMessage: PropTypes.number.isRequired,
+    errorMessage: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
     children: PropTypes.any,
   };
 

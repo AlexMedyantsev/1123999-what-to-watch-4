@@ -51,7 +51,7 @@ const moviesArray = [
   }
 ];
 
-describe(`Check user reducer`, () => {
+describe(`Check data reducer`, () => {
   it(`it should return default initialState when passed nothing`, () => {
     expect(reducer(void 0, {})).toEqual(initialState);
   });
