@@ -7,8 +7,6 @@ const initialState = {
 
 const ActionType = {
   LOAD_COMMENTS: `LOAD_COMMENTS`,
-  SET_COMMENTS: `SET_COMMENTS`,
-  ADD_COMMENT: `ADD_COMMENT`,
 };
 
 const ActionCreator = {
