@@ -54,19 +54,22 @@ const Operation = {
     return api.get(SERVER_ROUTE.MOVIES)
       .then((responce) => {
         dispatch(ActionCreator.loadMovies(adaptMovies(responce.data)));
-      });
+      })
+      .catch(() => {});
   },
   loadPromoMovie: () => (dispatch, getState, api) => {
     return api.get(SERVER_ROUTE.PROMO_MOVIE)
       .then((responce) => {
         dispatch(ActionCreator.loadPromoMovie(adaptMovie(responce.data)));
-      });
+      })
+      .catch(() => {});
   },
   loadFavoriteMovies: () => (dispatch, getState, api) => {
     return api.get(SERVER_ROUTE.GET_FAVORITE_MOVIE)
       .then((responce) => {
         dispatch(ActionCreator.loadFavoriteMovies(adaptMovies(responce.data)));
-      });
+      })
+      .catch(() => {});
   },
   postFavoriteMovie: (filmId, status) => (dispatch, getState, api) => {
     return api.post(`${SERVER_ROUTE.POST_FAVORITE_MOVIE}${filmId}/${+status}`, {
@@ -76,7 +79,8 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.updateMovie(...adaptMovies([response.data])));
         dispatch(Operation.loadFavoriteMovies());
-      });
+      })
+      .catch(() => {});
   },
   postFavoritePromoMovie: (filmId, status) => (dispatch, getState, api) => {
     return api.post(`${SERVER_ROUTE.POST_FAVORITE_MOVIE}${filmId}/${+status}`, {
@@ -86,7 +90,8 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.updatePromoMovie(adaptMovie(response.data)));
         dispatch(Operation.loadFavoriteMovies());
-      });
+      })
+      .catch(() => {});
   },
 };
 

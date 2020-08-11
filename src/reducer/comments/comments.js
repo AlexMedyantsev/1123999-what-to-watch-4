@@ -36,14 +36,16 @@ const Operation = {
     })
       .then(() => {
         callback();
-      });
+      })
+      .catch(() => {});
   },
 
   loadComments: (movieId) => (dispatch, getState, api) => {
     return api.get(SERVER_ROUTE.POST_COMMENT + movieId)
       .then((response) => {
         dispatch(ActionCreator.loadComments(response.data));
-      });
+      })
+      .catch(() => {});
   },
 };
 
