@@ -40,7 +40,7 @@ class App extends PureComponent {
   }
 
   renderMovieDetails(movies, props) {
-    const movie = movies.find((movieItem)=> movieItem.id === +props.match.params.id);
+    const movie = movies.find((movieItem) => movieItem.id === +props.match.params.id);
     const similarMovies = getSimilarMoviesByGenres(movies, movie).slice(0, SIMILAR_MOVIES_COUNT);
 
     return (
@@ -95,32 +95,32 @@ class App extends PureComponent {
 
     return (
       <>
-      {isError ? <ErrorMessageWrapped errorMessage={errorMessage}/> : ``}
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/">
-            {this.renderMain()}
-          </Route>
-          <Route exact path="/films/:id" render={(props) => (
-            this.renderMovieDetails(movies, props)
-          )}>
-          </Route>
-          <Route exact path="/login">
-            {this.renderLoginPage(onAuthSubmit)}
-          </Route>
-          <Route exact path="/player/:id" render={(props) => (
-            this.renderVideoPlayer(movies, props)
-          )}>
-          </Route>
-          <PrivateRoute exact path="/my-list">
-            {this.renderMyList(movies)}
-          </PrivateRoute>
-          <PrivateRoute exact path="/films/:id/review" render={(props) => (
-            this.renderAddReview(props, movies, onReviewSubmit)
-          )}>
-          </PrivateRoute>
-        </Switch>
-      </Router>
+        {isError ? <ErrorMessageWrapped errorMessage={errorMessage}/> : ``}
+        <Router history={history}>
+          <Switch>
+            <Route exact path="/">
+              {this.renderMain()}
+            </Route>
+            <Route exact path="/films/:id" render={(props) => (
+              this.renderMovieDetails(movies, props)
+            )}>
+            </Route>
+            <Route exact path="/login">
+              {this.renderLoginPage(onAuthSubmit)}
+            </Route>
+            <Route exact path="/player/:id" render={(props) => (
+              this.renderVideoPlayer(movies, props)
+            )}>
+            </Route>
+            <PrivateRoute exact path="/my-list">
+              {this.renderMyList(movies)}
+            </PrivateRoute>
+            <PrivateRoute exact path="/films/:id/review" render={(props) => (
+              this.renderAddReview(props, movies, onReviewSubmit)
+            )}>
+            </PrivateRoute>
+          </Switch>
+        </Router>
       </>
     );
   }
